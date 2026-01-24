@@ -9,5 +9,15 @@ textarea{
     padding: 10px;
     font-size: large;
     border-radius: 5px;
+    height: 12em;
+    width: 31em;
     margin: 5px;
 }
+
+.General-container{
+    border: 1px solid;
+    margin:10px;
+    border-radius: 8px;
+    padding: 10px;
+}
+

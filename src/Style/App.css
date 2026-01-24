@@ -4,32 +4,57 @@
 }
 
 /* Main styling */
-
-.Main{
+.Main-Container{
+    border: 1px solid;
+}
+.Nav{
+    flex-wrap: wrap;
     display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em;
+}
+
+.Nav-Btn{
+    padding: 0.5rem;
+    border-radius: 8px;
+    min-width: 5.5rem;
+    cursor: pointer;
+}
+
+.Nav-Btn:active{
+    transform: scaleX(110%);
+    transition: 150ms;
+}
+
+section{
+    display: flex;
+    padding: 5px;
 }
 
 
-.general-info{
-    text-align: center;
-    line-height: 0.8;
-}
 
-.form-section {
+.Form-Section{
     border: 1px solid;
     min-height: 100%;
     width: 40%;
     overflow: auto;
 }
 
+.From-Container{
+    border: 2px solid;
+    margin: 10px;
+}
+
 .about{
     font-family: Montserrat;
 }
 
-.resume-section {
+.Resume-Section{
+    border: 1px solid;
     min-height: 100%;
     width: 60%;
-    padding: 10px;
+    padding: 20px 40px 20px 40px;
 }
 
 .skl{

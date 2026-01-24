@@ -1,40 +1,51 @@
-import './General.css'
-function GeneralForm({ data, setData }) {
+import '../../Style/General.css'
+import {useResume} from "../../context/ResumeContext"
+function GeneralForm(){
+    const {resume, updateGeneral} = useResume();
+
     return (
-        <div>
-            
+        <div className='General-container'>
+            <h2>General Info Section: </h2>
             <input
                 type="text"
-                value={data.candidateName}
-                onChange={(e) => setData({ ...data, candidateName: e.target.value })}
+                value={resume.general.candidateName}
+                onChange={(e) => updateGeneral("candidateName", e.target.value )}
                 placeholder="Full Name"
             />
 
             <input
                 type="text"
-                value={data.role}
-                onChange={(e) => setData({ ...data, role: e.target.value })}
+                value={resume.general.role}
+                onChange={(e) => updateGeneral("role",e.target.value )}
                 placeholder="Role"
             />
 
             <input
                 type="text"
-                value={data.address}
-                onChange={(e) => setData({ ...data, address: e.target.value })}
-                placeholder="Enter Your Current Address"
+                value={resume.general.address}
+                placeholder="Enter Your Current Address"  
+                onChange={(e) => updateGeneral("address",e.target.value )}
+                
             />
 
             <input
-            type='number'
             placeholder='Mobile Number'
-            value={data.mobile}
-            onChange={(e)=>setData({...data,mobile:e.target.value})}
+            value={resume.general.mobile}
+            onChange={(e)=>updateGeneral("mobile",e.target.value)}
+            />
+
+            <input
+            type = "text"
+            placeholder="Gmail"
+            value={resume.general.email}
+            onChange={(e)=> updateGeneral("email",e.target.value)}
             />
 
             <textarea
-            value={data.contact}
+            className='contact'
+            value={resume.general.contact}
             placeholder='Contact Info'
-            onChange={(e)=> setData({...data,contact:e.target.value})}
+            onChange={(e)=> updateGeneral("contact",e.target.value)}
             />
             </div>
     );

@@ -1,15 +1,15 @@
-function AboutForm({data,setData}){
+import { useResume } from "../../context/ResumeContext";
+import './experience.css'
+function AboutForm(){
+    const {resume, updateAbout} = useResume()
     return(
-        <div>
-            <u><h2>About</h2></u>
+        <div className="About-Container">
+            <h2>Professional Summary: </h2>
            <textarea
-            value={data.aboutYou}
-            placeholder="About you"
-            onChange={(e)=> setData({...data,aboutYou:e.target.value})}
+           placeholder="About you"
+            value={resume.about.aboutYou}
+            onChange={(e)=> updateAbout("aboutYou",e.target.value)}
             />
         </div>
-    );
-
-}
-
-export default AboutForm;
+    );}
+export default AboutForm; 

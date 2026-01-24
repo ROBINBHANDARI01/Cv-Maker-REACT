@@ -1,4 +1,5 @@
 .add-exp{
+    display: block;
     margin-top: 20px;
     padding: 8px 16px;
     cursor: pointer;
@@ -27,4 +28,12 @@
     padding: 10px;
     border-radius: 8px;
     margin-top: 10px;
+    margin: 0.6em;
+}
+
+.About-Container{
+    border: 1px solid;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
 }
