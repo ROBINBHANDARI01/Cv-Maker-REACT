@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { preconnect } from "react-dom";
+
 
 const ResumeContext = createContext();
 
@@ -29,11 +29,11 @@ export function ResumeProvider({ children }) {
             },
         ],
 
-        skills: [ 
+        skills: [
             {
                 skillType: "Frontend Developement",
-                skillsList: 
-                ["HTML5, CSS3, JavaScript (ES6+), React.js, Responsive Design, Flexbox, CSS Grid"]
+                skillsList:
+                    ["HTML5, CSS3, JavaScript (ES6+), React.js, Responsive Design, Flexbox, CSS Grid"]
             }
         ]
 
@@ -41,149 +41,186 @@ export function ResumeProvider({ children }) {
 
     //-----Removing current input field-----//
 
-    
+    const removeByIndex = (arr, index) => arr.filter((_, i) => i !== index);
+
+    ///Universal removeFeildItem function 
+
+    const removeFieldItem = ({
+        field,
+        index,      //index of parent item
+        nestedField,
+        nestedIndex     //index inside nested array 
+    }) => {
+        setResume(prev => ({
+            ...prev,
+            [field]: prev[field].map((item, i) => {
+                if (i !== index) return item; 
+
+                //remove nested item
+
+                if (nestedField !== undefined) {
+                    return {
+                        ...item,
+                        [nestedField]: removeByIndex(
+                            item[nestedField],
+                            nestedIndex
+                        )
+                    };
+                }
+               
 
 
-//-----General------//
-const updateGeneral = (field, value) => {
-    setResume(prev => ({
-        ...prev,
-        general: {
-            ...prev.general,
-            [field]: value
-        },
-    }))
-};
+                //remove top-level item
+
+                return null;
+            }).filter(Boolean)
+        }))
+    }
 
 
-// -----About-----//
-
-//Function to update the values of about field 
-const updateAbout = (field, value) => {
-    setResume(prev => ({
-        ...prev,
-        about: {
-            ...prev.about,
-            [field]: value
-        }
-    }))
-};
 
 
-//-----Experience-----//
+
+    //-----General------//
+    const updateGeneral = (field, value) => {
+        setResume(prev => ({
+            ...prev,
+            general: {
+                ...prev.general,
+                [field]: value
+            },
+        }))
+    };
 
 
-//Function to update the values in the elements 
-const updateExperience = (index, field, value) => {
-    setResume(prev => {
-        const updated = [...prev.experience];
-        updated[index] = { ...updated[index], [field]: value }
-        return { ...prev, experience: updated }
-    })
-}
+    // -----About-----//
 
-
-//Function to add multiple experience forms on button click 
-const addExperience = () => [
-    setResume(prev => ({
-        ...prev,
-        experience: [
-            ...prev.experience,
-            {
-                companyName: "",
-                role: "",
-                start: "",
-                end: "",
-                description: ""
+    //Function to update the values of about field 
+    const updateAbout = (field, value) => {
+        setResume(prev => ({
+            ...prev,
+            about: {
+                ...prev.about,
+                [field]: value
             }
-        ]
-    }))
-]
+        }))
+    };
 
-//Function to display experience date in mm/yy format 
 
-const formatMMYY = (dateStr) =>{
-    if(!dateStr) return "";
+    //-----Experience-----//
 
-    const date = new Date(
-        dateStr.length === 7 ? `${dateStr} -01` : dateStr
-    );
 
-    return new Intl.DateTimeFormat("en-US",{
-        month: "short",
-        year:"numeric",
-    }).format(date);
-};
+    //Function to update the values in the elements 
+    const updateExperience = (index, field, value) => {
+        setResume(prev => {
+            const updated = [...prev.experience];
+            updated[index] = { ...updated[index], [field]: value }
+            return { ...prev, experience: updated }
+        })
+    }
 
-//-----Skills-----//
 
-//Function to update the values in the elements
-
-const updateSkills = (index, field, value) => {
-    setResume(prev => {
-        const updated = [...prev.skills];
-        updated[index] = { ...updated[index], [field]: value };
-        return { ...prev, skills: updated }
-
-    })
-}
-
-//Function to add multiple skill input forms 
-
-const addSkills = () => {
-    setResume(prev => ({
-        ...prev,
-        skills: 
-
-        [...resume.skills,
-            {
-                skillType: "",
-                skillsList: [""]
-            }
-        ]
-
-    
-    }))
-}
-
-//Function to add bulletpoints in skills
-
-const addBullet = (index) => {
-    setResume(prev => {
-        const skills = [...prev.skills];
-
-        skills[index] = {
-            skillsList: [
-                ...skills[index].skillsList,
-                ""
+    //Function to add multiple experience forms on button click 
+    const addExperience = () => [
+        setResume(prev => ({
+            ...prev,
+            experience: [
+                ...prev.experience,
+                {
+                    companyName: "",
+                    role: "",
+                    start: "",
+                    end: "",
+                    description: ""
+                }
             ]
-        };
+        }))
+    ]
 
-        return { ...prev, skills };
-    })
-}
+    //Function to display experience date in mm/yy format 
 
-const updateSkillPoint = (index, indexPoint, value) => {
+    const formatMMYY = (dateStr) => {
+        if (!dateStr) return "";
 
-    setResume(prev => {
-        const skills = [...prev.skills];
-        const skillsList = [...skills[index].skillsList];
+        const date = new Date(
+            dateStr.length === 7 ? `${dateStr} -01` : dateStr
+        );
 
-        skillsList[indexPoint] = value;
+        return new Intl.DateTimeFormat("en-US", {
+            month: "short",
+            year: "numeric",
+        }).format(date);
+    };
 
-        skills[index] = {
-            ...skills[index],
-            skillsList
-        };
-        return { ...prev, skills };
-    })
-}
+    //-----Skills-----//
 
-return (
-    <ResumeContext.Provider value={{ resume, updateGeneral, updateAbout, addExperience,formatMMYY , updateExperience, addSkills, addBullet, updateSkills, updateSkillPoint }}>
-        {children}
-    </ResumeContext.Provider>
-);
+    //Function to update the values in the elements
+
+    const updateSkills = (index, field, value) => {
+        setResume(prev => {
+            const updated = [...prev.skills];
+            updated[index] = { ...updated[index], [field]: value };
+            return { ...prev, skills: updated }
+
+        })
+    }
+
+    //Function to add multiple skill input forms 
+
+    const addSkills = () => {
+        setResume(prev => ({
+            ...prev,
+            skills:
+
+                [...resume.skills,
+                {
+                    skillType: "",
+                    skillsList: [""]
+                }
+                ]
+
+
+        }))
+    }
+
+    //Function to add bulletpoints in skills
+
+    const addBullet = (index) => {
+        setResume(prev => {
+            const skills = [...prev.skills];
+            skills[index] = {
+                ...skills[index],
+                skillsList: [
+                    ...skills[index].skillsList,
+                    ""
+                ]
+            };
+
+            return { ...prev, skills };
+        })
+    }
+
+    const updateSkillPoint = (index, indexPoint, value) => {
+
+        setResume(prev => {
+            const skills = [...prev.skills];
+            const skillsList = [...skills[index].skillsList];
+
+            skillsList[indexPoint] = value;
+
+            skills[index] = {
+                ...skills[index],
+                skillsList
+            };
+            return { ...prev, skills };
+        })
+    }
+
+    return (
+        <ResumeContext.Provider value={{ resume, updateGeneral, updateAbout, addExperience, formatMMYY, updateExperience, addSkills, addBullet, updateSkills, updateSkillPoint, removeFieldItem }}>
+            {children}
+        </ResumeContext.Provider>
+    );
 }
 
 

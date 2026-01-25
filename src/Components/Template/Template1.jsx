@@ -53,9 +53,7 @@ function Template1() {
                                     <div
                                         key={indx}>
                                         <h3>{name.skillType}</h3>
-                                        <li
-
-                                        >{name}</li>
+                                        <li>{name}</li>
                                     </div>
                                 ))}
 

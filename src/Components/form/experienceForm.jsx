@@ -3,7 +3,7 @@ import './experience.css'
 
 
 function ExperienceForm() {
-    const { resume, addExperience, updateExperience } = useResume();
+    const { resume, addExperience, updateExperience, removeFieldItem } = useResume();
 
     return (
         <>
@@ -52,18 +52,32 @@ function ExperienceForm() {
                         <input
                             type='text'
                             value={exp.description}
-                            onChange={(e) => updateExperience(index,"description", e.target.value)}
+                            onChange={(e) => updateExperience(index, "description", e.target.value)}
                         />
-                        
 
+
+                        <button className='rem-exp'
+                        disabled={resume.experience.length === 1}
+                        onClick={() =>
+                            removeFieldItem({
+                                field: "experience",
+                                index: index
+                            })
+                        }
+                        >
+                            Remove Experience
+                        </button>
+                        < button
+                            className="add-exp"
+                            onClick={addExperience}
+                        > Add New Experience</button >
                     </div>
                 ))
 
+
+
             }
-            < button
-                className="add-exp"
-                onClick={addExperience}
-            > Add New Experience</button >
+
         </>
     );
 

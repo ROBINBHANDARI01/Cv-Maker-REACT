@@ -9,6 +9,17 @@
     border-radius: 5px;
 }
 
+.rem-exp{
+    display: block;
+    margin-top: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: rgb(198, 24, 24);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
 .date{
     display: flex;
     gap: 2em;

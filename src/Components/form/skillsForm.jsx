@@ -2,7 +2,7 @@ import { useResume } from "../../context/ResumeContext";
 import './experience.css'
 function SkillsForm() {
 
-    const { resume, addSkills, updateSkills, addBullet, updateSkillPoint } = useResume();
+    const { resume, addSkills, updateSkills, addBullet, updateSkillPoint, removeFieldItem } = useResume();
 
     return (
         <>
@@ -29,18 +29,45 @@ function SkillsForm() {
                                 onChange={(e) => updateSkillPoint(index, indexPoint, e.target.value)}
                             />
                             <button onClick={() => addBullet(index)}> Add Bullet Points</button>
-                
+
+                            <button
+                                onClick={() => removeFieldItem({
+                                    field: "skills",
+                                    index: index,
+                                    nestedField: "skillsList",
+                                    nestedIndex: indexPoint
+                                })}
+                            >Remove Bullet</button>
                         </div>
+
+
+
                     ))}
 
+                    <button className="rem-exp"
+                    disabled={resume.skills.length === 1}
+                    onClick={() =>
+                        removeFieldItem({
+                            field: "skills",
+                            index: index
+                        })
+                    }
+                >Remove Experience
+                    </button>
+
+                    <button
+                        className="add-exp"
+                        onClick={addSkills}
+                    >Add more skill</button>
                 </div>
-            ))
+            )
+
+            )
 
             }
-            <button
-                className="add-exp"
-                onClick={addSkills}
-            >Add more skill</button>
+
+
+
         </>
     );
 }
