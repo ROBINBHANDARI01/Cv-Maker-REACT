@@ -62,6 +62,28 @@ function Template1() {
                     ))
                 }
 
+                <h2>Projects</h2>
+                <hr></hr>
+
+                {
+                    resume.projects.map((proj, index) => (
+                        <div
+                            className="project"
+                            key={index}>
+
+                            <h3>{proj.projectName}</h3>
+                            <p>{proj.projectDescription}</p>
+                            <ul>
+                                {proj.additionalDetails.map((stack, pointIndex) =>
+
+                                    <li key={pointIndex}>{stack}</li>
+
+                                )}
+                            </ul>
+                        </div>
+                    ))
+                }
+
             </div >
         </>
     );
