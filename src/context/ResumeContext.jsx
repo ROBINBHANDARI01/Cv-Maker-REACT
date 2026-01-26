@@ -35,6 +35,14 @@ export function ResumeProvider({ children }) {
                 skillsList:
                     ["HTML5, CSS3, JavaScript (ES6+), React.js, Responsive Design, Flexbox, CSS Grid"]
             }
+        ],
+
+        projects: [
+            {
+                projectName: "Weather Forecast Webpage",
+                projectDescription: "This is the first project in which i have used a restAPI",
+                additionalDetails: ["Html ,css, js ,restAPI",]
+            }
         ]
 
     });
@@ -54,7 +62,7 @@ export function ResumeProvider({ children }) {
         setResume(prev => ({
             ...prev,
             [field]: prev[field].map((item, i) => {
-                if (i !== index) return item; 
+                if (i !== index) return item;
 
                 //remove nested item
 
@@ -67,8 +75,6 @@ export function ResumeProvider({ children }) {
                         )
                     };
                 }
-               
-
 
                 //remove top-level item
 
@@ -80,45 +86,18 @@ export function ResumeProvider({ children }) {
 
 
 
+    //------Universal function to update normal input like "general" and "about" 
 
-    //-----General------//
-    const updateGeneral = (field, value) => {
+    const updateNormal = (field, value, section) => {
         setResume(prev => ({
-            ...prev,
-            general: {
-                ...prev.general,
+            ...prev, [section]: {
+                ...prev[section],
                 [field]: value
             },
         }))
     };
 
-
-    // -----About-----//
-
-    //Function to update the values of about field 
-    const updateAbout = (field, value) => {
-        setResume(prev => ({
-            ...prev,
-            about: {
-                ...prev.about,
-                [field]: value
-            }
-        }))
-    };
-
-
     //-----Experience-----//
-
-
-    //Function to update the values in the elements 
-    const updateExperience = (index, field, value) => {
-        setResume(prev => {
-            const updated = [...prev.experience];
-            updated[index] = { ...updated[index], [field]: value }
-            return { ...prev, experience: updated }
-        })
-    }
-
 
     //Function to add multiple experience forms on button click 
     const addExperience = () => [
@@ -154,13 +133,13 @@ export function ResumeProvider({ children }) {
 
     //-----Skills-----//
 
-    //Function to update the values in the elements
+    //Function to update the section like Skill , Project 
 
-    const updateSkills = (index, field, value) => {
+    const updateSection = (index, field, value, section) => {
         setResume(prev => {
-            const updated = [...prev.skills];
+            const updated = [...prev[section]];
             updated[index] = { ...updated[index], [field]: value };
-            return { ...prev, skills: updated }
+            return { ...prev, [section]: updated }
 
         })
     }
@@ -171,15 +150,12 @@ export function ResumeProvider({ children }) {
         setResume(prev => ({
             ...prev,
             skills:
-
                 [...resume.skills,
                 {
                     skillType: "",
                     skillsList: [""]
                 }
                 ]
-
-
         }))
     }
 
@@ -216,8 +192,9 @@ export function ResumeProvider({ children }) {
         })
     }
 
+
     return (
-        <ResumeContext.Provider value={{ resume, updateGeneral, updateAbout, addExperience, formatMMYY, updateExperience, addSkills, addBullet, updateSkills, updateSkillPoint, removeFieldItem }}>
+        <ResumeContext.Provider value={{ resume, updateNormal, updateAbout, addExperience, formatMMYY, addSkills, addBullet, updateSection, updateSkillPoint, removeFieldItem }}>
             {children}
         </ResumeContext.Provider>
     );
