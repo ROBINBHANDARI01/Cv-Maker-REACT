@@ -15,17 +15,6 @@
     margin: 1em;
 }
 
-.Nav-Btn{
-    padding: 0.5rem;
-    border-radius: 8px;
-    min-width: 5.5rem;
-    cursor: pointer;
-}
-
-.Nav-Btn:active{
-    transform: scaleX(110%);
-    transition: 150ms;
-}
 
 section{
     display: flex;
@@ -160,4 +149,36 @@ ul{
 
 
 
+}
+
+/*------ Sving resume in pdf ------*/
+@page {
+  size: A4;
+  margin: 20mm;
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hide everything */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only CV preview */
+  .Resume-Section,
+  .Resume-Section * {
+    visibility: visible;
+  }
+
+  .Resume-Section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm;
+    min-height: 297mm;
+  }
 }

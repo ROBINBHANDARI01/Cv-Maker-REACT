@@ -1,7 +1,7 @@
 import { useResume } from "../../context/ResumeContext";
 import './Template1.css'
 function Template1() {
-    const { resume } = useResume();
+    const { resume, formatMonthYear} = useResume();
     return (
         <>
             <div className="general-info">
@@ -31,7 +31,7 @@ function Template1() {
                                     <h3>{exp.companyName}</h3>
                                 </li>  </ul>
                                 <p>{exp.role}</p>
-                                <p>{exp.start} - {exp.end}
+                                <p>{formatMonthYear(exp.start)} - {exp.end ? formatMonthYear(exp.end) : "Present"}
                                 </p>
                                 <p>{exp.description}</p>
                             </div>
@@ -39,52 +39,53 @@ function Template1() {
                         )
 
                     })
+
                 }
-
-
-                <h2>Skills</h2>
-                <hr></hr>
-                {
-                    resume.skills.map((skl, index) => (
-                        <div key={index} className="Skill-container">
-                            <h3>{skl.skillType}</h3>
-                            <ul>
-                                {skl.skillsList.map((name, indx) => (
-                                    <div
-                                        key={indx}>
-                                        <h3>{name.skillType}</h3>
-                                        <li>{name}</li>
-                                    </div>
-                                ))}
-
-                            </ul>
-                        </div>
-                    ))
-                }
-
-                <h2>Projects</h2>
-                <hr></hr>
-
-                {
-                    resume.projects.map((proj, index) => (
-                        <div
-                            className="project"
-                            key={index}>
-
-                            <h3>{proj.projectName}</h3>
-                            <p>{proj.projectDescription}</p>
-                            <ul>
-                                {proj.additionalDetails.map((stack, pointIndex) =>
-
-                                    <li key={pointIndex}>{stack}</li>
-
-                                )}
-                            </ul>
-                        </div>
-                    ))
-                }
-
+            
             </div >
+            <h2>Skills</h2>
+            <hr></hr>
+            {
+                resume.skills.map((skl, index) => (
+                    <div key={index} className="Skill-container">
+                        <h3>{skl.skillType}</h3>
+                        <ul>
+                            {skl.skillsList.map((name, indx) => (
+                                <div
+                                    key={indx}>
+
+                                    <li>{name}</li>
+                                </div>
+                            ))}
+
+                        </ul>
+                    </div>
+                ))
+            }
+
+            <h2>Projects</h2>
+            <hr></hr>
+
+            {
+                resume.projects.map((proj, index) => (
+                    <div
+                        className="project"
+                        key={index}>
+
+                        <h3>{proj.projectName}</h3>
+                        <p>{proj.projectDescription}</p>
+                        <ul>
+                            {proj.additionalDetails.map((stack, pointIndex) => (
+                                <div key={pointIndex}>
+                                    <li>{stack}</li>
+                                </div>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
+
+
         </>
     );
 }

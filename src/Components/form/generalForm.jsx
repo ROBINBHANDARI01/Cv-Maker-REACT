@@ -1,7 +1,7 @@
 import '../../Style/General.css'
 import {useResume} from "../../context/ResumeContext"
 function GeneralForm(){
-    const {resume, updateGeneral} = useResume();
+    const {resume, updateNormal} = useResume();
 
     return (
         <div className='General-container'>
@@ -9,14 +9,14 @@ function GeneralForm(){
             <input
                 type="text"
                 value={resume.general.candidateName}
-                onChange={(e) => updateGeneral("candidateName", e.target.value )}
+                onChange={(e) => updateNormal("candidateName", e.target.value, "general" )}
                 placeholder="Full Name"
             />
 
             <input
                 type="text"
                 value={resume.general.role}
-                onChange={(e) => updateGeneral("role",e.target.value )}
+                onChange={(e) => updateNormal("role",e.target.value, "general" )}
                 placeholder="Role"
             />
 
@@ -24,28 +24,28 @@ function GeneralForm(){
                 type="text"
                 value={resume.general.address}
                 placeholder="Enter Your Current Address"  
-                onChange={(e) => updateGeneral("address",e.target.value )}
+                onChange={(e) => updateNormal("address",e.target.value, "general" )}
                 
             />
 
             <input
             placeholder='Mobile Number'
             value={resume.general.mobile}
-            onChange={(e)=>updateGeneral("mobile",e.target.value)}
+            onChange={(e)=>updateNormal("mobile",e.target.value, "general")}
             />
 
             <input
             type = "text"
             placeholder="Gmail"
             value={resume.general.email}
-            onChange={(e)=> updateGeneral("email",e.target.value)}
+            onChange={(e)=> updateNormal("email",e.target.value, "general")}
             />
 
             <textarea
             className='contact'
             value={resume.general.contact}
             placeholder='Contact Info'
-            onChange={(e)=> updateGeneral("contact",e.target.value)}
+            onChange={(e)=> updateNormal("contact",e.target.value, "general")}
             />
             </div>
     );

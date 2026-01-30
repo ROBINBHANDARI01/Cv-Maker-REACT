@@ -23,8 +23,8 @@ export function ResumeProvider({ children }) {
             {
                 companyName: "Google",
                 role: "Chief Executive Officer",
-                start: "2015/02/02",
-                end: "2017/07/17",
+                start: "",
+                end: "",
                 description: "I worked as the CEO of google. My job was to tell people to do their work and don't slack off."
             },
         ],
@@ -41,9 +41,9 @@ export function ResumeProvider({ children }) {
             {
                 projectName: "Weather Forecast Webpage",
                 projectDescription: "This is the first project in which i have used a restAPI",
-                additionalDetails: ["Html ,css, js ,restAPI",]
+                additionalDetails: ["Html ,css, js ,restAPI"]
             }
-        ]
+        ],
 
     });
 
@@ -99,6 +99,19 @@ export function ResumeProvider({ children }) {
 
     //-----Experience-----//
 
+    // Fucntion to convert the date to month/year format 
+
+    const formatMonthYear = (value) => {
+    if (!value) return "";
+
+    const [year, month] = value.split("-");
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    return `${months[Number(month) - 1]} ${year}`;
+};
+
+
     //Function to add multiple experience forms on button click 
     const addExperience = () => [
         setResume(prev => ({
@@ -116,24 +129,9 @@ export function ResumeProvider({ children }) {
         }))
     ]
 
-    //Function to display experience date in mm/yy format 
-
-    const formatMMYY = (dateStr) => {
-        if (!dateStr) return "";
-
-        const date = new Date(
-            dateStr.length === 7 ? `${dateStr} -01` : dateStr
-        );
-
-        return new Intl.DateTimeFormat("en-US", {
-            month: "short",
-            year: "numeric",
-        }).format(date);
-    };
-
     //-----Skills-----//
 
-    //Function to update the section like Skill , Project 
+    //Universal Function to update the section like Skill , Project 
 
     const updateSection = (index, field, value, section) => {
         setResume(prev => {
@@ -159,6 +157,24 @@ export function ResumeProvider({ children }) {
         }))
     }
 
+    //Function to add multiple project input form
+
+    const addProject=()=>{
+        setResume(prev =>({
+            ...prev,
+            projects:
+                [...resume.projects,
+                {
+                projectName: "",
+                projectDescription: "",
+                additionalDetails: [""]
+            }
+            ]
+            
+        }))
+        
+    }
+
     //Function to add bulletpoints in skills
 
     const addBullet = (index) => {
@@ -176,31 +192,34 @@ export function ResumeProvider({ children }) {
         })
     }
 
-    const updateSkillPoint = (index, indexPoint, value) => {
+    //Universal function states of bullet point inputs 
+    
+    const updateBullet=(itemIndex, bulletIndex , value , section, field)=>{
+                setResume(prev => {
+            const sectionArray = [...prev[section]];
+            const item = {...sectionArray[itemIndex]};
+            const bulletList =[...item[field]];
 
-        setResume(prev => {
-            const skills = [...prev.skills];
-            const skillsList = [...skills[index].skillsList];
+            bulletList[bulletIndex] = value;
+            item[field] = bulletList;
+            sectionArray[itemIndex] = item;
 
-            skillsList[indexPoint] = value;
-
-            skills[index] = {
-                ...skills[index],
-                skillsList
+            return{
+                ...prev,
+                [section]: sectionArray
             };
-            return { ...prev, skills };
-        })
-    }
+        });
+    };
 
 
     return (
-        <ResumeContext.Provider value={{ resume, updateNormal, updateAbout, addExperience, formatMMYY, addSkills, addBullet, updateSection, updateSkillPoint, removeFieldItem }}>
+        <ResumeContext.Provider value={{ resume, updateNormal,updateBullet, formatMonthYear,addExperience, addSkills, addBullet, updateSection, removeFieldItem, addProject}}>
             {children}
         </ResumeContext.Provider>
     );
+
+
 }
-
-
 export function useResume() {
     return useContext(ResumeContext)
 

@@ -1,6 +1,26 @@
 .Nav-Bar{
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 10px;
     flex-wrap: wrap;
+    margin: 0.4em;
+}
+
+.print{
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: rgb(59, 198, 24);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.navBtn{
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: rgb(198, 24, 24);
+    color: white;
+    border: none;
+    border-radius: 5px;
 }

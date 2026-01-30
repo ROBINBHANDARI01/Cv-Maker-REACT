@@ -3,11 +3,11 @@ import "./nav.css"
 function Navbar(){
     return(
         <div className="Nav-Bar">
-            <NavLink to="/general"><p className="navBtn">General</p></NavLink>
-            <NavLink to="/about"><p className="navBtn">About</p></NavLink>
-            <NavLink to="/experience"><p className="navBtn">Experience</p></NavLink>
-            <NavLink to="/skills"><p className="navBtn">Skills</p></NavLink>
-            <NavLink to="/projects"><p className="navBtn">Projects</p></NavLink>
+            <NavLink to="/general"><button className="navBtn">General</button></NavLink>
+            <NavLink to="/about"><button className="navBtn">About</button></NavLink>
+            <NavLink to="/experience"><button className="navBtn">Experience</button></NavLink>
+            <NavLink to="/skills"><button className="navBtn">Skills</button></NavLink>
+            <NavLink to="/projects"><button className="navBtn">Project</button></NavLink>
             <button
             className="print"
           onClick={()=>window.print()}

@@ -7,6 +7,8 @@ import ExperienceForm from "./Components/form/experienceForm";
 import SkillsForm from "./Components/form/skillsForm";
 import './Style/App.css'
 
+import Projects from "./Components/form/projects";
+
 function App(){
   return(
   
@@ -19,10 +21,12 @@ function App(){
             <Route path="/about" element ={<AboutForm/>} />
             <Route path="/experience" element ={<ExperienceForm/>} />
             <Route path="/skills" element ={<SkillsForm/>} />
+            <Route path="/projects" element ={<Projects/>} />
          </Routes>
         </div>
-
+    
         <div className="Resume-Section">
+          
           <Template1></Template1>
         </div>
         </section>

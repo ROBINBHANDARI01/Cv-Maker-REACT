@@ -2,7 +2,7 @@ import { useResume } from "../../context/ResumeContext";
 import './experience.css'
 function SkillsForm() {
 
-    const { resume, addSkills, updateSkills, addBullet, updateSkillPoint, removeFieldItem } = useResume();
+    const { resume, addSkills, addBullet, updateBullet, removeFieldItem, updateSection } = useResume();
 
     return (
         <>
@@ -15,18 +15,19 @@ function SkillsForm() {
                     <input
                         placeholder="Front Technologies"
                         value={skl.skillType}
-                        onChange={(e) => updateSkills(index, "skillType", e.target.value)}
+                        onChange={(e) => updateSection(index, "skillType", e.target.value, "skills")}
                     />
 
                     <h3>Skill Name:- </h3>
                     {skl.skillsList.map((point, indexPoint) => (
                         <div className="bullet"
-                            key={indexPoint}
+                            
                         >
                             <input
+                            key={indexPoint}
                                 placeholder="HTML5, CSS3, JavaScript (ES6+), React.js, Responsive Design, Flexbox, CSS Grid"
                                 value={point}
-                                onChange={(e) => updateSkillPoint(index, indexPoint, e.target.value)}
+                                onChange={(e) => updateBullet(index, indexPoint, e.target.value,"skills","skillsList")}
                             />
                             <button onClick={() => addBullet(index)}> Add Bullet Points</button>
 
@@ -52,7 +53,7 @@ function SkillsForm() {
                             index: index
                         })
                     }
-                >Remove Experience
+                >Remove Skill 
                     </button>
 
                     <button

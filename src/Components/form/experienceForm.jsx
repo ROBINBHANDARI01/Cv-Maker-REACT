@@ -3,10 +3,11 @@ import './experience.css'
 
 
 function ExperienceForm() {
-    const { resume, addExperience, updateExperience, removeFieldItem } = useResume();
+    const { resume, addExperience, updateSection, removeFieldItem } = useResume();
 
     return (
         <>
+            
             {
                 resume.experience.map((exp, index) => (
                     <div key={index} className="experience-box">
@@ -16,14 +17,14 @@ function ExperienceForm() {
                             type="text"
                             placeholder="Enter Company Name"
                             value={exp.companyName}
-                            onChange={(e) => updateExperience(index, "companyName", e.target.value)}
+                            onChange={(e) => updateSection(index, "companyName", e.target.value, "experience")}
                         />
 
                         <h2>Role :</h2>
                         <input
                             placeholder="Role"
                             value={exp.role}
-                            onChange={(e) => updateExperience(index, "role", e.target.value)}
+                            onChange={(e) => updateSection(index, "role", e.target.value, "experience")}
                         />
 
                         <div className="date">
@@ -33,7 +34,7 @@ function ExperienceForm() {
                                     type="month"
                                     placeholder="Enter Company Name"
                                     value={exp.start}
-                                    onChange={(e) => updateExperience(index, "start", e.target.value)}
+                                    onChange={(e) => updateSection(index, "start", e.target.value, "experience")}
                                 />
                             </div>
 
@@ -43,7 +44,7 @@ function ExperienceForm() {
                                     type="month"
                                     placeholder="Enter Company Name"
                                     value={exp.end}
-                                    onChange={(e) => updateExperience(index, "end", e.target.value)}
+                                    onChange={(e) => updateSection(index, "end", e.target.value, "experience")}
                                 />
                             </div>
                         </div>
@@ -52,18 +53,18 @@ function ExperienceForm() {
                         <input
                             type='text'
                             value={exp.description}
-                            onChange={(e) => updateExperience(index, "description", e.target.value)}
+                            onChange={(e) => updateSection(index, "description", e.target.value, "experience")}
                         />
 
 
                         <button className='rem-exp'
-                        disabled={resume.experience.length === 1}
-                        onClick={() =>
-                            removeFieldItem({
-                                field: "experience",
-                                index: index
-                            })
-                        }
+                            disabled={resume.experience.length === 1}
+                            onClick={() =>
+                                removeFieldItem({
+                                    field: "experience",
+                                    index: index
+                                })
+                            }
                         >
                             Remove Experience
                         </button>
