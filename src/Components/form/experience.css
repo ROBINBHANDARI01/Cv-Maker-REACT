@@ -26,16 +26,13 @@
 }
 
 .experience-box{
-    border: 1px solid;
     padding: 10px;
     margin: 10px;
     display: flex;
-    border-radius: 8px;
     flex-direction: column;
 }
 
 .skills-div{
-    border: 1px solid;
     padding: 10px;
     border-radius: 8px;
     margin-top: 10px;
@@ -43,7 +40,6 @@
 }
 
 .About-Container{
-    border: 1px solid;
     margin: 10px;
     padding: 10px;
     border-radius: 8px;
