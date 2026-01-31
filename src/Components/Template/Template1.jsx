@@ -3,7 +3,8 @@ import './Template1.css'
 function Template1() {
     const { resume, formatMonthYear} = useResume();
     return (
-        <>
+        <div className="border">
+    
             <div className="general-info">
                 <h1>{resume.general.candidateName}</h1>
                 <p className="Job-title">{resume.general.role}</p><hr></hr>
@@ -86,7 +87,7 @@ function Template1() {
             }
 
 
-        </>
+        </div>
     );
 }
 
