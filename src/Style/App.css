@@ -1,12 +1,7 @@
-
 *{
     box-sizing: border-box;
 }
 
-/* Main styling */
-.Main-Container{
-    border: 1px solid;
-}
 .Nav{
     flex-wrap: wrap;
     display: flex;
@@ -15,16 +10,12 @@
     margin: 1em;
 }
 
-
 section{
     display: flex;
     padding: 5px;
 }
 
-
-
 .Form-Section{
-    border: 1px solid;
     min-height: 100%;
     width: 40%;
     overflow: auto;
@@ -40,14 +31,12 @@ section{
 }
 
 .Resume-Section{
-    border: 1px solid;
+    padding: 2px;
     min-height: 100%;
     width: 60%;
-    padding: 20px 40px 20px 40px;
 }
 
 .skl{
-
     border: 1px solid;
     padding: 10px;
     margin: 10px;
@@ -112,44 +101,6 @@ ul{
 
 }
 
-@media (max-width: 600px) {
-  .Main{
-    display:flex;
-    flex-direction: column;
-    margin-top: 20px;
-    width: 100%;
-  }
-
-  .form-section {
-    width: 100%;
-    padding: 10px;
-
-}
-
-.resume-section{
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-}
-
-.resume{
-    padding: 5px;
-}
-
-.Navbar{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.nav-btn{
-    width: 8em;
-    font-size: small;
-}
-
-
-
-}
 
 /*------ Sving resume in pdf ------*/
 @page {
@@ -182,3 +133,43 @@ ul{
     min-height: 297mm;
   }
 }
+
+@media (max-width: 600px) {
+  .Main{
+    display:flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .Form-Section, .Resume-Section {
+    width: 100%;
+    padding: 10px;
+
+}
+
+.resume-section{
+    margin-top: 20px;
+}
+
+.resume{
+    padding: 5px;
+}
+
+.Navbar{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-btn{
+    width: 8em;
+    font-size: small;
+}
+
+section{
+    flex-direction: column;
+}
+
+}
+
