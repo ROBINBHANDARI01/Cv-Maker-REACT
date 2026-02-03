@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Router } from 'react-router-dom'
+import { BrowserRouter} from 'react-router-dom'
 import { ResumeProvider } from './context/ResumeContext.jsx'
 
 import App from './App.jsx'
