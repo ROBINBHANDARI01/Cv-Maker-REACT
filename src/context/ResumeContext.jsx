@@ -1,6 +1,5 @@
 import { createContext, useContext, useState } from "react";
 
-
 const ResumeContext = createContext();
 
 export function ResumeProvider({ children }) {
@@ -21,11 +20,11 @@ export function ResumeProvider({ children }) {
 
         experience: [
             {
-                companyName: "Google",
-                role: "Chief Executive Officer",
+                companyName: "xyz Company",
+                role: "Xyz Xyz",
                 start: "",
                 end: "",
-                description: "I worked as the CEO of google. My job was to tell people to do their work and don't slack off."
+                description: "The description about your job."
             },
         ],
 
@@ -102,14 +101,14 @@ export function ResumeProvider({ children }) {
     // Fucntion to convert the date to month/year format 
 
     const formatMonthYear = (value) => {
-    if (!value) return "";
+        if (!value) return "";
 
-    const [year, month] = value.split("-");
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const [year, month] = value.split("-");
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    return `${months[Number(month) - 1]} ${year}`;
-};
+        return `${months[Number(month) - 1]} ${year}`;
+    };
 
 
     //Function to add multiple experience forms on button click 
@@ -159,20 +158,20 @@ export function ResumeProvider({ children }) {
 
     //Function to add multiple project input form
 
-    const addProject=()=>{
-        setResume(prev =>({
+    const addProject = () => {
+        setResume(prev => ({
             ...prev,
             projects:
                 [...resume.projects,
                 {
-                projectName: "",
-                projectDescription: "",
-                additionalDetails: [""]
-            }
-            ]
-            
+                    projectName: "",
+                    projectDescription: "",
+                    additionalDetails: [""]
+                }
+                ]
+
         }))
-        
+
     }
 
     //Function to add bulletpoints in skills
@@ -193,18 +192,18 @@ export function ResumeProvider({ children }) {
     }
 
     //Universal function states of bullet point inputs 
-    
-    const updateBullet=(itemIndex, bulletIndex , value , section, field)=>{
-                setResume(prev => {
+
+    const updateBullet = (itemIndex, bulletIndex, value, section, field) => {
+        setResume(prev => {
             const sectionArray = [...prev[section]];
-            const item = {...sectionArray[itemIndex]};
-            const bulletList =[...item[field]];
+            const item = { ...sectionArray[itemIndex] };
+            const bulletList = [...item[field]];
 
             bulletList[bulletIndex] = value;
             item[field] = bulletList;
             sectionArray[itemIndex] = item;
 
-            return{
+            return {
                 ...prev,
                 [section]: sectionArray
             };
@@ -213,7 +212,7 @@ export function ResumeProvider({ children }) {
 
 
     return (
-        <ResumeContext.Provider value={{ resume, updateNormal,updateBullet, formatMonthYear,addExperience, addSkills, addBullet, updateSection, removeFieldItem, addProject}}>
+        <ResumeContext.Provider value={{ resume, updateNormal, updateBullet, formatMonthYear, addExperience, addSkills, addBullet, updateSection, removeFieldItem, addProject }}>
             {children}
         </ResumeContext.Provider>
     );
