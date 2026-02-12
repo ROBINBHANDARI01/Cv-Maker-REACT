@@ -34,6 +34,7 @@ section{
     padding: 2px;
     min-height: 100%;
     width: 60%;
+    
 }
 
 .skl{
@@ -44,6 +45,8 @@ section{
 }
 
 .resume {
+    height: 210mm;
+    width: 297mm;
    border: 1px solid;
     line-height: 1.2;
     box-shadow: 0 0 10px #0000002b;
@@ -105,7 +108,7 @@ ul{
 /*------ Sving resume in pdf ------*/
 @page {
   size: A4;
-  margin: 20mm;
+  margin: auto;
 }
 
 @media print {
@@ -121,16 +124,16 @@ ul{
 
   /* Show only CV preview */
   .Resume-Section,
-  .Resume-Section * {
+  .Resume-Section *{
     visibility: visible;
   }
 
   .Resume-Section {
     position: absolute;
-    left: 0;
-    top: 0;
+    margin: 0;
+    box-sizing: border-box;
     width: 210mm;
-    min-height: 297mm;
+
   }
 }
 
