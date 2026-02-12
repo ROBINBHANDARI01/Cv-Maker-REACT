@@ -74,9 +74,7 @@ export function ResumeProvider({ children }) {
                         )
                     };
                 }
-
                 //remove top-level item
-
                 return null;
             }).filter(Boolean)
         }))
@@ -191,7 +189,34 @@ export function ResumeProvider({ children }) {
         })
     }
 
-    //Universal function states of bullet point inputs 
+    //Universal funciton to add bulletpoints 
+    const addUniBullet = (sectionKey, index, listKey) => {
+  setResume(prev => {
+    const section = [...prev[sectionKey]];
+
+    section[index] = {
+      ...section[index],
+      [listKey]: [
+        ...(section[index][listKey] || []),
+        ""
+      ]
+    };
+
+    return {
+      ...prev,
+      [sectionKey]: section
+    };
+  });
+};
+
+
+    //Debuggig function
+
+    const log = ()=>{
+        console.log("Entire component rerendred")
+    }
+
+    //Universal function to update states of bullet point inputs 
 
     const updateBullet = (itemIndex, bulletIndex, value, section, field) => {
         setResume(prev => {
@@ -212,7 +237,7 @@ export function ResumeProvider({ children }) {
 
 
     return (
-        <ResumeContext.Provider value={{ resume, updateNormal, updateBullet, formatMonthYear, addExperience, addSkills, addBullet, updateSection, removeFieldItem, addProject }}>
+        <ResumeContext.Provider value={{ resume, updateNormal, updateBullet, formatMonthYear, addExperience, addSkills, addBullet, updateSection, removeFieldItem, addProject, log, addUniBullet}}>
             {children}
         </ResumeContext.Provider>
     );
