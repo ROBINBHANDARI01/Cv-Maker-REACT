@@ -7,6 +7,7 @@ function ExperienceForm() {
 
     return (
         <>
+        
             
             {
                 resume.experience.map((exp, index) => (
@@ -57,8 +58,8 @@ function ExperienceForm() {
                         />
 
 
+
                         <button className='rem-exp'
-                            disabled={resume.experience.length === 1}
                             onClick={() =>
                                 removeFieldItem({
                                     field: "experience",
@@ -68,16 +69,15 @@ function ExperienceForm() {
                         >
                             Remove Experience
                         </button>
-                        < button
+                       
+                    </div>  
+                ))     
+
+            }
+             < button
                             className="add-exp"
                             onClick={addExperience}
                         > Add New Experience</button >
-                    </div>
-                ))
-
-
-
-            }
 
         </>
     );
