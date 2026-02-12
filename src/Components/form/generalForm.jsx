@@ -4,7 +4,9 @@ function GeneralForm(){
     const {resume, updateNormal} = useResume();
 
     return (
+        
         <div className='General-container'>
+        
             <h2>General Info Section: </h2>
             <input
                 type="text"

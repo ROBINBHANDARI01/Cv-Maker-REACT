@@ -4,6 +4,7 @@ function AboutForm(){
     const {resume, updateNormal} = useResume()
     return(
         <div className="About-Container">
+            
             <h2>Professional Summary: </h2>
            <textarea
            placeholder="Professional Summary "

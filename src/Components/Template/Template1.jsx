@@ -1,9 +1,11 @@
 import { useResume } from "../../context/ResumeContext";
 import './Template1.css'
 function Template1() {
-    const { resume, formatMonthYear} = useResume();
+    const { resume, formatMonthYear, log} = useResume();
     return (
+
         <div className="border">
+            {log()}
     
             <div className="general-info">
                 <h1>{resume.general.candidateName}</h1>
