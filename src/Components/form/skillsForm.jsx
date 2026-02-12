@@ -2,10 +2,11 @@ import { useResume } from "../../context/ResumeContext";
 import './experience.css'
 function SkillsForm() {
 
-    const { resume, addSkills, addBullet, updateBullet, removeFieldItem, updateSection } = useResume();
+    const { resume, addSkills, updateBullet, removeFieldItem, updateSection, addUniBullet} = useResume();
 
     return (
         <>
+        
             {resume.skills.map((skl, index) => (
 
                 <div
@@ -29,7 +30,7 @@ function SkillsForm() {
                                 value={point}
                                 onChange={(e) => updateBullet(index, indexPoint, e.target.value,"skills","skillsList")}
                             />
-                            <button onClick={() => addBullet(index)}> Add Bullet Points</button>
+                            <button onClick={() => addUniBullet("skills",index,"skillsList")}> Add Bullet Points</button>
 
                             <button
                                 onClick={() => removeFieldItem({
@@ -61,14 +62,7 @@ function SkillsForm() {
                         onClick={addSkills}
                     >Add more skill</button>
                 </div>
-            )
-
-            )
-
-            }
-
-
-
+            ))}
         </>
     );
 }
