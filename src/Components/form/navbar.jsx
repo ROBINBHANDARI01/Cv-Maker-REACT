@@ -8,6 +8,7 @@ function Navbar(){
             <NavLink to="/experience"><button className="navBtn">Experience</button></NavLink>
             <NavLink to="/skills"><button className="navBtn">Skills</button></NavLink>
             <NavLink to="/projects"><button className="navBtn">Project</button></NavLink>
+            <NavLink to="/education"><button className="navBtn">Education</button></NavLink>
             <button
             className="print"
           onClick={()=>window.print()}

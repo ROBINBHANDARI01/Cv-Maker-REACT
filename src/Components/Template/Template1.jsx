@@ -30,12 +30,16 @@ function Template1() {
                     resume.experience.map((exp, index) => {
                         return (
                             <div key={index} className="Exp-box">
-                                <ul><li>
+                                <div className="dateFormat">
+        
+
                                     <h3>{exp.companyName}</h3>
-                                </li>  </ul>
-                                <p>{exp.role}</p>
+                            
+                    
                                 <p>{formatMonthYear(exp.start)} - {exp.end ? formatMonthYear(exp.end) : "Present"}
                                 </p>
+                                 
+                                </div><p>{exp.role}</p>
                                 <p>{exp.description}</p>
                             </div>
 
@@ -85,6 +89,18 @@ function Template1() {
                             ))}
                         </ul>
                     </div>
+                ))
+            }
+
+            <h2>Education</h2>
+            <hr></hr>
+            {
+                resume.education.map((edu,index)=>(
+                    <div className="education-container">
+                        <div className="dateFormat"><h3>{edu.educationPlace}</h3>
+                         <p>{formatMonthYear(edu.educationStart)} - {edu.educationEnd ? formatMonthYear(edu.educationEnd) : "Present"}</p></div>
+                    </div>
+
                 ))
             }
 
