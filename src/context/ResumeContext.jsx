@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import Education from "../Components/form/education";
 
 const ResumeContext = createContext();
 
@@ -41,6 +42,15 @@ export function ResumeProvider({ children }) {
                 projectName: "Weather Forecast Webpage",
                 projectDescription: "This is the first project in which i have used a restAPI",
                 additionalDetails: ["Html ,css, js ,restAPI"]
+            }
+        ],
+
+        education:[
+            {
+                educationPlace:"",
+                educationTitle:"",
+                educationStart:"",
+                educationEnd:""
             }
         ],
 
@@ -125,6 +135,9 @@ export function ResumeProvider({ children }) {
             ]
         }))
     ]
+
+
+
 
     //-----Skills-----//
 
@@ -236,8 +249,26 @@ export function ResumeProvider({ children }) {
     };
 
 
+    //-----Education-------//
+
+    //Function to add education section 
+     const addEducation = () => [
+        setResume(prev => ({
+            ...prev,
+            education: [
+                ...prev.education,
+                {
+                    educationPlace:"",
+                    educationTitle:"",
+                    educationStart:"",
+                    educationEnd:""
+                }
+            ]
+        }))
+    ]
+
     return (
-        <ResumeContext.Provider value={{ resume, updateNormal, updateBullet, formatMonthYear, addExperience, addSkills, addBullet, updateSection, removeFieldItem, addProject, log, addUniBullet}}>
+        <ResumeContext.Provider value={{ resume,addEducation, updateNormal, updateBullet, formatMonthYear, addExperience, addSkills, addBullet, updateSection, removeFieldItem, addProject, log, addUniBullet}}>
             {children}
         </ResumeContext.Provider>
     );
