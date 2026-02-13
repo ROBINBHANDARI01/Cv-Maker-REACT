@@ -66,7 +66,6 @@ h1{
 h2{
     font-family:Montserrat;
     font-size: 1.6rem;
-    line-height: 1;
     font-weight: 650;
     color: rgb(47, 47, 47);
 }
@@ -125,6 +124,7 @@ ul{
   /* Show only CV preview */
   .Resume-Section,
   .Resume-Section *{
+    top: 15px;
     visibility: visible;
   }
 
@@ -133,7 +133,7 @@ ul{
     margin: 0;
     box-sizing: border-box;
     width: 210mm;
-
+    line-height: 1em;
   }
 }
 
