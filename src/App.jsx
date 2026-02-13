@@ -5,6 +5,7 @@ import GeneralForm from './Components/form/generalForm'
 import AboutForm from './Components/form/aboutForm'
 import ExperienceForm from "./Components/form/experienceForm";
 import SkillsForm from "./Components/form/skillsForm";
+import Education from "./Components/form/education";
 import './Style/App.css'
 
 import Projects from "./Components/form/projects";
@@ -22,6 +23,7 @@ function App(){
             <Route path="/experience" element ={<ExperienceForm/>} />
             <Route path="/skills" element ={<SkillsForm/>} />
             <Route path="/projects" element ={<Projects/>} />
+            <Route path="/education" element={<Education/>}/>
          </Routes>
         </div>
     
