@@ -6,25 +6,29 @@ function SkillsForm() {
 
     return (
         <>
+        <h2>Skills </h2>
         
             {resume.skills.map((skl, index) => (
 
                 <div
                     key={index}
                     className="skills-div">
-                    <h3>Skill Title:- </h3>
+    
+                    <label for="skill"><h4>Skill Category Name</h4></label>
                     <input
                         placeholder="Front Technologies"
                         value={skl.skillType}
                         onChange={(e) => updateSection(index, "skillType", e.target.value, "skills")}
                     />
 
-                    <h3>Skill Name:- </h3>
+
                     {skl.skillsList.map((point, indexPoint) => (
                         <div className="bullet"
                             
                         >
+                            <label for="skills"><h4>Skills</h4></label>
                             <input
+                            name="skills"
                             key={indexPoint}
                                 placeholder="HTML5, CSS3, JavaScript (ES6+), React.js, Responsive Design, Flexbox, CSS Grid"
                                 value={point}

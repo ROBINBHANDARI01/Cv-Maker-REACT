@@ -1,4 +1,3 @@
-import { resume } from "react-dom/server";
 import { useResume } from "../../context/ResumeContext";
 import "./experience.css";
 function Education() {
@@ -9,7 +8,10 @@ function Education() {
       {resume.education.map((edu, index) => (
         <div key={index} className="education-box">
           <h2>Education: </h2>
+
+          <lable for="Course"><h4>Institution Name</h4></lable>
           <input
+          name="Course"
             type="text"
             placeholder="Institution name"
             value={edu.educationPlace}
@@ -23,7 +25,23 @@ function Education() {
             }
           ></input>
 
+          
+            <label for="degree"><h4>Degree</h4></label>
+            <input
+            name="degree"
+            type="text"
+            placeholder="Course"
+            value={edu.educationTitle}
+            onChange={(e)=>updateSection(index,"educationTitle",e.target.value,"education")}
+            ></input>
+
+          
+
+            <lable for="start">
+              <h4>Start Date</h4>
+            </lable>
           <input
+          name="start"
             type="month"
             value={edu.educationStart}
             onChange={(e) =>
@@ -36,13 +54,20 @@ function Education() {
             }
           ></input>
 
+
+            <lable for="end">
+              <h4>End Date</h4>
+            </lable>
           <input
+          name="end"
             type="month"
             value={edu.educationEnd}
             onChange={(e) =>
               updateSection(index, "educationEnd", e.target.value, "education")
             }
           ></input>
+
+          
 
             <button
             className="rem-exp"

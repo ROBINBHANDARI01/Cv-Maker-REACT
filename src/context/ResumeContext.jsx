@@ -7,7 +7,8 @@ export function ResumeProvider({ children }) {
 
     const [resume, setResume] = useState({
         general: {
-            candidateName: "Robin Singh Bhandari",
+            firstName: "Robin Singh",
+            lastName:"Bhandari",
             role: "FRONTEND DEVELOPER | REACT DEVELOPER | ASPIRING DEVOPS ENGINEER",
             address: "Sarai Faridabad , Haryana , India",
             mobile: "+91 7417629458",
@@ -22,7 +23,7 @@ export function ResumeProvider({ children }) {
         experience: [
             {
                 companyName: "xyz Company",
-                role: "Xyz Xyz",
+                role: "Xyz",
                 start: "",
                 end: "",
                 description: "The description about your job."

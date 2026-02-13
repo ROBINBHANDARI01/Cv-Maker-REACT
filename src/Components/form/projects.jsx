@@ -11,11 +11,16 @@ function Projects() {
   } = useResume();
   return (
     <>
+    <h2>Projects </h2>
       {resume.projects.map((proj, index) => (
         <div key={index} className="projectUnit">
-          <h2>Project Name</h2>
+          
+          <lable
+          for="projname"
+          ><h4>Project Title</h4></lable>
 
           <input
+          name="projname"
             placeholder="Project Name"
             value={proj.projectName}
             onChange={(e) =>
@@ -23,7 +28,9 @@ function Projects() {
             }
           />
 
+            <lable for="descrip"><h4>Project Description</h4></lable>
           <input
+          name="descrip"
             placeholder="Project Description"
             value={proj.projectDescription}
             onChange={(e) =>
@@ -35,8 +42,11 @@ function Projects() {
               )
             }
           />
+           <lable for="detail"><h4>Technologies Used</h4></lable>
           {proj.additionalDetails.map((details, dindex) => (
             <>
+
+             
               <input
                 key={dindex}
                 placeholder="Add detail"

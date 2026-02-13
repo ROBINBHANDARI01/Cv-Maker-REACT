@@ -20,14 +20,19 @@
     border-radius: 5px;
 }
 
+.Exp-box{
+    display: flex;
+    justify-content: space-between;
+}
+
 .date{
     display: flex;
     gap: 2em;
 }
 
 .experience-box{
+
     padding: 10px;
-    margin: 10px;
     display: flex;
     flex-direction: column;
 }
