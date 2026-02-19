@@ -1,8 +1,6 @@
 import { createContext, useContext, useState } from "react";
-import Education from "../Components/form/education";
 
 const ResumeContext = createContext();
-
 export function ResumeProvider({ children }) {
 
     const [resume, setResume] = useState({
@@ -91,9 +89,6 @@ export function ResumeProvider({ children }) {
         }))
     }
 
-
-
-
     //------Universal function to update normal input like "general" and "about" 
 
     const updateNormal = (field, value, section) => {
@@ -104,8 +99,6 @@ export function ResumeProvider({ children }) {
             },
         }))
     };
-
-    //-----Experience-----//
 
     // Fucntion to convert the date to month/year format 
 
@@ -136,11 +129,6 @@ export function ResumeProvider({ children }) {
             ]
         }))
     ]
-
-
-
-
-    //-----Skills-----//
 
     //Universal Function to update the section like Skill , Project 
 
@@ -186,23 +174,6 @@ export function ResumeProvider({ children }) {
 
     }
 
-    //Function to add bulletpoints in skills
-
-    const addBullet = (index) => {
-        setResume(prev => {
-            const skills = [...prev.skills];
-            skills[index] = {
-                ...skills[index],
-                skillsList: [
-                    ...skills[index].skillsList,
-                    ""
-                ]
-            };
-
-            return { ...prev, skills };
-        })
-    }
-
     //Universal funciton to add bulletpoints 
     const addUniBullet = (sectionKey, index, listKey) => {
   setResume(prev => {
@@ -222,13 +193,6 @@ export function ResumeProvider({ children }) {
     };
   });
 };
-
-
-    //Debuggig function
-
-    const log = ()=>{
-        console.log("Entire component rerendred")
-    }
 
     //Universal function to update states of bullet point inputs 
 
@@ -268,8 +232,16 @@ export function ResumeProvider({ children }) {
         }))
     ]
 
+    //Debuggig function
+
+    const log = ()=>{
+        console.log("Entire component rerendred")
+    }
+
     return (
-        <ResumeContext.Provider value={{ resume,addEducation, updateNormal, updateBullet, formatMonthYear, addExperience, addSkills, addBullet, updateSection, removeFieldItem, addProject, log, addUniBullet}}>
+        <ResumeContext.Provider value={{ resume,addEducation, updateNormal, updateBullet, 
+        formatMonthYear, addExperience, addSkills, updateSection, removeFieldItem, 
+        addProject, log, addUniBullet}}>
             {children}
         </ResumeContext.Provider>
     );
