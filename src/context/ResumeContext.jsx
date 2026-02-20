@@ -1,9 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import { act, createContext, useContext, useReducer } from "react";
+
 
 const ResumeContext = createContext();
 export function ResumeProvider({ children }) {
 
-    const [resume, setResume] = useState({
+    const initialState={
         general: {
             firstName: "Robin Singh",
             lastName:"Bhandari",
@@ -53,195 +54,108 @@ export function ResumeProvider({ children }) {
             }
         ],
 
-    });
-
-    //-----Removing current input field-----//
-
-    const removeByIndex = (arr, index) => arr.filter((_, i) => i !== index);
-
-    ///Universal removeFeildItem function 
-
-    const removeFieldItem = ({
-        field,
-        index,      //index of parent item
-        nestedField,
-        nestedIndex     //index inside nested array 
-    }) => {
-        setResume(prev => ({
-            ...prev,
-            [field]: prev[field].map((item, i) => {
-                if (i !== index) return item;
-
-                //remove nested item
-
-                if (nestedField !== undefined) {
-                    return {
-                        ...item,
-                        [nestedField]: removeByIndex(
-                            item[nestedField],
-                            nestedIndex
-                        )
-                    };
-                }
-                //remove top-level item
-                return null;
-            }).filter(Boolean)
-        }))
     }
 
-    //------Universal function to update normal input like "general" and "about" 
+    function resumeReducer(state, action){
+        switch(action.type){
 
-    const updateNormal = (field, value, section) => {
-        setResume(prev => ({
-            ...prev, [section]: {
-                ...prev[section],
-                [field]: value
+            //---- Update simple field
+
+            case "update_Normal_Field":
+                return{
+                    ...state, 
+                    [action.payload.section]: {
+                ...state[action.payload.section],
+                [action.payload.field]: action.payload.value
             },
-        }))
-    };
-
-    // Fucntion to convert the date to month/year format 
-
-    const formatMonthYear = (value) => {
-        if (!value) return "";
-
-        const [year, month] = value.split("-");
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-        return `${months[Number(month) - 1]} ${year}`;
-    };
-
-
-    //Function to add multiple experience forms on button click 
-    const addExperience = () => [
-        setResume(prev => ({
-            ...prev,
-            experience: [
-                ...prev.experience,
-                {
-                    companyName: "",
-                    role: "",
-                    start: "",
-                    end: "",
-                    description: ""
                 }
-            ]
-        }))
-    ]
 
-    //Universal Function to update the section like Skill , Project 
+            //---- Update objects inside array
 
-    const updateSection = (index, field, value, section) => {
-        setResume(prev => {
-            const updated = [...prev[section]];
-            updated[index] = { ...updated[index], [field]: value };
-            return { ...prev, [section]: updated }
-
-        })
-    }
-
-    //Function to add multiple skill input forms 
-
-    const addSkills = () => {
-        setResume(prev => ({
-            ...prev,
-            skills:
-                [...resume.skills,
-                {
-                    skillType: "",
-                    skillsList: [""]
+            case "update_Array_Item":
+                return {
+                    ...state,
+                    [action.section]: state[action.section].map((item,i)=>
+                        i === action.index ? {...item, [action.field]: action.value} : item
+                    )
                 }
-                ]
-        }))
-    }
 
-    //Function to add multiple project input form
-
-    const addProject = () => {
-        setResume(prev => ({
-            ...prev,
-            projects:
-                [...resume.projects,
-                {
-                    projectName: "",
-                    projectDescription: "",
-                    additionalDetails: [""]
-                }
-                ]
-
-        }))
-
-    }
-
-    //Universal funciton to add bulletpoints 
-    const addUniBullet = (sectionKey, index, listKey) => {
-  setResume(prev => {
-    const section = [...prev[sectionKey]];
-
-    section[index] = {
-      ...section[index],
-      [listKey]: [
-        ...(section[index][listKey] || []),
-        ""
-      ]
-    };
-
-    return {
-      ...prev,
-      [sectionKey]: section
-    };
-  });
-};
-
-    //Universal function to update states of bullet point inputs 
-
-    const updateBullet = (itemIndex, bulletIndex, value, section, field) => {
-        setResume(prev => {
-            const sectionArray = [...prev[section]];
-            const item = { ...sectionArray[itemIndex] };
-            const bulletList = [...item[field]];
-
-            bulletList[bulletIndex] = value;
-            item[field] = bulletList;
-            sectionArray[itemIndex] = item;
-
-            return {
-                ...prev,
-                [section]: sectionArray
+            //---- Update nested array (skillList, additionalDetails)
+            case "update_Nested_Array":
+                return{
+                ...state,
+                [action.section]: state[action.section].map((item,i)=>
+                    i === action.index ? {
+                        ...item,
+                        [action.field]: item[action.field].map((val,j)=>
+                        j === action.subIndex ? action.value : val
+                        )
+                    }
+                    :item
+                )
             };
-        });
-    };
 
-
-    //-----Education-------//
-
-    //Function to add education section 
-     const addEducation = () => [
-        setResume(prev => ({
-            ...prev,
-            education: [
-                ...prev.education,
-                {
-                    educationPlace:"",
-                    educationTitle:"",
-                    educationStart:"",
-                    educationEnd:""
+            //--- Adding new whole input fields 
+            case "add_Item":
+                return{
+                    ...state,
+                    [action.section]:[
+                        ...state[action.section],
+                        action.newItem
+                    ]
                 }
-            ]
-        }))
-    ]
 
-    //Debuggig function
+            //----Removing input fields
+            case "remove_Item":
+                return{
+                    ...state,
+                    [action.section]: state[action.section].filter(
+                        (_, index)=> index !== action.index
+                    )
 
-    const log = ()=>{
-        console.log("Entire component rerendred")
+                };
+
+            //---- Adding bullet points 
+            case "add_Bullet":
+                return{
+                    ...state,
+                    [action.section]: state[action.section].map((item,i)=>
+                    i === action.index ? {
+                        ...item,
+                        [action.field]: [
+                            ...item[action.field],
+                            ""
+                        ]
+                    }
+                    : item
+                    )
+                }
+
+            //---- Removing bullet points
+            case "remove_Bullet":
+                return{
+                    ...state,
+                    [action.section]: state[action.section].map((item,i)=>
+                    i === action.index ? {
+                        ...item,
+                        [action.field]: item[action.field].filter((_,j) => j !== action.subIndex)
+                    }
+                    :item
+                    )
+                }
+
+            default :
+               return state;
+
+        }
     }
+
+    const [resume, dispatch] = useReducer(resumeReducer,initialState);
+
+    
 
     return (
-        <ResumeContext.Provider value={{ resume,addEducation, updateNormal, updateBullet, 
-        formatMonthYear, addExperience, addSkills, updateSection, removeFieldItem, 
-        addProject, log, addUniBullet}}>
+        <ResumeContext.Provider value={{ resume, dispatch}}>
             {children}
         </ResumeContext.Provider>
     );

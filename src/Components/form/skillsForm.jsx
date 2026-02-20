@@ -2,7 +2,7 @@ import { useResume } from "../../context/ResumeContext";
 import './experience.css'
 function SkillsForm() {
 
-    const { resume, addSkills, updateBullet, removeFieldItem, updateSection, addUniBullet} = useResume();
+    const { resume, dispatch} = useResume();
 
     return (
         <>
@@ -14,34 +14,56 @@ function SkillsForm() {
                     key={index}
                     className="skills-div">
     
-                    <label for="skill"><h4>Skill Category Name</h4></label>
+                    <label htmlFor="skill"><h4>Skill Category Name</h4></label>
                     <input
                         placeholder="Front Technologies"
                         value={skl.skillType}
-                        onChange={(e) => updateSection(index, "skillType", e.target.value, "skills")}
+                        onChange={(e) => 
+                            dispatch({
+                            type: "update_Array_Item",
+                            section:"skills",
+                            index,
+                            field: "skillType",
+                            value: e.target.value,
+                        })}
                     />
 
 
                     {skl.skillsList.map((point, indexPoint) => (
                         <div className="bullet"
+                        key={indexPoint}
                             
                         >
-                            <label for="skills"><h4>Skills</h4></label>
+                            <label htmlFor="skills"><h4>Skills</h4></label>
                             <input
                             name="skills"
                             key={indexPoint}
                                 placeholder="HTML5, CSS3, JavaScript (ES6+), React.js, Responsive Design, Flexbox, CSS Grid"
                                 value={point}
-                                onChange={(e) => updateBullet(index, indexPoint, e.target.value,"skills","skillsList")}
+                                onChange={(e) => dispatch({
+                                    type : "update_Nested_Array",
+                                    section: "skills",
+                                    field: "skillsList",
+                                    index,
+                                    subIndex: indexPoint,
+                                    value : e.target.value,
+                                })}
                             />
-                            <button onClick={() => addUniBullet("skills",index,"skillsList")}> Add Bullet Points</button>
+                            <button onClick={() => dispatch({
+                                type: "add_Bullet",
+                                section:"skills",
+                                index,
+                                field:"skillsList"
+                            })}> Add Bullet Points</button>
 
                             <button
-                                onClick={() => removeFieldItem({
-                                    field: "skills",
-                                    index: index,
-                                    nestedField: "skillsList",
-                                    nestedIndex: indexPoint
+                                onClick={() => dispatch({
+                                    type: "remove_Bullet",
+                                    section: "skills",
+                                    index,
+                                    subIndex : indexPoint,
+                                    field:"skillsList"
+
                                 })}
                             >Remove Bullet</button>
                         </div>
@@ -53,9 +75,10 @@ function SkillsForm() {
                     <button className="rem-exp"
                     disabled={resume.skills.length === 1}
                     onClick={() =>
-                        removeFieldItem({
-                            field: "skills",
-                            index: index
+                        dispatch({
+                            type : "remove_Item",
+                            section: "skills",
+                            index
                         })
                     }
                 >Remove Skill 
@@ -63,7 +86,16 @@ function SkillsForm() {
 
                     <button
                         className="add-exp"
-                        onClick={addSkills}
+                        onClick={()=>
+                            dispatch({
+                                type: "add_Item",
+                                section : "skills",
+                                newItem: {
+                                     skillType: "",
+                                    skillsList:[""]
+                                },
+                            })
+                        }
                     >Add more skill</button>
                 </div>
             ))}

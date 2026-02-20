@@ -1,7 +1,7 @@
 import { useResume } from "../../context/ResumeContext";
 import "./experience.css";
 function Education() {
-  const { resume, updateSection, removeFieldItem, addEducation } = useResume();
+  const { resume, dispatch } = useResume();
 
   return (
     <>
@@ -9,82 +9,112 @@ function Education() {
         <div key={index} className="education-box">
           <h2>Education: </h2>
 
-          <lable for="Course"><h4>Institution Name</h4></lable>
+          <label htmlFor="Course">
+            <h4>Institution Name</h4>
+          </label>
           <input
-          name="Course"
+            name="Course"
             type="text"
             placeholder="Institution name"
             value={edu.educationPlace}
             onChange={(e) =>
-              updateSection(
+              dispatch({
+                type: "update_Array_Item",
+                section: "education",
                 index,
-                "educationPlace",
-                e.target.value,
-                "education",
-              )
+                field: "educationPlace",
+                value: e.target.value,
+              })
             }
           ></input>
 
-          
-            <label for="degree"><h4>Degree</h4></label>
-            <input
+          <label htmlFor="degree">
+            <h4>Degree</h4>
+          </label>
+          <input
             name="degree"
             type="text"
             placeholder="Course"
             value={edu.educationTitle}
-            onChange={(e)=>updateSection(index,"educationTitle",e.target.value,"education")}
-            ></input>
+            onChange={(e) =>
+              dispatch({
+                type: "update_Array_Item",
+                section: "education",
+                index,
+                field: "educationTitle",
+                value: e.target.value,
+              })
+            }
+          ></input>
 
-          
-
-            <lable for="start">
-              <h4>Start Date</h4>
-            </lable>
+          <label htmlFor="start">
+            <h4>Start Date</h4>
+          </label>
           <input
-          name="start"
+            name="start"
             type="month"
             value={edu.educationStart}
             onChange={(e) =>
-              updateSection(
+              dispatch({
+                type: "update_Array_Item",
+                section: "education",
                 index,
-                "educationStart",
-                e.target.value,
-                "education",
-              )
+                field: "educationStart",
+                value: e.target.value,
+              })
             }
           ></input>
 
-
-            <lable for="end">
-              <h4>End Date</h4>
-            </lable>
+          <label htmlFor="end">
+            <h4>End Date</h4>
+          </label>
           <input
-          name="end"
+            name="end"
             type="month"
             value={edu.educationEnd}
             onChange={(e) =>
-              updateSection(index, "educationEnd", e.target.value, "education")
+              dispatch({
+                type: "update_Array_Item",
+                section: "education",
+                index,
+                field: "educationEnd",
+                value: e.target.value,
+              })
             }
           ></input>
 
-          
-
-            <button
+          <button
             className="rem-exp"
             onClick={() =>
-              removeFieldItem({
-                field: "education",
-                index: index,
+              dispatch({
+                type: "remove_Item",
+                section: "education",
+                index,
               })
             }
           >
             Remove Education
           </button>
 
-          <button className="add-exp" onClick={addEducation}>
-            Add New Education 
+          <button
+            className="add-exp"
+            onClick={() =>
+              dispatch({
+                type: "add_Item",
+                section: "education",
+                newItem: {
+                  educationPlace: "",
+                  educationTitle: "",
+                  educationStart: "",
+                  educationEnd: "",
+                },
+              })
+            }
+          >
+            Add New Education
           </button>
         </div>
+        
       ))}
     </>
   );

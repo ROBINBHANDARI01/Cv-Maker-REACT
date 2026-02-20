@@ -1,10 +1,10 @@
 import { useResume } from "../../context/ResumeContext";
 import "./Template1.css";
 function Template1() {
-  const { resume, formatMonthYear, log } = useResume();
+  const { resume } = useResume();
   return (
     <div className="border">
-      {log()}
+
 
       <div className="general-info">
         <h1>
@@ -44,8 +44,8 @@ function Template1() {
 
               <div>
                   <p>
-                  {formatMonthYear(exp.start)} -{" "}
-                  {exp.end ? formatMonthYear(exp.end) : "Present"}
+                  {exp.start} -{" "}
+                  {exp.end ? exp.end : "Present"}
                 </p>
               </div>
               
@@ -95,8 +95,8 @@ function Template1() {
           </div>
 
           <p>
-            {formatMonthYear(edu.educationStart)} -{" "}
-            {edu.educationEnd ? formatMonthYear(edu.educationEnd) : "Present"}
+            {edu.educationStart} -{" "}
+            {edu.educationEnd ? edu.educationEnd : "Present"}
           </p>
         </div>
       ))}

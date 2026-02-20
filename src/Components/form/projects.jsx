@@ -1,69 +1,76 @@
 import { useResume } from "../../context/ResumeContext";
 import "./experience.css";
 function Projects() {
-  const {
-    resume,
-    updateBullet,
-    updateSection,
-    addProject,
-    addUniBullet,
-    removeFieldItem,
-  } = useResume();
+  const {resume,dispatch} = useResume();
   return (
     <>
     <h2>Projects </h2>
       {resume.projects.map((proj, index) => (
         <div key={index} className="projectUnit">
           
-          <lable
-          for="projname"
-          ><h4>Project Title</h4></lable>
+          <label
+          htmlFor="projname"
+          ><h4>Project Title</h4></label>
 
           <input
           name="projname"
             placeholder="Project Name"
             value={proj.projectName}
             onChange={(e) =>
-              updateSection(index, "projectName", e.target.value, "projects")
+              dispatch({
+                type: "update_Array_Item",
+                section: "projects",
+                field: "projectName",
+                index,
+                value: e.target.value
+              })
             }
           />
 
-            <lable for="descrip"><h4>Project Description</h4></lable>
+            <label htmlFor="descrip"><h4>Project Description</h4></label>
           <input
           name="descrip"
             placeholder="Project Description"
             value={proj.projectDescription}
             onChange={(e) =>
-              updateSection(
+              dispatch({
+                type: "update_Array_Item",
+                section: "projects",
+                field: "projectDescription",
                 index,
-                "projectDescription",
-                e.target.value,
-                "projects",
-              )
+                value: e.target.value
+              })
             }
           />
-           <lable for="detail"><h4>Technologies Used</h4></lable>
+           <label htmlFor="detail"><h4>Technologies Used</h4></label>
           {proj.additionalDetails.map((details, dindex) => (
-            <>
+            <div 
+            key={dindex}>
 
              
               <input
-                key={dindex}
                 placeholder="Add detail"
                 value={details}
                 onChange={(e) =>
-                  updateBullet(
-                    index,
-                    dindex,
-                    e.target.value,
-                    "projects",
-                    "additionalDetails",
-                  )
+                  dispatch({
+                  type: "update_Nested_Array",
+                  section:"projects",
+                  index,
+                  subIndex: dindex,
+                  value: e.target.value,
+                  field: "additionalDetails"
+
+                })
                 }
               />
               <button
                 onClick={() =>
-                  addUniBullet("projects", index, "additionalDetails")
+                  dispatch({
+                    type: "add_Bullet",
+                    section: "projects",
+                    index,
+                    field: "additionalDetails"
+                  })
                 }
               >
                 Add bulletpoint
@@ -71,34 +78,49 @@ function Projects() {
 
               <button
                 onClick={() =>
-                  removeFieldItem({
-                    field: "projects",
-                    index: index,
-                    nestedField: "additionalDetails",
-                    nestedIndex: dindex,
+                  dispatch({
+                  type: "remove_Bullet",
+                  section:"projects",
+                  index,
+                  field:"additionalDetails",
+                  subIndex: dindex 
                   })
                 }
               >
                 Remove Bullet
               </button>
-            </>
+            </div>
           ))}
 
           <button
           className="add-exp"
-          onClick={addProject}>Add Project</button>
+          onClick={()=>
+            dispatch({
+              type:"add_Item",
+              section:"projects",
+              newItem:{
+                
+                projectName: "",
+                projectDescription: "",
+                additionalDetails: [""]
+            
+              }
+            })
+          }
+          >Add Project</button>
 
           <button
             className="rem-exp"
             disabled={resume.projects.length === 1}
             onClick={() =>
-              removeFieldItem({
-                field: "projects",
-                index: index,
+              dispatch({
+                type: "remove_Item",
+                section:"projects",
+                index
               })
             }
           >
-            Remove Skill
+            Remove Project
           </button>
         </div>
       ))}
