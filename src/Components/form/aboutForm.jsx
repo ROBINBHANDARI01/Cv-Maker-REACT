@@ -6,20 +6,24 @@ function AboutForm() {
     <div className="About-Container">
       <h2>Professional Summary: </h2>
 
-      <label for="about"><h4>Professional Summary / About Me</h4></label>
+      <label for="about">
+        <h4>Professional Summary / About Me</h4>
+      </label>
       <textarea
         name="about"
         placeholder="Professional Summary "
         value={resume.about.aboutYou}
-        onChange={(e) => dispatch({
-          type:"update_Normal_Field",
+        onChange={(e) =>
+          dispatch({
+            type: "update_Normal_Field",
 
-                    payload:{
-                        section: "about",
-                        field: "aboutYou",
-                        value: e.target.value
-                    }
-        })}
+            payload: {
+              section: "about",
+              field: "aboutYou",
+              value: e.target.value,
+            },
+          })
+        }
       />
     </div>
   );

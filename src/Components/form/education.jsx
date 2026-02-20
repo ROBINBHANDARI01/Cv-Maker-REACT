@@ -114,7 +114,6 @@ function Education() {
             Add New Education
           </button>
         </div>
-        
       ))}
     </>
   );

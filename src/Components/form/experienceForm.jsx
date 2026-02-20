@@ -112,9 +112,9 @@ function ExperienceForm() {
             className="rem-exp"
             onClick={() =>
               dispatch({
-               type: "remove_Item",
-               section:"experience",
-               index
+                type: "remove_Item",
+                section: "experience",
+                index,
               })
             }
           >
