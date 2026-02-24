@@ -1,13 +1,6 @@
+
 *{
     box-sizing: border-box;
-}
-
-.Nav{
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin: 1em;
 }
 
 section{
@@ -22,10 +15,6 @@ section{
     overflow: auto;
 }
 
-.From-Container{
-    border: 2px solid;
-    margin: 10px;
-}
 
 .about{
     font-family: Montserrat;
@@ -38,14 +27,8 @@ section{
     zoom: 0.8;
 }
 
-.skl{
-    border: 1px solid;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 8px;
-}
 
-.resume {
+.resume{
     height: 210mm;
     width: 297mm;
    border: 1px solid;
@@ -53,26 +36,6 @@ section{
     box-shadow: 0 0 10px #0000002b;
     min-height: 100%;
     padding: 20px 85px 20px 85px ;
-}
-
-
-.Navbar{
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.nav-btn{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: larger;
-    font-weight: 400;
-    padding: 5px;
-    border-radius: 7px;
-    border: none;
-    color: white;
-    background-color: rgb(124, 122, 122);
-
 }
 
 
@@ -130,10 +93,6 @@ section{
     flex-wrap: wrap;
 }
 
-.nav-btn{
-    width: 8em;
-    font-size: small;
-}
 
 section{
     flex-direction: column;
