@@ -1,5 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./Components/form/navbar";
+
+import Homepage from "./Components/home/homepage";
+import HomeNav from "./Components/home/homeNav";
+import Navigation from "./Components/navigation/navigation";
+
 import Template1 from "./Components/Template/Template1";
 import GeneralForm from './Components/form/generalForm'
 import AboutForm from './Components/form/aboutForm'
@@ -10,14 +14,21 @@ import './Style/App.css'
 
 import Projects from "./Components/form/projects";
 
+
 function App(){
   return(
   
+
     <div className='Main-Container'>
-      <Navbar/>
-        <section>
-        <div className="Form-Section">
+
+      <nav>
+        <HomeNav/>
+      </nav>
+       
          <Routes>
+            <Route path="/" element={<Homepage/>}></Route>          
+            <Route path="/navigation" element ={<Navigation></Navigation>}></Route>
+            <Route path="/homenav" element ={<Homepage></Homepage>}></Route>
             <Route path="/general" element ={<GeneralForm/>} />
             <Route path="/about" element ={<AboutForm/>} />
             <Route path="/experience" element ={<ExperienceForm/>} />
@@ -25,13 +36,7 @@ function App(){
             <Route path="/projects" element ={<Projects/>} />
             <Route path="/education" element={<Education/>}/>
          </Routes>
-        </div>
-    
-        <div className="Resume-Section">
-          
-          <Template1></Template1>
-        </div>
-        </section>
+            
     </div>
 
   )
