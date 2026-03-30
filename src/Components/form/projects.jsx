@@ -1,9 +1,11 @@
 import { useResume } from "../../context/ResumeContext";
+import Navbar from "./navbar";
 import "./experience.css";
 function Projects() {
   const { resume, dispatch } = useResume();
   return (
     <>
+    <div><Navbar></Navbar></div>
       <h2>Projects </h2>
       {resume.projects.map((proj, index) => (
         <div key={index} className="projectUnit">

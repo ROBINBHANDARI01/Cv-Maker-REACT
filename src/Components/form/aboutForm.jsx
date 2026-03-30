@@ -1,9 +1,13 @@
 import { useResume } from "../../context/ResumeContext";
+import Navbar from "./navbar";
 import "./experience.css";
 function AboutForm() {
   const { resume, dispatch } = useResume();
   return (
     <div className="About-Container">
+      <div>
+        <Navbar></Navbar>
+      </div>
       <h2>Professional Summary: </h2>
 
       <label for="about">

@@ -4,7 +4,7 @@ import Homepage from "./Components/home/homepage";
 import HomeNav from "./Components/home/homeNav";
 import Navigation from "./Components/navigation/navigation";
 
-import Template1 from "./Components/Template/Template1";
+
 import GeneralForm from './Components/form/generalForm'
 import AboutForm from './Components/form/aboutForm'
 import ExperienceForm from "./Components/form/experienceForm";
@@ -13,6 +13,7 @@ import Education from "./Components/form/education";
 import './Style/App.css'
 
 import Projects from "./Components/form/projects";
+import Template1 from "./Components/Template/Template1";
 
 
 function App(){
@@ -36,7 +37,10 @@ function App(){
             <Route path="/projects" element ={<Projects/>} />
             <Route path="/education" element={<Education/>}/>
          </Routes>
-            
+        
+        <div>
+          
+        </div>
     </div>
 
   )

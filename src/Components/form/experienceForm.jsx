@@ -1,4 +1,5 @@
 import { useResume } from "../../context/ResumeContext";
+import Navbar from "./navbar";
 import "./experience.css";
 
 function ExperienceForm() {
@@ -6,6 +7,7 @@ function ExperienceForm() {
 
   return (
     <>
+      <div><Navbar></Navbar></div>
       <h2>Experience </h2>
       {resume.experience.map((exp, index) => (
         <div key={index} className="experience-box">
