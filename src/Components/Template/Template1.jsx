@@ -3,33 +3,51 @@ import "./Template1.css";
 function Template1() {
   const { resume } = useResume();
   return (
-    <div className="border">
+    <div class="w-2/4 border p-5">
 
 
-      <div className="general-info">
-        <h1>
+      <div class="text-center">
+        <h1 class="font-bold text-3xl">
           {resume.general.firstName} {resume.general.lastName}
         </h1>
-        <p className="Job-title">{resume.general.role}</p>
-        <hr></hr>
+        <p class="text-[10px]">{resume.general.role}</p>
+        
 
         <div className="User-details">
-          <p>
+          <p class="font-light text-[10px]">
             {resume.general.address} {<b>|</b>} {resume.general.mobile}{" "}
             {<b>|</b>} {resume.general.email}
           </p>
-          <p>{resume.general.contact}</p>
+          <p class="font-light text-[10px]">{resume.general.contact}</p>
         </div>
-        <hr></hr>
-        <div className="about">
-          <h2>Professional Summary</h2>
-          <hr></hr>
-          <p>{resume.about.aboutYou}</p>
         </div>
-      </div>
+        <div class="">
+          <h2 class="font-bold">Professional Summary</h2>
+          <hr class="opacity-30"></hr>
+          <p class="font-light text-[11px]">{resume.about.aboutYou}</p>
+        </div>
+
+        <h2 class="font-bold">Projects</h2>
+      <hr class="opacity-30"></hr>
+
+      {resume.projects.map((proj, index) => (
+        <div  key={index}>
+          <h3 class="font-bold text-sm mb-1">{proj.projectName}</h3>
+          <p class="font-light text-[11px]">{proj.projectDescription}</p>
+          <ul class="font-light text-[11px]">
+            {proj.additionalDetails.map((stack, pointIndex) => (
+              <div key={pointIndex}>
+                <li>{stack}</li>
+              </div>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+
       <div className="Experience">
-        <h2>Experience</h2>
-        <hr></hr>
+        <h2 class="font-bold">Experience</h2>
+        <hr class="opacity-30"></hr>
 
         {resume.experience.map((exp, index) => {
           return (
@@ -53,39 +71,24 @@ function Template1() {
           );
         })}
       </div>
-      <h2>Skills</h2>
-      <hr></hr>
+      <h2 class="font-bold">Skills</h2>
+      <hr class="opacity-30"></hr>
       {resume.skills.map((skl, index) => (
         <div key={index} className="Skill-container">
-          <h3>{skl.skillType}</h3>
+          <h3 class="font-bold">{skl.skillType}</h3>
           <ul>
             {skl.skillsList.map((name, indx) => (
               <div key={indx}>
-                <li>{name}</li>
+                <li class="font-light text-[11px]">{name}</li>
               </div>
             ))}
           </ul>
         </div>
       ))}
 
-      <h2>Projects</h2>
-      <hr></hr>
+      
 
-      {resume.projects.map((proj, index) => (
-        <div className="project" key={index}>
-          <h3>{proj.projectName}</h3>
-          <p>{proj.projectDescription}</p>
-          <ul>
-            {proj.additionalDetails.map((stack, pointIndex) => (
-              <div key={pointIndex}>
-                <li>{stack}</li>
-              </div>
-            ))}
-          </ul>
-        </div>
-      ))}
-
-      <h2>Education</h2>
+      <h2 class="font-bold">Education</h2>
       <hr></hr>
       {resume.education.map((edu, index) => (
         <div key={index} className="education-container">
@@ -101,6 +104,7 @@ function Template1() {
         </div>
       ))}
     </div>
+  
   );
 }
 

@@ -3,12 +3,12 @@ import "./nav.css"
 function Navbar(){
     return(
         <div className="Nav-Bar">
-            <NavLink to="/general"><button className="navBtn">General</button></NavLink>
-            <NavLink to="/about"><button className="navBtn">About</button></NavLink>
-            <NavLink to="/experience"><button className="navBtn">Experience</button></NavLink>
-            <NavLink to="/skills"><button className="navBtn">Skills</button></NavLink>
-            <NavLink to="/projects"><button className="navBtn">Project</button></NavLink>
-            <NavLink to="/education"><button className="navBtn">Education</button></NavLink>
+            <NavLink to="/navigation/general"><button className="navBtn">General</button></NavLink>
+            <NavLink to="/navigation/about"><button className="navBtn">About</button></NavLink>
+            <NavLink to="/navigation/experience"><button className="navBtn">Experience</button></NavLink>
+            <NavLink to="/navigation/skills"><button className="navBtn">Skills</button></NavLink>
+            <NavLink to="/navigation/projects"><button className="navBtn">Project</button></NavLink>
+            <NavLink to="/navigation/education"><button className="navBtn">Education</button></NavLink>
             <button
             className="print"
           onClick={()=>window.print()}
