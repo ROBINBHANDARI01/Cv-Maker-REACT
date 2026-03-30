@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import HomeNav from "./homeNav";
 function Homepage() {
   const navigate = useNavigate();
   return (
     <>
+    <HomeNav/>
       <div className=" flex flex-col justify-center text-center  mt-15">
         <div className="p-1">
         <h1 class="font-inter text-5xl text-blue-500 lg:text-5xl font-bold ">

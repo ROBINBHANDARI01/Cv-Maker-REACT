@@ -1,7 +1,6 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Homepage from "./Components/home/homepage";
-import HomeNav from "./Components/home/homeNav";
 import Navigation from "./Components/navigation/navigation";
 
 import GeneralForm from "./Components/form/generalForm";
