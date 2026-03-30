@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom"
+
 import "./nav.css"
-import HomeNav from "../home/homeNav"
+
 function Navbar(){
     return(
         <>
-        <HomeNav/>
+        
         <div className="Nav-Bar">
 
             <NavLink to="/navigation/general"><button className="navBtn">General</button></NavLink>

@@ -12,6 +12,7 @@ import "./Style/App.css";
 
 import Projects from "./Components/form/projects";
 
+
 function App() {
   return (
     
@@ -19,7 +20,7 @@ function App() {
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/navigation" element={<Navigation />}>
 
-          <Route path="homenav" element={<Homepage />}></Route>
+          
           <Route path="general" element={<GeneralForm />} />
           <Route path="about" element={<AboutForm />} />
           <Route path="experience" element={<ExperienceForm />} />

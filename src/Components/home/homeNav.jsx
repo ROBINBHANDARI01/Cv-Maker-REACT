@@ -5,7 +5,7 @@ export default function HomeNav(){
     return(
         <nav class="flex justify-between mx-7 my-4 sm:mx-17 lg:mx-60">
 
-        <img onClick={()=> navigate("homenav")} src={logo} alt="logo" class="h-7 cursor-pointer"></img>
+        <img onClick={()=> navigate("/")} src={logo} alt="logo" class="h-7 cursor-pointer"></img>
         <ul>
             <li><a onClick={()=> navigate("/navigation")} href="#" class="font-inter">Get Started</a></li>
         </ul>
