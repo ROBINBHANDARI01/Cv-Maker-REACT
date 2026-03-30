@@ -1,12 +1,12 @@
 import { useResume } from "../../context/ResumeContext";
-import Navbar from "./navbar";
+
 import "./experience.css";
 function Education() {
   const { resume, dispatch } = useResume();
 
   return (
     <>
-    <div><Navbar></Navbar></div>
+
       {resume.education.map((edu, index) => (
         <div key={index} className="education-box">
           <h2>Education: </h2>

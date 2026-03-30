@@ -1,12 +1,12 @@
 import "../../Style/General.css";
-import Navbar from "./navbar";
+
 import { useResume } from "../../context/ResumeContext";
 function GeneralForm() {
   const { resume, dispatch } = useResume();
 
   return (
     <div className="General-container">
-      <div><Navbar></Navbar></div>
+      
 
       <h2>General Info Section: </h2>
       <label htmlFor="firstName"></label>
