@@ -5,8 +5,8 @@ import temp19 from "../../assets/template19.webp";
 import temp18 from "../../assets/template18.webp";
 
 import select from "../../assets/icon-select.svg";
-import download from "../../assets/icon-dwn.png";
-import edit from "../../assets/icon-edit.png";
+import download from "../../assets/icon-dwn.svg";
+import edit from "../../assets/icon-edit.svg";
 import HomeNav from "./homeNav";
 import { resume } from "react-dom/server";
 function Homepage() {
@@ -16,18 +16,18 @@ function Homepage() {
       <HomeNav />
       <div className=" flex flex-col justify-center text-center  mt-15">
         <div className="p-1">
-          <h1 class="font-inter text-5xl text-blue-500 lg:text-6xl font-bold ">
+          <h1 class="font-inter text-5xl text-blue-500 lg:text-7xl font-bold">
             Get Your Dream Job
           </h1>
         </div>
         <div>
-          <h1 class="font-inter text-3xl font-medium mb-1 lg:text-4xl">
+          <h1 class="font-inter text-3xl font-medium mb-1 lg:text-5xl">
             With Our Resume Maker
           </h1>
         </div>
       </div>
-      <div class="mt-4 flex justify-center ">
-        <p class="font-Inter text-center text-[13px] mx-10 md:text-9 ">
+      <div class="mt-6 flex justify-center ">
+        <p class="font-Inter text-center text-[13px] mx-10 md:text-9 lg:text-lg ">
           Get your resume noticed with our intutive builder Designed to help you
           build a professional profile that gets result.
         </p>
@@ -35,13 +35,13 @@ function Homepage() {
       <div class="flex justify-center mt-8">
         <button
           onClick={() => navigate("/navigation")}
-          class="bg-blue-400 rounded-xl px-5 py-1.5  text-white cursor-pointer"
+          class="bg-blue-400 rounded-xl px-5 py-1.5  text-white cursor-pointer lg:scale-120"
         >
           Create Resume
         </button>
       </div>
 
-      <div class="p-5 mt-10 md:flex  gap-x-17 md:mx-10 lg:md:mx-50 lg:mt-20 lg:justify-between ">
+      <div class="p-5 mt-10 md:flex  md:mx-10 lg:md:mx-60 lg:mt-20 lg:justify-between">
         <div class="relative overflow-hidden h-105 bg-blue-200 rounded-2xl group md:w-190 lg:w-[35vw]  flex justify-center items-end">
           <img
             src={temp7}
@@ -86,7 +86,7 @@ function Homepage() {
               <span class="flex items-center gap-3">
                 <div class="flex items-center justify-center">
                   <img
-                    class="ml-2"
+                    class="h-13.5"
                     src={select}
                   ></img>
                 </div>
@@ -102,7 +102,7 @@ function Homepage() {
               <span class="flex items-center gap-3">
                 <div class="flex items-center justify-center">
                   <img
-                    class="h-12 ml-2 "
+                    class="h-14 "
                     src={edit}
                   ></img>
                 </div>
@@ -116,13 +116,13 @@ function Homepage() {
             <span class="flex items-center gap-1">
               <div class="flex items-center justify-center">
                 <img
-                  class="h-13.8 lg:h-15.1 md:ml-1"
+                  class="h-14 md:ml-1"
                   src={download}
                 ></img>
               </div>
               <h2 class="font-medium md:text-lg">Step1: Download your resume 4 free</h2>
             </span>
-            <p class="text-gray-500 ml-14.5">
+            <p class="text-gray-500 ml-14">
               Add details about your experience, education, and skills with one
               click..
             </p>
@@ -131,10 +131,10 @@ function Homepage() {
       </div>
 
       <div className="mt-15 bg-linear-to-r from-[#21b1c1] via-[#1d80ea] to-[#1d8fbc] h-[80vh] p-2">
-        <h2 className="text-center text-[20px] font-bold font-Inter  text-white ">
+        <h2 className="text-center text-[20px] font-bold font-Inter  text-white lg:text-3xl">
           Choose between many templates{" "}
         </h2>
-        <p className="text-sm text-white font-extralight text-center mt-2 mx-10">
+        <p className="text-sm text-white font-extralight text-center mt-2 mx-10 lg:text-[1.1rem] lg:font-light">
           Land more interviews with a professional edge. Our Resume Builder
           helps you create a standout resumes in minutes.{" "}
         </p>
