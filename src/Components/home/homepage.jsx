@@ -16,18 +16,18 @@ function Homepage() {
       <HomeNav />
       <div className=" flex flex-col justify-center text-center  mt-15">
         <div className="p-1">
-          <h1 class="font-inter text-5xl text-blue-500 lg:text-7xl font-bold">
+          <h1 class="font-inter text-5xl text-blue-500 lg:text-6xl font-bold">
             Get Your Dream Job
           </h1>
         </div>
         <div>
-          <h1 class="font-inter text-3xl font-medium mb-1 lg:text-5xl">
+          <h1 class="font-inter text-3xl font-medium mb-1 lg:text-4xl">
             With Our Resume Maker
           </h1>
         </div>
       </div>
       <div class="mt-6 flex justify-center ">
-        <p class="font-Inter text-center text-[13px] mx-10 md:text-9 lg:text-lg ">
+        <p class="font-Inter text-center text-[13px] mx-10 md:text-9 lg:text-[0.9rem] ">
           Get your resume noticed with our intutive builder Designed to help you
           build a professional profile that gets result.
         </p>
@@ -35,7 +35,7 @@ function Homepage() {
       <div class="flex justify-center mt-8">
         <button
           onClick={() => navigate("/navigation")}
-          class="bg-blue-400 rounded-xl px-5 py-1.5  text-white cursor-pointer lg:scale-120"
+          class="bg-blue-400 rounded-xl px-5 py-1.5  text-white cursor-pointer"
         >
           Create Resume
         </button>
@@ -46,7 +46,7 @@ function Homepage() {
           <img
             src={temp7}
             class="absolute top-25 left-6 h-[89%] 
-         opacity-95 rotate-[-2deg]
+         opacity-95 -rotate-2
          transition-transform duration-500 ease-out
          group-hover:-translate-y-6 
          group-hover:scale-110 
