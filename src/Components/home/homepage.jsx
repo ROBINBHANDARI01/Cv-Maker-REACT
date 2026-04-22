@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+import TemplateSlider from "./templateSlider";
 import temp7 from "../../assets/template7.webp";
 import temp19 from "../../assets/template19.webp";
 import temp18 from "../../assets/template18.webp";
@@ -22,7 +23,7 @@ function Homepage() {
         </div>
         <div>
           <h1 class="font-inter text-3xl font-medium mb-1 lg:text-4xl">
-            With Our Resume Maker
+            With My Resume Maker
           </h1>
         </div>
       </div>
@@ -42,7 +43,7 @@ function Homepage() {
       </div>
 
       <div class="p-5 mt-10 md:flex  md:mx-10 lg:md:mx-60 lg:mt-20 lg:justify-between">
-        <div class="relative overflow-hidden h-105 bg-blue-200 rounded-2xl group md:w-190 lg:w-[35vw]  flex justify-center items-end">
+        <div class="relative overflow-hidden h-115 bg-blue-200 rounded-2xl group md:w-190 lg:w-[35vw]  flex justify-center items-end">
           <img
             src={temp7}
             class="absolute top-25 left-6 h-[89%] 
@@ -56,7 +57,7 @@ function Homepage() {
           <img
             src={temp19}
             class="absolute top-25 right-6 h-[89%] 
-         opacity-95 rotate-[2deg]
+         opacity-95 rotate-2
          transition-transform duration-500 ease-out
          group-hover:-translate-y-6 
          group-hover:scale-110 
@@ -72,8 +73,8 @@ function Homepage() {
          group-hover:scale-110"
           />
         </div>
-        <div>
-          <h1 class="mt-19 text-4xl font-medium md:text-4xl md:m-1 lg:mt-2">
+        <div class="lg:ml-10">
+          <h1 class="mt-19 text-4xl font-medium md:text-4xl md:m-1">
             Let’s build your free, job-winning
           </h1>
           <span class="text-blue-600 font-medium text-4xl">
@@ -81,12 +82,12 @@ function Homepage() {
             resume in 3 simple steps
           </span>
 
-          <div class="mt-9  lg:ml-10 ">
-            <div class="mb-5">
+          <div class="mt-9">
+            <div class="mb-3">
               <span class="flex items-center gap-3">
                 <div class="flex items-center justify-center">
                   <img
-                    class="h-13.5"
+                    class="h-12.5"
                     src={select}
                   ></img>
                 </div>
@@ -98,7 +99,7 @@ function Homepage() {
               </p>
             </div>
 
-            <div class="mb-5">
+            <div class="mb-3">
               <span class="flex items-center gap-3">
                 <div class="flex items-center justify-center">
                   <img
@@ -131,13 +132,15 @@ function Homepage() {
       </div>
 
       <div className="mt-15 bg-linear-to-r from-[#21b1c1] via-[#1d80ea] to-[#1d8fbc] h-[80vh] p-2">
-        <h2 className="text-center text-[20px] font-bold font-Inter  text-white lg:text-3xl">
+        <h2 className="text-center text-[20px] font-bold font-Inter  text-white lg:text-2xl">
           Choose between many templates{" "}
         </h2>
-        <p className="text-sm text-white font-extralight text-center mt-2 mx-10 lg:text-[1.1rem] lg:font-light">
+        <p className="text-sm text-white font-extralight text-center mt-2 mx-10  lg:font-light">
           Land more interviews with a professional edge. Our Resume Builder
           helps you create a standout resumes in minutes.{" "}
         </p>
+
+        <TemplateSlider/>
       </div>
     </>
   );
