@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  /* 🔵 Primary Brand Colors */
+  --color-primary: #2563eb;        /* main blue */
+  --color-primary-light: #3b82f6;  /* hover / lighter */
+  --color-primary-dark: #1d4ed8;   /* active / darker */
+
+  /* 🔵 Secondary Accent */
+  --color-secondary: #06b6d4;      /* cyan accent */
+  --color-secondary-light: #67e8f9;
+
+  /*capsules */
+  --color-badge-bg: #dceaff;
+  --color-badge-text: #3b82f6;
+
+  /* ⚪ Backgrounds */
+  --color-bg-main: #ffffff;
+  --color-bg-soft: #f8fafc;
+  --color-bg-muted: #f1f5f9;
+
+  /* 🧱 Cards / Sections */
+  --color-card: #ffffff;
+  --color-card-border: #e2e8f0;
+
+  /* 📝 Text Colors */
+  --color-text-primary: #0f172a;   /* headings */
+  --color-text-secondary: #475569; /* normal text */
+  --color-text-muted: #94a3b8;     /* light text */
+
+  /* 🟢 Success / UI states */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  /* 🌈 Gradients (for hero / sections) */
+  --gradient-primary: linear-gradient(135deg, #2563eb, #06b6d4);
+  
+
+  /* 🟣 Decorative blobs */
+  --color-blob-1: #bfdbfe;
+  --color-blob-2: #93c5fd;
+  --color-blob-3: #c7d2fe;
+
+  /* ✨ Shadows */
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
