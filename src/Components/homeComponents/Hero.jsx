@@ -2,19 +2,19 @@ import { useNavigate } from "react-router-dom";
 import temp7 from "../../assets/template7.webp";
 import temp19 from "../../assets/template19.webp";
 import temp18 from "../../assets/template18.webp";
-import blob from "../../assets/blob.svg";
+
 export default function Hero() {
   
   return (
     <>
     
     
-      <div className="gap-5 bg-linear-to-br from-white  to-blue-200 relative min-h-[80vh] flex flex-col lg:flex-row items-center overflow-hidden justify-between px-6 md:px-40 py-10">
+      <div className="gap-5 bg-linear-to-br from-white  to-blue-200  min-h-[80vh] flex flex-col lg:flex-row items-center overflow-hidden justify-between px-6 md:px-40 py-10">
 
         {/* LEFT CONTENT */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-xl">
           {/* Badge */}
-          <div className="text-xs md:text-sm bg-(--color-badge-bg) text-(--color-badge-text) px-3 py-1.5 rounded-full font-medium mb-6">
+          <div className="text-xs md:text-sm bg-(--color-badge-bg) text-(--color-badge-text) px-3 py-1.5 rounded-full font-semibold mb-6">
             Build . Personalize . Get Hired
           </div>
 
@@ -52,7 +52,7 @@ export default function Hero() {
         </div>
 
         {/* RIGHT IMAGE SECTION */}
-        <div className="relative overflow-hidden mt-10 lg:mt-0 w-full max-w-md md:max-w-lg lg:max-w-xl flex justify-center">
+        <div className="relative overflow-hidden mt-10 w-full max-w-md md:max-w-lg lg:max-w-xl flex justify-center">
           <div className="relative w-full h-87.5 md:h-112.5 bg-(--color-bg-soft) rounded-2xl group">
             <img
               src={temp7}
@@ -68,12 +68,6 @@ export default function Hero() {
             />
           </div>
         </div>
-
-        {/* BLOB BACKGROUND */}
-        <img
-          src={blob}
-          className="absolute top-85  right-320 w-100  pointer-events-none select-none"
-        />
       </div>
     </>
   );
