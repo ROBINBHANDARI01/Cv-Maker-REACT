@@ -9,7 +9,7 @@ export default function Hero() {
     <>
     
     
-      <div className="bg-linear-to-br from-white  to-blue-200 relative min-h-[80vh] flex flex-col lg:flex-row items-center overflow-hidden justify-between px-6 md:px-12 lg:px-40 py-10">
+      <div className="gap-5 bg-linear-to-br from-white  to-blue-200 relative min-h-[80vh] flex flex-col lg:flex-row items-center overflow-hidden justify-between px-6 md:px-40 py-10">
 
         {/* LEFT CONTENT */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-xl">
@@ -19,11 +19,11 @@ export default function Hero() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-(--color-text-primary)">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-(--color-text-primary)">
             Get Your
           </h1>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-(--color-primary)">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-(--color-primary)">
             Dream Job
           </h1>
 
