@@ -9,7 +9,7 @@ export default function Hero() {
     <>
     
     
-      <div className="bg-gradient-to-br from-white  to-blue-200 relative min-h-[80vh] flex flex-col lg:flex-row items-center overflow-hidden justify-between px-6 md:px-12 lg:px-40 py-10">
+      <div className="bg-linear-to-br from-white  to-blue-200 relative min-h-[80vh] flex flex-col lg:flex-row items-center overflow-hidden justify-between px-6 md:px-12 lg:px-40 py-10">
 
         {/* LEFT CONTENT */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-xl">
@@ -37,7 +37,7 @@ export default function Hero() {
           </p>
 
           {/* Buttons */}
-          <div className="flex gap-4 mt-6">
+          <div className="flex flex-col md:flex-row gap-4 mt-6">
             <button
               onClick={() => navigate("/navigation")}
               className="bg-(--color-primary) hover:opacity-90 px-6 py-3 rounded-xl text-white font-medium shadow-md"
@@ -45,7 +45,7 @@ export default function Hero() {
               Create Resume — It’s Free
             </button>
 
-            <button className=" border px-6 py-3 rounded-xl font-medium text-(--color-text-primary">
+            <button className="border-gray-400 border px-6 py-3 rounded-xl   hover:shadow-xl hover:opacity-75">
               View Templates
             </button>
           </div>
