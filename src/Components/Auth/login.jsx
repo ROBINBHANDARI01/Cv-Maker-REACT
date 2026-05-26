@@ -57,7 +57,7 @@ export default function Login() {
       </nav>
 
       {/* Card */}
-      <div className="relative z-10 flex flex-1 items-center justify-center px-4 pb-20 mt-10">
+      <div className="relative z-10 flex flex-1 items-center justify-center px-4 pb-20 mt-5">
         <div className="w-full max-w-md  bg-[rgba(15,30,90,0.55)]  border  border-white/20
           rounded-2xl p-9 shadow-2xl shadow-blue-400/40">
 
@@ -103,7 +103,7 @@ export default function Login() {
                 <input
                   type={showPass ? "text" : "password"}
                   required
-                  placeholder="🔒︎     Password"
+                  placeholder="🔒︎   Password"
                   value={form.password}
                   onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
                   className="w-full pl-10 placeholder:text-[1rem]  text-xs pr-10 py-2.5 text-white border border-slate-200 rounded-xl bg-white/10
@@ -151,7 +151,7 @@ export default function Login() {
           <p className="text-center text-xs text-blue-200/50 mt-5">
             Don't have an account?{" "}
             <Link to="/register" className="text-blue-600 font-semibold hover:underline">
-              Sign up free
+              Register for free.
             </Link>
           </p>
         </div>

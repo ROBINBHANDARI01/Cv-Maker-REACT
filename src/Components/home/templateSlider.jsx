@@ -8,8 +8,8 @@ export default function TemplateSlider() {
     <>
       <div>
         <div className="mt-35 p-2 mx-5">
-          <div className="text-xs m-auto md:text-sm w-fit  bg-(--color-badge-bg) text-(--color-badge-text) px-3 py-1.5 rounded-full font-semibold mb-6">
-            Easy as 1-2-3
+          <div className="text-xs m-auto md:text-sm w-fit  bg-(--color-badge-bg) text-(--color-badge-text) px-3 py-1.5 rounded-full md:font-semibold font-bold mb-6">
+            Design To Impress
           </div>
           <div className="text-2xl text-center md:text-3xl font-semibold">
             <h2 className="text-(--color-text-primary)">

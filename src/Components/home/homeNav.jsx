@@ -1,4 +1,7 @@
 import logo from "../../assets/logo.png";
+
+import Login from "../Auth/login";
+import Register from "../Auth/register";
 import { ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 export default function HomeNav() {
@@ -10,24 +13,26 @@ export default function HomeNav() {
           onClick={() => navigate("/")}
           src={logo}
           alt="logo"
-          className="h-6 cursor-pointer md:h-8"
+          className="h-7 cursor-pointer md:h-8"
         ></img>
-        <span className="text-sm hidden sm:block font-medium">MakeMyResume</span>
+        <span className="text-sm hidden sm:block font-medium">
+          MakeMyResume
+        </span>
       </div>
       <div className="flex">
         <a
           onClick={() => navigate("/login")}
           href="#"
-          class="text-[0.7rem] hidden sm:flex text-blue-700 hover:bg-blue-100   font-inter border py-2 px-5 border-blue-200 mx-1 rounded-2xl lg:text-sm"
+          className="text-[0.8rem]  sm:flex text-blue-700 hover:bg-blue-100  hover:border-blue-400 font-inter border py-2 px-5 border-blue-200 mx-1 rounded-2xl lg:text-sm"
         >
           Login
         </a>
         <a
-          onClick={() => navigate("/navigation")}
+          onClick={() => navigate("/register")}
           href="#"
-          class="ml-1 text-[0.7rem]  bg-(--color-primary) text-white hover:bg-blue-100 hover:text-blue-900 px-4 hover:border-blue-500 font-inter border inline-flex items-center  p-2 rounded-2xl lg:text-sm"
+          className="ml-1 text-[0.8rem]  bg-(--color-primary) text-white hover:bg-blue-100 hover:text-blue-900 px-4 hover:border-blue-500 font-inter border inline-flex items-center  p-2 rounded-2xl lg:text-sm"
         >
-          Get Started <ChevronRight className="h-5" />{" "}
+          Register <ChevronRight className="h-5" />{" "}
         </a>
       </div>
     </nav>
