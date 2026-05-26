@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Homepage from "./Components/home/homepage";
 import Navigation from "./Components/navigation/navigation";
-
+import Login from  "./Components/Auth/login";
 import GeneralForm from "./Components/form/generalForm";
 import AboutForm from "./Components/form/aboutForm";
 import ExperienceForm from "./Components/form/experienceForm";
@@ -17,10 +17,9 @@ function App() {
   return (
     
       <Routes>
-        <Route path="/" element={<Homepage />}></Route>
-        <Route path="/navigation" element={<Navigation />}>
-
-          
+          <Route path="/" element={<Homepage />}></Route>
+          <Route path="/login" element={<Login/>}></Route>
+          <Route path="/navigation" element={<Navigation />}>
           <Route path="general" element={<GeneralForm />} />
           <Route path="about" element={<AboutForm />} />
           <Route path="experience" element={<ExperienceForm />} />
