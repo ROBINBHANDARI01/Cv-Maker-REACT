@@ -3,32 +3,85 @@ import temp2 from "../../assets/slider/temp2.jpg";
 import temp3 from "../../assets/slider/robin.jpg";
 import temp4 from "../../assets/slider/temp3.jpg";
 
+import RenderTemplate from "../home/renderTemplate";
+
 export default function TemplateSlider() {
   return (
     <>
-      <div>
-        <div className="mt-35 p-2 mx-5">
-          <div className="text-xs m-auto md:text-sm w-fit  bg-(--color-badge-bg) text-(--color-badge-text) px-3 py-1.5 rounded-full md:font-semibold font-bold mb-6">
-            Design To Impress
-          </div>
-          <div className="text-2xl text-center md:text-3xl font-semibold">
-            <h2 className="text-(--color-text-primary)">
-              Professional Templates for Every
-            </h2>
-            <span class="text-(--color-primary)">Every Career</span>
-          </div>
-          <p className="text-sm text-(--color-text-primary)  text-center mt-2 mx-10">
-            Land more interviews with a professional edge. Our Resume Builder
-            helps you create a standout resumes in minutes.{" "}
-          </p>
-          <div className="flex m-auto mt-15 gap-5 shadow-xl min-w-fit max-w-270  overflow-auto">
-            <img src={temp1} class="h-50 lg:h-100"></img>
-            <img src={temp2} class="h-50 lg:h-100"></img>
-            <img src={temp3} class="h-50 lg:h-100"></img>
-            <img src={temp4} class="h-50 lg:h-100"></img>
-          </div>
-        </div>
-      </div>
+      <div className="relative overflow-hidden py-10 mt-7 bg-linear-to-b from-white via-blue-50 to-[#eef4ff]">
+
+  {/* Background Blobs */}
+  <div className="absolute  -left-32 h-87.5 w-87.5 rounded-full bg-blue-300/30 blur-3xl"></div>
+
+  <div className="absolute top-0 right-0 h-75 w-75 rounded-full bg-indigo-200/30 blur-3xl"></div>
+
+  <div className="absolute bottom-0 left-1/2 h-62.5 w-62.5 -translate-x-1/2 rounded-full bg-blue-200/20 blur-3xl"></div>
+
+  {/* Decorative Dots */}
+  <div className="absolute left-10 top-40 grid grid-cols-5 gap-2 opacity-20">
+    {[...Array(15)].map((_, i) => (
+      <span
+        key={i}
+        className="h-2 w-2 rounded-full bg-blue-400"
+      ></span>
+    ))}
+  </div>
+
+  <div className="absolute right-10 top-60 grid grid-cols-5 gap-2 opacity-20">
+    {[...Array(15)].map((_, i) => (
+      <span
+        key={i}
+        className="h-2 w-2 rounded-full bg-blue-400"
+      ></span>
+    ))}
+  </div>
+
+  {/* Main Content */}
+  <div className="relative z-10 max-w-7xl mx-auto px-3">
+
+    {/* Badge */}
+    <div className="text-xs md:text-sm w-fit mx-auto bg-blue-100 text-blue-600 px-4 py-2 rounded-full font-semibold mb-6 shadow-sm">
+      Design To Impress
+    </div>
+
+    {/* Heading */}
+    <div className="text-center">
+      <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+        Professional Templates for Every
+      </h2>
+
+      <span className="text-3xl md:text-5xl font-extrabold tracking-tight text-blue-600">
+        Every Career
+      </span>
+    </div>
+
+    {/* Paragraph */}
+    <p className="text-slate-500 text-center mt-4 max-w-2xl mx-auto text-base md:text-md ">
+      Land more interviews with a professional edge.
+      Our Resume Builder helps you create standout resumes in minutes.
+    </p>
+
+    {/* Template Section */}
+    <div className="mt-6 overflow-x-auto pb-6">
+      <RenderTemplate />
+    </div>
+  </div>
+
+  {/* Bottom Wave Divider */}
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+    <svg
+      className="relative block w-full h-30"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1440 320"
+      preserveAspectRatio="none"
+    >
+      <path
+        fill="#ffffff"
+        d="M0,224L80,218.7C160,213,320,203,480,208C640,213,800,235,960,234.7C1120,235,1280,213,1360,202.7L1440,192L1440,320L0,320Z"
+      ></path>
+    </svg>
+  </div>
+</div>
     </>
   );
 }
