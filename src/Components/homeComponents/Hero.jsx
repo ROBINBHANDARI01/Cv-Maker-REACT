@@ -1,6 +1,8 @@
 import { useNavigate, Link } from "react-router-dom";
 import { Sparkles } from "lucide-react";
 
+
+
 import HomeNav from "../home/homeNav";
 import temp18 from "../../assets/slider/robin.jpg";
 import temp7 from "../../assets/template7.webp";
@@ -9,10 +11,10 @@ import temp19 from "../../assets/template19.webp";
 export default function Hero() {
   return (
     <>
-      <div
-        className="relative overflow-hidden min-h-[95vh]
-             bg-[linear-gradient(110deg,#dce8fb_50%,#c8d9f8_65%,#bdd0f7_50%,#c5cef5_50%,#d4d8fa_100%)]"
-      >
+<div className="relative overflow-hidden min-h-[95vh]  bg-[url('/resMobile.svg')]   md:bg-[url('/anime3.svg')] bg-cover  ">
+  
+  {/* SVG pattern on top of gradient */}
+  <div className="absolute inset-0 bg-[url('/anime3.svg')]  md:bg-[url('/res.svg')] bg-cover opacity-50" />
         {/* ── Dot grid right half ── */}
         <div className="absolute top-0 right-0 w-1/2 h-full pointer-events-none opacity-60">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -21,8 +23,8 @@ export default function Hero() {
                 id="dots"
                 x="0"
                 y="0"
-                width="22"
-                height="22"
+                width="20"
+                height="20"
                 patternUnits="userSpaceOnUse"
               >
                 <circle cx="11" cy="11" r="1.5" fill="rgba(99,122,210,0.3)" />
@@ -60,19 +62,19 @@ export default function Hero() {
           </svg>
         </div>
 
-        <div className="gap-5 h-auto lg:h-[85vh] flex flex-col lg:flex-row items-center lg:overflow-hidden justify-between px-5 md:px-45 py-6">
+        <div className="gap-5 h-auto lg:h-[86vh] flex flex-col lg:flex-row items-center lg:overflow-hidden justify-between px-5  md:px-45 py-6">
           {/* MAIN CONTENT CONTAINER */}
           <div className="flex z-10 flex-col items-center lg:items-start self-start lg:pt-10 text-center lg:text-left max-w-xl w-full">
-            <div className="text-[.7rem] md:text-[.75rem] bg-white text-(--color-primary-light) px-3 py-1.5 rounded-full font-semibold mb-6 flex items-center gap-2">
+            <div className="text-[.7rem] md:text-[.75rem] bg-white text-(--color-primary-light) px-3 py-1.5 rounded-full font-semibold shadow-sm mb-6 flex items-center gap-2">
               <Sparkles className="h-5" /> Build . Personalize . Get Hired.
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-(--color-text-primary)">
+            <h1 className="text-6xl md:text-6xl lg:text-7xl font-bold text-(--color-text-primary) ">
               Get Your
             </h1>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-(--color-primary)">
+            <h1 className="text-6xl md:text-6xl lg:text-7xl font-bold text-(--color-primary)">
               Dream Job
             </h1>
-            <p className="text-xl md:text-2xl text-(--color-text-primary) lg:text-3xl font-semibold mt-3">
+            <p className="text-2xl md:text-2xl text-(--color-text-primary) lg:text-3xl font-semibold mt-3">
               With My Resume Maker
             </p>
             <p className="mt-4 text-sm md:text-base text-(--color-text-secondary) max-w-md">

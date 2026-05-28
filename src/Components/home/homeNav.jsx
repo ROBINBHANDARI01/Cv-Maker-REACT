@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function HomeNav() {
   const navigate = useNavigate();
   return (
-    <nav class="flex justify-between mx-4 my-2 sm:mx-10 lg:mx-60 bg-white/60 backdrop-blur-md border-b border-white items-center py-2.5 px-5 rounded-xl shadow-2xl/50 shadow-blue-400">
+    <nav className="flex justify-between mx-4 my-2 sm:mx-10 lg:mx-60  backdrop-blur-md  bg-white  border-white border-2 items-center py-2.5 px-5 rounded-xl shadow-[0_0_40px_rgba(96,165,250,0.5)]">
       <div className="flex items-center gap-1">
         <img
           onClick={() => navigate("/")}

@@ -1,100 +1,338 @@
 import { FileText, SquarePen, Download } from "lucide-react";
 import one from "../../assets/number-one.png";
+import bubbleMobile from "../../assets/world.svg";
+
 import two from "../../assets/number-2.png";
 import three from "../../assets/number-3.png";
-
 export default function Steps() {
   return (
-    <>
-      <div className="mx-5 mb-8">
-         
-        <div class="flex flex-col text-center mt-10">
-          <div className="text-xs m-auto md:text-sm w-fit  bg-(--color-badge-bg) text-(--color-badge-text) px-3 py-1.5 rounded-full font-bold md:font-semibold mb-6">
+    <section className="relative  py-28 overflow-hidden">
+      {/* Background Blur */}
+      <div className="absolute  top-0 left-0 w-72 h-72  blur-3xl rounded-full"></div>
+
+      <div className="relative bg-blue-100/50  pb-10 rounded-4xl  z-10 max-w-8xl px-4 md:px-25">
+        {/* Heading */}
+        <img
+          src={bubbleMobile}
+          aria-hidden="true"
+          className="absolute  inset-0 w-full h-full object-cover opacity-25 md:top-30  pointer-events-none mt-10 z-[-1]"
+        />
+        <div className="text-center mb-20">
+          <div
+            className="
+            inline-flex
+            items-center
+            px-4
+            py-2
+            mt-5
+            rounded-full
+            bg-blue-50
+            shadow-sm
+            
+            text-blue-600
+            font-semibold
+            text-sm
+            mb-6
+          "
+          >
             Easy as 1-2-3
           </div>
-          <div className="text-2xl md:text-3xl font-bold">
-            <h2 className="text-(--color-text-primary)">
-              Let’s build your free,
-            </h2>
-            <div className="md:flex justify-center gap-2">
-              <span className="text-(--color-text-primary)">
-                job-winning resume in{" "}
-              </span>
 
-              <p class="text-(--color-primary)"> 3 simple steps</p>
+          <h2
+            className="
+            text-4xl
+            md:text-5xl
+            font-extrabold
+            tracking-tight
+            text-slate-900
+            leading-tight
+          "
+          >
+            Let’s build your free, 
+          </h2>
+
+          <div
+            className="
+            flex
+            flex-col
+            md:flex-row
+            justify-center
+            items-center
+            gap-3
+            mt-2
+          "
+          >
+            <span
+              className="
+              text-4xl
+              md:text-5xl
+              font-extrabold
+              tracking-tight
+              text-slate-900
+            "
+            >
+             job- winning resume in
+            </span>
+
+            <span
+              className="
+              text-xl
+              md:text-5xl
+              font-extrabold
+              tracking-tight
+              text-blue-600
+            "
+            >
+              3 simple steps
+            </span>
+          </div>
+        </div>
+
+        {/* Timeline Icons */}
+        <div className="flex md:flex-col">
+          <div
+            className="
+          flex
+          flex-col
+          md:flex-row
+          items-center
+          justify-center
+          gap-5
+          md:gap-6
+          mr-5
+          md:mr-0
+          mb-20
+        "
+          >
+            {/* Step Icon 1 */}
+            <div
+              className="
+            md:h-20
+           md:w-20
+           h-15
+           w-15
+
+            rounded-3xl
+            bg-white/70
+            backdrop-blur-xl
+            border border-white/40
+            shadow-lg
+            flex items-center justify-center
+          "
+            >
+              <FileText className="size-9 text-blue-600" />
+            </div>
+
+            <div
+              className="
+            hidden md:block
+            w-45
+            border-t-3
+            border-dashed
+            border-blue-300
+          "
+            ></div>
+
+            <div
+              className="
+            block md:hidden
+            h-30
+            border
+            border-dashed
+            border-blue-300
+          "
+            ></div>
+
+            {/* Step Icon 2 */}
+            <div
+              className="
+            md:h-20
+           md:w-20
+           h-15
+           w-15
+            rounded-3xl
+            bg-white/70
+            backdrop-blur-xl
+            border border-white/40
+            shadow-lg
+            flex items-center justify-center
+          "
+            >
+              <SquarePen className="size-9 text-blue-600" />
+            </div>
+
+            <div
+              className="
+            hidden md:block
+            w-45
+            border-t-3
+            border-dashed
+            border-blue-300
+          "
+            ></div>
+
+            <div
+              className="
+            block md:hidden
+            h-30
+            border
+            border-dashed
+            border-blue-300
+          "
+            ></div>
+
+            {/* Step Icon 3 */}
+            <div
+              className="
+           md:h-20
+           md:w-20
+           h-15
+           w-15
+            rounded-3xl
+            bg-white/70
+            backdrop-blur-xl
+            border border-white/40
+            shadow-lg
+            flex items-center justify-center
+          "
+            >
+              <Download className="size-9 text-blue-600" />
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="flex items-center justify-center gap-15 md:gap-8  md:flex md:flex-col">
-        <div className="flex flex-col gap-7  md:flex-row items-center md:gap-5">
-          <div className="bg-(--color-badge-bg) p-3 rounded-full z-10">
-            <FileText className="size-9 text-blue-700" />
-          </div>
+          {/* Step Cards */}
+          <div
+            className="
+          grid
+          md:grid-cols-3
+          gap-20
+          md:gap-40
+        "
+          >
+            {/* Card 1 */}
+            <div
+              className="
+              w-66 md:w-2xs
 
-          <div className="h-25 border-l md:w-64 md:h-0 border border-dashed border-blue-300"></div>
+            bg-white/70
+            backdrop-blur-sm
+            hover:bg-white/90
+         
+            border border-white/40
+            rounded-3xl
+            p-4
+            shadow-lg
+            hover:shadow-2xl
+            transition-all
+            duration-300
+          "
+            >
+              <div className="flex">
+              <img src={one} className="h-8 mr-2" />
 
-          <div className="bg-(--color-badge-bg) p-3 rounded-full z-10">
-            <SquarePen className="size-9 text-blue-700" />
-          </div>
+              <h3
+                className="
+              text-lg
+              font-bold
+              text-slate-900
+              mb-3">
 
-          <div className="h-25 border-l  md:w-64 md:h-0 border border-dashed border-blue-300"></div>
-
-          <div className="bg-(--color-badge-bg) p-3 rounded-full z-10">
-            <Download className="size-9 text-blue-700" />
-          </div>
-        </div>
-
-        {/* steps content */}
-        <div className="flex flex-col md:flex-row md:gap-50 justify-center gap-33 mt-5">
-          {/* STEP 1 */}
-          <div className="flex flex-col md:flex-row gap-2 items-center md:text-left relative">
-            <img src={one} className="h-7" />
-
-            <div className="max-w-sm">
-              <h2 className="font-bold text-(--color-text-primary) m-2 ">
                 Choose a Template
-              </h2>
-              <p className="text-sm absolute left-0 text-center text-(--color-text-secondary)">
-                Select form a wide variety of professionally designed templates.
-              </p>
-            </div>
-          </div>
+              </h3>
+              </div>
+          
+            <p
+              className="
+              text-slate-500
+              leading-6
+            "
+            >
+              Select from a wide variety of professionally designed templates.
+            </p>
+              </div>
 
-          {/* STEP 2 */}
+            {/* Card 2 */}
+            <div
+              className="
+              w-66 md:w-2xs
+            max-w-sm
+            bg-white/70
+            backdrop-blur-sm
+            hover:bg-white/90
+            border border-white/40
+            rounded-3xl
+            p-4
+            shadow-lg
+            hover:shadow-2xl
+            transition-all
+            duration-300
+          "
+            >
+              <div className="flex">
+              <img src={two} className="h-8 mr-2" />
 
-          <div className="flex flex-col md:flex-row gap-2 items-center md:text-left relative">
-            <img src={two} className="h-7" />
+              <h3
+                className="
+              text-lg
+              font-bold
+              text-slate-900
+              mb-3">
 
-            <div className="max-w-sm">
-              <h2 className="font-bold text-(--color-text-primary) m-2">
                 Add Your Details
-              </h2>
-              <p className="text-sm absolute left-0 text-center text-(--color-text-secondary)">
-                Add your information easily with a simple and intuitive
-                interface.
-              </p>
-            </div>
-          </div>
+              </h3>
+              </div>
+          
+            <p
+              className="
+              text-slate-500
+              leading-6
+            "
+            >
+            Add your information quickly and easily using our simple and intuitive interface.
+            </p>
+              </div>
+            {/* Card 3 */}
+           <div
+              className="
+            w-66 md:max-w-xs
+            bg-white/70
+            backdrop-blur-sm
+            hover:bg-white/90
+            border border-white/40
+            rounded-3xl
+            p-4
+            shadow-lg
+            hover:shadow-2xl
+            transition-all
+            duration-300
+          "
+            >
+              <div className="flex">
+              <img src={three} className="h-8 mr-2" />
 
-          {/* STEP 3  */}
+              <h3
+                className="
+              text-lg
+              font-bold
+              text-slate-900
+              mb-3">
 
-          <div className="flex flex-col md:flex-row gap-2 items-center md:text-left relative">
-            <img src={three} className="h-7" />
-
-            <div className="max-w-sm">
-              <h2 className="font-bold text-(--color-text-primary) m-2">
-                Download & Apply
-              </h2>
-              <p className="text-sm text-center absolute left-0 text-(--color-text-secondary)">
-                Download your resume in PDF format and apply with confidence.
-              </p>
-            </div>
-            <div></div>
+                Download & apply 
+              </h3>
+              </div>
+          
+            <p
+              className="
+              text-slate-500
+              leading-6
+            "
+            >
+             Download your resume in PDF format and apply with confidence.
+            </p>
+              </div>
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 }
