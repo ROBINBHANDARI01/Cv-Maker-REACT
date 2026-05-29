@@ -28,7 +28,7 @@ function App() {
           <Route path="skills" element={<SkillsForm />} />
           <Route path="projects" element={<Projects />} />
           <Route path="education" element={<Education />} />
-        </Route>
+        
       </Routes>
   
   );
