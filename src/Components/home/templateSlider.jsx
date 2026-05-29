@@ -8,7 +8,7 @@ import RenderTemplate from "../home/renderTemplate";
 export default function TemplateSlider() {
   return (
     <>
-      <div className="relative overflow-hidden py-10 mt-7 bg-linear-to-b from-white via-blue-50 to-[#eef4ff]">
+      <div className="relative overflow-hidden py-10 mt-7 bg-linear-to-b z-10 from-white via-blue-50 to-[#eef4ff]">
 
   {/* Background Blobs */}
   <div className="absolute  -left-32 h-87.5 w-87.5 rounded-full bg-blue-300/30 blur-3xl"></div>

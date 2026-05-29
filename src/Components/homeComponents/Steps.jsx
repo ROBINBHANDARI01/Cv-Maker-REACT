@@ -6,16 +6,18 @@ import two from "../../assets/number-2.png";
 import three from "../../assets/number-3.png";
 export default function Steps() {
   return (
-    <section className="relative  py-28 overflow-hidden">
+    <section className="relative py-28">
       {/* Background Blur */}
-      <div className="absolute  top-0 left-0 w-72 h-72  blur-3xl rounded-full"></div>
+      <div className="absolute   w-72 h-72  blur-3xl rounded-full"></div>
 
-      <div className="relative bg-blue-100/50  pb-10 rounded-4xl  z-10 max-w-8xl px-4 md:px-25">
+      <div className="relative overflow-hidden bg-blue-100/30 mx-auto pb-10  rounded-4xl  z-10 w-full px-4">
         {/* Heading */}
         <img
+          alt="bg"
+          loading="lazy"
           src={bubbleMobile}
           aria-hidden="true"
-          className="absolute  inset-0 w-full h-full object-cover opacity-25 md:top-30  pointer-events-none mt-10 z-[-1]"
+          className="absolute  inset-0 w-full h-full object-cover opacity-30 md:top-35  pointer-events-none mt-10 z-[-1]"
         />
         <div className="text-center mb-20">
           <div
@@ -26,10 +28,10 @@ export default function Steps() {
             py-2
             mt-5
             rounded-full
-            bg-blue-50
-            shadow-sm
-            
-            text-blue-600
+            bg-white
+            shadow-md
+
+           text-(--color-primary-dark)
             font-semibold
             text-sm
             mb-6
@@ -40,7 +42,7 @@ export default function Steps() {
 
           <h2
             className="
-            text-4xl
+            text-[2.5rem]
             md:text-5xl
             font-extrabold
             tracking-tight
@@ -55,20 +57,21 @@ export default function Steps() {
             className="
             flex
             flex-col
-            md:flex-row
+            lg:flex-row
             justify-center
             items-center
-            gap-3
+            gap-2
             mt-2
           "
           >
             <span
               className="
-              text-4xl
+              text-[2rem]
               md:text-5xl
               font-extrabold
               tracking-tight
               text-slate-900
+              w-fit
             "
             >
              job- winning resume in
@@ -76,7 +79,7 @@ export default function Steps() {
 
             <span
               className="
-              text-xl
+              text-[2rem]
               md:text-5xl
               font-extrabold
               tracking-tight
@@ -89,7 +92,7 @@ export default function Steps() {
         </div>
 
         {/* Timeline Icons */}
-        <div className="flex md:flex-col">
+        <div className="flex justify-center md:flex-col">
           <div
             className="
           flex
@@ -206,29 +209,30 @@ export default function Steps() {
           grid
           md:grid-cols-3
           gap-20
-          md:gap-40
+          md:gap-25
+          mx-auto
+          lg:gap-10
+          lg:px-20
+          max-w-6xl
+          md:overflow-x-clip
         "
           >
             {/* Card 1 */}
-            <div
-              className="
-              w-66 md:w-2xs
-
-            bg-white/70
-            backdrop-blur-sm
-            hover:bg-white/90
-         
-            border border-white/40
-            rounded-3xl
-            p-4
-            shadow-lg
-            hover:shadow-2xl
-            transition-all
-            duration-300
-          "
-            >
+            <div className="
+    w-full          
+    bg-white/70
+    backdrop-blur-sm
+    hover:bg-white/90
+    border border-white/40
+    rounded-3xl
+    p-4
+    shadow-lg
+    hover:shadow-2xl
+    transition-all
+    duration-300
+  ">
               <div className="flex">
-              <img src={one} className="h-8 mr-2" />
+              <img src={one} alt="1" className="h-8 mr-2" />
 
               <h3
                 className="
@@ -252,24 +256,21 @@ export default function Steps() {
               </div>
 
             {/* Card 2 */}
-            <div
-              className="
-              w-66 md:w-2xs
-            max-w-sm
-            bg-white/70
-            backdrop-blur-sm
-            hover:bg-white/90
-            border border-white/40
-            rounded-3xl
-            p-4
-            shadow-lg
-            hover:shadow-2xl
-            transition-all
-            duration-300
-          "
-            >
+            <div className="
+    w-full          
+    bg-white/70
+    backdrop-blur-sm
+    hover:bg-white/90
+    border border-white/40
+    rounded-3xl
+    p-4
+    shadow-lg
+    hover:shadow-2xl
+    transition-all
+    duration-300
+  ">
               <div className="flex">
-              <img src={two} className="h-8 mr-2" />
+              <img src={two} alt="2" className="h-8 mr-2" />
 
               <h3
                 className="
@@ -292,23 +293,21 @@ export default function Steps() {
             </p>
               </div>
             {/* Card 3 */}
-           <div
-              className="
-            w-66 md:max-w-xs
-            bg-white/70
-            backdrop-blur-sm
-            hover:bg-white/90
-            border border-white/40
-            rounded-3xl
-            p-4
-            shadow-lg
-            hover:shadow-2xl
-            transition-all
-            duration-300
-          "
-            >
+             <div className="
+    w-full          
+    bg-white/70
+    backdrop-blur-sm
+    hover:bg-white/90
+    border border-white/40
+    rounded-3xl
+    p-4
+    shadow-lg
+    hover:shadow-2xl
+    transition-all
+    duration-300
+  ">
               <div className="flex">
-              <img src={three} className="h-8 mr-2" />
+              <img src={three} alt="3" className="h-8 mr-2" />
 
               <h3
                 className="

@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily:{
-        inter: ['Inter', 'Poppins', 'sans-serif']
+        inter: ['Inter', 'sans-serif'],
       },
       colors: {
         primary: "var(--color-primary)",

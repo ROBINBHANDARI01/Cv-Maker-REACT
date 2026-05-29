@@ -8,13 +8,26 @@ import temp18 from "../../assets/slider/robin.jpg";
 import temp7 from "../../assets/template7.webp";
 import temp19 from "../../assets/template19.webp";
 
+
 export default function Hero() {
+  
   return (
     <>
-<div className="relative overflow-hidden min-h-[95vh]  bg-[url('/resMobile.svg')]   md:bg-[url('/anime3.svg')] bg-cover  ">
-  
-  {/* SVG pattern on top of gradient */}
-  <div className="absolute inset-0 bg-[url('/anime3.svg')]  md:bg-[url('/res.svg')] bg-cover opacity-50" />
+<div className="relative overflow-hidden min-h-[95vh] bg-[url('/resMobile.svg')] md:bg-none bg-cover">
+
+  {/* Static overlay SVG - CSS bg is fine here */}
+  <div className="absolute inset-0 md:bg-[url('/res.svg')] bg-cover opacity-50" />
+
+  {/* Animated SVG — only loads on desktop */}
+  <div className="hidden md:block absolute inset-0">
+    <img 
+      src="/anime3.svg" 
+      className="w-full h-full object-cover"
+      alt=""
+      fetchPriority="high"
+      loading="lazy"
+    />
+  </div>
         {/* ── Dot grid right half ── */}
         <div className="absolute top-0 right-0 w-1/2 h-full pointer-events-none opacity-60">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -62,10 +75,10 @@ export default function Hero() {
           </svg>
         </div>
 
-        <div className="gap-5 h-auto lg:h-[86vh] flex flex-col lg:flex-row items-center lg:overflow-hidden justify-between px-5  md:px-45 py-6">
+        <div className="gap-5 h-auto lg:h-[86vh] flex flex-col md:flex-row items-center lg:overflow-hidden justify-between px-5  lg:px-45 py-6">
           {/* MAIN CONTENT CONTAINER */}
           <div className="flex z-10 flex-col items-center lg:items-start self-start lg:pt-10 text-center lg:text-left max-w-xl w-full">
-            <div className="text-[.7rem] md:text-[.75rem] bg-white text-(--color-primary-light) px-3 py-1.5 rounded-full font-semibold shadow-sm mb-6 flex items-center gap-2">
+            <div className="text-[.7rem] md:text-[.80rem]  bg-white text-(--color-primary-dark) px-3 py-1.5 rounded-full font-semibold shadow-sm mb-6 flex items-center gap-2">
               <Sparkles className="h-5" /> Build . Personalize . Get Hired.
             </div>
             <h1 className="text-6xl md:text-6xl lg:text-7xl font-bold text-(--color-text-primary) ">
@@ -88,11 +101,11 @@ export default function Hero() {
                   <Link
                     to="/navigation"
                     onClick={() => navigate("/navigation")}
-                    className="bg-(--color-primary) hover:opacity-90 px-6 py-3 rounded-2xl text-white font-medium shadow-md"
+                    className="bg-(--color-primary) hover:opacity-90 border-2 border-white/70  px-6 py-3 rounded-2xl text-white font-semibold shadow-md"
                   >
                     Create Resume — It's Free
                   </Link>
-                  <button className="border-white/80 border-2  font-medium px-6 py-3 rounded-2xl hover:shadow-xl bg-white/30 opacity-90 ">
+                  <button className=" border-2 text-blue-700 border-blue-500/70  font-semibold   px-6 py-3 rounded-2xl  bg-white/80 hover:border-blue-600">
                     View Templates
                   </button>
                 </div>
@@ -103,15 +116,20 @@ export default function Hero() {
                 <div className="h-87.5">
                   <img
                     src={temp7}
-                    className="absolute hidden md:block rounded-xl left-12 h-[90%] opacity-95 -rotate-5"
+                    fetchPriority="high" 
+                    loading="eager"
+                    alt="Resume1"
+                    className="absolute hidden md:block rounded-xl left-12 bg-white/40 p-4 h-[95%] border-2 border-white/70 shadow-blue-300 shadow-2xl opacity-95 -rotate-5"
                   />
                   <img
+                    alt="Resume2"
                     src={temp19}
-                    className="absolute hidden md:block rounded-xl right-10 h-[90%] opacity-95 -rotate-[-5deg]"
+                    className="absolute hidden md:block rounded-xl right-9 bg-white/40 p-4 h-[95%] opacity-95 shadow-blue-400 shadow-2xl border-2 border-white/40 -rotate-[-4deg]"
                   />
                   <img
+                  alt="Resume3"
                     src={temp18}
-                    className="absolute bottom-0 md:-rotate-3 rounded-xl left-1/2 bg-white/30 -translate-x-1/2 h-[130%] z-10 shadow-xl border-2 border-white/40 p-6"
+                    className="absolute bottom-0 md:-rotate-3 rounded-xl left-1/2 bg-white/30 -translate-x-1/2 h-[130%] z-10  backdrop-blur-xs border-2 md:shadow-blue-300 shadow-2xl border-white/70 p-6"
                   />
                 </div>
               </div>

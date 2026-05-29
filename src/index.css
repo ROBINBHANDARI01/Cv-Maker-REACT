@@ -33,10 +33,6 @@
   --color-warning: #f59e0b;
   --color-error: #ef4444;
 
-  /* 🌈 Gradients (for hero / sections) */
-  --gradient-primary: linear-gradient(135deg, #2563eb, #06b6d4);
-  
-
   /* 🟣 Decorative blobs */
   --color-blob-1: #bfdbfe;
   --color-blob-2: #93c5fd;

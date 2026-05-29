@@ -34,7 +34,9 @@ const templates = [
       {/* Image */}
       <div className="overflow-hidden rounded-2xl">
         <img
+        loading="lazy"
           className="
+          
           h-84
           lg:h-112
           w-full
