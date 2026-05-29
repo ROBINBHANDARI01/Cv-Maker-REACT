@@ -258,7 +258,7 @@ export default function Steps() {
             {/* Card 2 */}
             <div className="
     w-full          
-    bg-white/70
+    bg-white/80
     backdrop-blur-sm
     hover:bg-white/90
     border border-white/40
@@ -295,7 +295,7 @@ export default function Steps() {
             {/* Card 3 */}
              <div className="
     w-full          
-    bg-white/70
+    bg-white/75
     backdrop-blur-sm
     hover:bg-white/90
     border border-white/40

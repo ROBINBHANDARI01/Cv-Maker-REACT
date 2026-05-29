@@ -105,7 +105,7 @@ export default function Register() {
                     type="username"
                     required
                     placeholder="✎    Username"
-                    you
+                
                     value={form.email}
                     onChange={(e) =>
                       setForm((f) => ({ ...f, email: e.target.value }))
@@ -124,7 +124,6 @@ export default function Register() {
                     type="email"
                     required
                     placeholder="✉     Email address"
-                    you
                     value={form.email}
                     onChange={(e) =>
                       setForm((f) => ({ ...f, email: e.target.value }))

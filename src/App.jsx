@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Homepage from "./Components/home/homepage";
 import Register  from "./Components/Auth/register";
-import Navigation from "./Components/navigation/navigation";
+import Dashboard from "./Components/Dashboard/dashboard";
 import Login from  "./Components/Auth/login";
 import GeneralForm from "./Components/form/generalForm";
 import AboutForm from "./Components/form/aboutForm";
@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/register" element={<Register/>}></Route>
-          <Route path="/navigation" element={<Navigation />}>
+          <Route path="/dashboard" element={<Dashboard/>}>
           <Route path="general" element={<GeneralForm />} />
           <Route path="about" element={<AboutForm />} />
           <Route path="experience" element={<ExperienceForm />} />
