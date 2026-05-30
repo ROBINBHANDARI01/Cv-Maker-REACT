@@ -17,19 +17,20 @@ import Projects from "./Components/form/projects";
 function App() {
   return (
     
-      <Routes>
-          <Route path="/" element={<Homepage />}></Route>
-          <Route path="/login" element={<Login/>}></Route>
-          <Route path="/register" element={<Register/>}></Route>
-          <Route path="/dashboard" element={<Dashboard/>}></Route>
-          <Route path="general" element={<GeneralForm />} />
-          <Route path="about" element={<AboutForm />} />
-          <Route path="experience" element={<ExperienceForm />} />
-          <Route path="skills" element={<SkillsForm />} />
-          <Route path="projects" element={<Projects />} />
-          <Route path="education" element={<Education />} />
-        
-      </Routes>
+     <Routes>
+  <Route path="/" element={<Homepage />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/register" element={<Register />} />
+  
+  <Route path="/dashboard" element={<Dashboard />}>
+    <Route path="general" element={<GeneralForm />} />
+    <Route path="about" element={<AboutForm />} />
+    <Route path="experience" element={<ExperienceForm />} />
+    <Route path="skills" element={<SkillsForm />} />
+    <Route path="projects" element={<Projects />} />
+    <Route path="education" element={<Education />} />
+  </Route>
+</Routes>
   
   );
 }

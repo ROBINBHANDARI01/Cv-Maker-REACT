@@ -97,7 +97,6 @@ export default function Hero() {
                 <div className="flex flex-col md:flex-row gap-4 mt-6">
                   <Link
                     to="/dashboard"
-                    onClick={() => navigate("/dashboard")}
                     className="bg-(--color-primary) hover:opacity-90 border-2 border-white/70  px-6 py-3 rounded-2xl text-white font-semibold shadow-md"
                   >
                     Create Resume — It's Free

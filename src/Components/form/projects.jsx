@@ -5,7 +5,6 @@ function Projects() {
   const { resume, dispatch } = useResume();
   return (
     <>
-  
       <h2>Projects </h2>
       {resume.projects.map((proj, index) => (
         <div key={index} className="projectUnit">

@@ -1,12 +1,10 @@
 import { useResume } from "../../context/ResumeContext";
-
 import "./experience.css";
 function Education() {
   const { resume, dispatch } = useResume();
 
   return (
     <>
-
       {resume.education.map((edu, index) => (
         <div key={index} className="education-box">
           <h2>Education: </h2>

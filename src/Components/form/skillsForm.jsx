@@ -1,12 +1,10 @@
 import { useResume } from "../../context/ResumeContext";
-
 import "./experience.css";
 function SkillsForm() {
   const { resume, dispatch } = useResume();
 
   return (
     <>
- 
       <h2>Skills </h2>
 
       {resume.skills.map((skl, index) => (

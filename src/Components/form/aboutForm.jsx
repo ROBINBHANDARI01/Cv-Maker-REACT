@@ -1,16 +1,15 @@
 import { useResume } from "../../context/ResumeContext";
-
 import "./experience.css";
 function AboutForm() {
   const { resume, dispatch } = useResume();
-  return (
-    <div className="About-Container">
+  return(
+    <>    
       <div>
      
       </div>
       <h2>Professional Summary: </h2>
 
-      <label for="about">
+      <label htmlFor="about">
         <h4>Professional Summary / About Me</h4>
       </label>
       <textarea
@@ -29,7 +28,10 @@ function AboutForm() {
           })
         }
       />
-    </div>
+    <div/>
+</>
+    
+
   );
 }
 export default AboutForm;
