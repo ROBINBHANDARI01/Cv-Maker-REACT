@@ -1,14 +1,18 @@
 import "../../Style/General.css";
+import Template1 from "../Template/Template1";
+
 
 import { useResume } from "../../context/ResumeContext";
 function GeneralForm() {
   const { resume, dispatch } = useResume();
 
   return (
+
+    <>
     <div className="General-container">
       
 
-      <h2>General Info Section: </h2>
+      <h2>Personal Info Section: </h2>
       <label htmlFor="firstName"></label>
       <h4>First name: </h4>
       <input
@@ -157,6 +161,7 @@ function GeneralForm() {
         }
       />
     </div>
+    </>
   );
 }
 
