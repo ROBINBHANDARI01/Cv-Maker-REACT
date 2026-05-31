@@ -8,18 +8,19 @@ import '../../Style/App.css'
 export default function Dashboard(){
     return(
         <>
-
+        <div className=" border-gray-200 border-b-2">
          <FormNav/>
-            <div className="grid  md:grid-cols-3 grid-rows-1 gap-4 overflow-hidden">
-             <aside className=" border-r  border-gray-200 overflow-y-auto bg-gray-50">
+         </div>
+            <div className="grid md:grid-cols-[250px_1.5fr_2fr] grid-rows-1  md:gap-4 overflow-hidden">
+             <aside className="border-r-2  border-gray-200 overflow-y-auto bg-gray-50">
                  <Navbar/>
              </aside>
             
-            <main className="overflow-y-auto  p-8">   
+            <main className="overflow-y-auto border-t-2 bg-black/2  border-gray-200 ">   
                 <Outlet/>
             </main>
 
-            <section className="border border-gray-200 overflow-y-auto p-4 bg-slate">
+            <section className="md:border-l-border-gray-200 overflow-y-auto p-4 bg-slate">
                 <Template1/>
             </section>
         </div>

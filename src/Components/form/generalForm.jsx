@@ -1,6 +1,4 @@
-import "../../Style/General.css";
 import Template1 from "../Template/Template1";
-
 
 import { useResume } from "../../context/ResumeContext";
 function GeneralForm() {
@@ -9,7 +7,7 @@ function GeneralForm() {
   return (
 
     <>
-    <div className="General-container">
+    <div className="General-container w-100vw bg-white rounded-lg mx-3 my-5 md:w-full px-2 py-2">
       
 
       <h2>Personal Info Section: </h2>
