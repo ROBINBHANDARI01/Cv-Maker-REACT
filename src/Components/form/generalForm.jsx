@@ -1,165 +1,112 @@
-import Template1 from "../Template/Template1";
-
 import { useResume } from "../../context/ResumeContext";
+
 function GeneralForm() {
   const { resume, dispatch } = useResume();
 
+  const handleChange = (field) => (e) =>
+    dispatch({
+      type: "update_Normal_Field",
+      payload: { section: "general", field, value: e.target.value },
+    });
+
   return (
-
-    <>
-    <div className="General-container w-100vw bg-white rounded-lg mx-3 my-5 md:w-full px-2 py-2">
+    <div className="bg-white rounded-xl p-6 m-4 shadow-sm border border-gray-100">
       
+      {/* Header */}
+      <div className="mb-6">
+        <h2 className="text-lg font-semibold text-gray-900">Personal Information</h2>
+        <p className="text-sm text-gray-600 mt-0.5">Add your personal details and contact information</p>
+      </div>
 
-      <h2>Personal Info Section: </h2>
-      <label htmlFor="firstName"></label>
-      <h4>First name: </h4>
-      <input
-        type="text"
-        name="firstName"
-        value={resume.general.firstName}
-        onChange={(e) =>
-          dispatch({
-            type: "update_Normal_Field",
+      {/* Fields */}
+      <div className="flex flex-col gap-4">
 
-            payload: {
-              section: "general",
-              field: "firstName",
-              value: e.target.value,
-            },
-          })
-        }
-        placeholder="Full Name"
-      />
+        {/* First & Last name row */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1">
+            <label className="text-sm  font-medium text-gray-700">First Name</label>
+            <input
+              type="text"
+              placeholder="John"
+              value={resume.general.firstName}
+              onChange={handleChange("firstName")}
+              className="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-gray-700">Last Name</label>
+            <input
+              type="text"
+              placeholder="Doe"
+              value={resume.general.lastName}
+              onChange={handleChange("lastName")}
+              className="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+        </div>
 
-      <label htmlFor="lastName">
-        <h4>Last name: </h4>{" "}
-      </label>
-      <input
-        type="text"
-        name="lastName"
-        value={resume.general.lastName}
-        onChange={(e) =>
-          dispatch({
-            type: "update_Normal_Field",
+        {/* Job Title */}
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-700">Job Title</label>
+          <input
+            type="text"
+            placeholder="Frontend Developer"
+            value={resume.general.role}
+            onChange={handleChange("role")}
+            className="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
 
-            payload: {
-              section: "general",
-              field: "lastName",
-              value: e.target.value,
-            },
-          })
-        }
-        placeholder="Full Name"
-      />
+        {/* Email & Phone row */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              placeholder="john@example.com"
+              value={resume.general.email}
+              onChange={handleChange("email")}
+              className="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-gray-700">Phone</label>
+            <input
+              type="text"
+              placeholder="+91 98765 43210"
+              value={resume.general.mobile}
+              onChange={handleChange("mobile")}
+              className="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+        </div>
 
-      <label htmlFor="role">
-        <h4>Job Title / Role</h4>
-      </label>
-      <input
-        type="text"
-        name="role"
-        value={resume.general.role}
-        onChange={(e) =>
-          dispatch({
-            type: "update_Normal_Field",
+        {/* Location */}
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-700">Location</label>
+          <input
+            type="text"
+            placeholder="City, State, Country"
+            value={resume.general.address}
+            onChange={handleChange("address")}
+            className="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
 
-            payload: {
-              section: "general",
-              field: "role",
-              value: e.target.value,
-            },
-          })
-        }
-        placeholder="Role"
-      />
+        {/* Contact / Links */}
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-700">Contact Info</label>
+          <textarea
+            placeholder="LinkedIn, GitHub, portfolio links..."
+            value={resume.general.contact}
+            onChange={handleChange("contact")}
+            rows={3}
+            className="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+          />
+        </div>
 
-      <label htmlFor="address">
-        <h4>Location (City, State, Country)</h4>
-      </label>
-      <input
-        name="address"
-        type="text"
-        value={resume.general.address}
-        placeholder="Enter Your Current Address"
-        onChange={(e) =>
-          dispatch({
-            type: "update_Normal_Field",
-
-            payload: {
-              section: "general",
-              field: "address",
-              value: e.target.value,
-            },
-          })
-        }
-      />
-
-      <label htmlFor="mobile">
-        <h4>Phone Number</h4>
-      </label>
-
-      <input
-        name="mobile"
-        placeholder="Mobile Number"
-        value={resume.general.mobile}
-        onChange={(e) =>
-          dispatch({
-            type: "update_Normal_Field",
-
-            payload: {
-              section: "general",
-              field: "mobile",
-              value: e.target.value,
-            },
-          })
-        }
-      />
-
-      <label htmlFor="email">
-        <h4>Email Address</h4>
-      </label>
-
-      <input
-        name="email"
-        type="text"
-        placeholder="Gmail"
-        value={resume.general.email}
-        onChange={(e) =>
-          dispatch({
-            type: "update_Normal_Field",
-
-            payload: {
-              section: "general",
-              field: "email",
-              value: e.target.value,
-            },
-          })
-        }
-      />
-
-      <label htmlFor="contace">
-        <h4>Contact Info</h4>
-      </label>
-
-      <textarea
-        name="contact"
-        className="contact"
-        value={resume.general.contact}
-        placeholder="Contact Info"
-        onChange={(e) =>
-          dispatch({
-            type: "update_Normal_Field",
-
-            payload: {
-              section: "general",
-              field: "contact",
-              value: e.target.value,
-            },
-          })
-        }
-      />
+      </div>
     </div>
-    </>
   );
 }
 

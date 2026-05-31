@@ -57,7 +57,7 @@ function Navbar() {
       to: "/dashboard/skills",
       label: "Skills",
       desc: "Add your skills",
-      icon: <Award size={21} />,
+      icon: <Award strokeWidth={2.3} size={21} />,
     },
   ];
 
@@ -77,7 +77,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="flex  md:flex-col py-1 w-full md:p-4 gap-1">
+    <div className="flex md:flex-col  py-1 w-full md:p-4 gap-1">
       {mainLinks.map((link) => (
         <NavLink
           key={link.to}
@@ -87,7 +87,7 @@ function Navbar() {
           }
         >
           <div className="flex items-center flex-col md:flex-row   md:gap-4 ">
-            <span className="text-blue-600 shrink-0 bg-blue-50  group-[.group]:bg-blue-50 p-2 rounded-lg ">
+            <span className="text-blue-600 shrink-0 bg-blue-100/50 group-[.group]:border-l-blue-300  group-[.group]:bg-blue-50 p-2 rounded-lg ">
               {link.icon}
             </span>
             <span>
@@ -103,11 +103,11 @@ function Navbar() {
       ))}
 
       {/* More button — visible on mobile only */}
-      <div className="flex flex-1 min-w-0 relative sm:hidden " ref={dropdownRef}>
+      <div className="flex flex-1  min-w-0 relative sm:hidden " ref={dropdownRef}>
         
             <button
     onClick={() => setShowMore(prev => !prev)}
-    className={`w-full p-2 flex flex-col items-center gap-1 rounded-lg text-gray-600 hover:bg-blue-50 transition-colors border-l-2 border-transparent ${showMore ? activeClass : ""}`}
+    className={`w-full p-2 flex flex-col items-center gap-1 rounded-lg text-gray-600 hover:bg-blue-50 transition-colors border-l-2 border-transparent z-10 ${showMore ? activeClass : ""}`}
   >
     <div className="flex items-center flex-col md:flex-row md:gap-4">
       <span className="text-blue-500 shrink-0 bg-blue-50 p-2 rounded-lg">
@@ -123,41 +123,31 @@ function Navbar() {
        
 
         {showMore && (
-          <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg z-50 min-w-40 p-1 flex flex-col gap-1">
+          <div className="absolute top-full right-2 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg z-50 min-w-25  p-1 flex flex-col gap-1">
             {moreLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 onClick={() => setShowMore(false)}
                 className={({ isActive }) =>
-                  `p-2 flex flex-row items-center gap-2 rounded-lg text-sm text-blue-600 hover:bg-blue-100 transition-colors ${isActive ? activeClass : ""}`
+                  `p-2 items-center gap-2 rounded-lg text-sm text-blue-600 hover:bg-blue-100 transition-colors ${isActive ? activeClass : ""}`
                 }
               >
-                <div className="flex items-center flex-col md:flex-row   md:gap-4 ">
-                  <span className="text-blue-600 shrink-0 bg-blue-50 group-[.group]:bg-blue-100 p-2 rounded-lg ">
-                    {link.icon}
-                  </span>
-                  <span>
-                    <span className="font-normal  text-gray-800 group-[.group]:text-blue-600">
-                      {link.label}
-                    </span>
-                    <span className="text-sm text-gray-500 hidden md:block">
-                      {link.desc}
-                    </span>
-                  </span>
-                </div>
+                <div className="flex items-center gap-3 md:flex-row  md:gap-4 ">
+            <span className="text-blue-600 shrink-0 bg-blue-100/50 group-[.group]:bg-blue-50  p-2 rounded-lg ">
+              {link.icon}
+            </span>
+            <span >
+              <span className="text-sm sm:text-sm font-semibold  truncate text-gray-800 group-[.group]:text-blue-600 ">
+                {link.label}
+              </span>
+              <span className="text-sm text-gray-500 hidden md:block">
+                {link.desc}
+              </span>
+            </span>
+          </div>
               </NavLink>
             ))}
-            <button
-              onClick={() => {
-                window.print();
-                setShowMore(false);
-              }}
-              className="p-2 flex flex-row items-center gap-2 rounded-lg text-sm  text-gray-600 hover:bg-blue-100 transition-colors"
-            >
-              <Printer size={21} />
-              <span>Print</span>
-            </button>
           </div>
         )}
       </div>
@@ -173,7 +163,7 @@ function Navbar() {
             }
           >
             <div className="flex items-center flex-col md:flex-row md:gap-4">
-        <span className="text-blue-600 shrink-0 bg-blue-50 group-[.group]:bg-blue-50 p-2 rounded-lg">
+        <span className="text-blue-600 shrink-0 bg-blue-100/50 group-[.group]:bg-blue-50 p-2 rounded-lg">
           {link.icon}
         </span>
         <span>
