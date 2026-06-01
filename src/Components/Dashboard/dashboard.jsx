@@ -11,6 +11,7 @@ export default function Dashboard(){
 
     const handlePrint = useReactToPrint({
         contentRef: printRef,
+<<<<<<< Updated upstream
         documentTitle: "Resume",
         onAfterPrint: () => {
             console.log("PDF generated successfully");
@@ -36,6 +37,9 @@ export default function Dashboard(){
                 color-adjust: exact !important;
             }
         `
+=======
+      
+>>>>>>> Stashed changes
     });
 
   return (
@@ -75,8 +79,13 @@ export default function Dashboard(){
           <div className="flex-1 flex items-start justify-center p-6 overflow-y-auto">
             <div
             ref={printRef}
+<<<<<<< Updated upstream
             role="presentation"
               style={{
+=======
+              style={{
+
+>>>>>>> Stashed changes
                 width: "794px",
                 minHeight: "1123px",  // A4 height in px at 96dpi
               }}
