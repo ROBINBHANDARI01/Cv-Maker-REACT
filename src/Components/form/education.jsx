@@ -1,121 +1,125 @@
 import { useResume } from "../../context/ResumeContext";
-import "./experience.css";
+import { GraduationCap, Trash2, Plus } from "lucide-react";
+
 function Education() {
   const { resume, dispatch } = useResume();
 
+  const handleChange = (index, field) => (e) =>
+    dispatch({
+      type: "update_Array_Item",
+      section: "education",
+      index,
+      field,
+      value: e.target.value,
+    });
+
+  const inputClass = "border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+
   return (
-    <>
-      {resume.education.map((edu, index) => (
-        <div key={index} className="education-box">
-          <h2>Education: </h2>
+    <div className="bg-white rounded-xl p-6 m-4 shadow-sm border border-gray-100">
 
-          <label htmlFor="Course">
-            <h4>Institution Name</h4>
-          </label>
-          <input
-            name="Course"
-            type="text"
-            placeholder="Institution name"
-            value={edu.educationPlace}
-            onChange={(e) =>
-              dispatch({
-                type: "update_Array_Item",
-                section: "education",
-                index,
-                field: "educationPlace",
-                value: e.target.value,
-              })
-            }
-          ></input>
+      {/* Header */}
+      <div className="mb-6">
+        <h2 className="text-lg font-semibold text-gray-900">Education</h2>
+        <p className="text-sm text-gray-500 mt-0.5">Add your academic background</p>
+      </div>
 
-          <label htmlFor="degree">
-            <h4>Degree</h4>
-          </label>
-          <input
-            name="degree"
-            type="text"
-            placeholder="Course"
-            value={edu.educationTitle}
-            onChange={(e) =>
-              dispatch({
-                type: "update_Array_Item",
-                section: "education",
-                index,
-                field: "educationTitle",
-                value: e.target.value,
-              })
-            }
-          ></input>
+      {/* Education Cards */}
+      <div className="flex flex-col gap-4">
+        {resume.education.map((edu, index) => (
+          <div key={index} className="border border-gray-200 rounded-xl p-4 flex flex-col gap-4">
 
-          <label htmlFor="start">
-            <h4>Start Date</h4>
-          </label>
-          <input
-            name="start"
-            type="month"
-            value={edu.educationStart}
-            onChange={(e) =>
-              dispatch({
-                type: "update_Array_Item",
-                section: "education",
-                index,
-                field: "educationStart",
-                value: e.target.value,
-              })
-            }
-          ></input>
+            {/* Card Header */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <GraduationCap size={16} className="text-gray-400" />
+                <span className="text-sm font-medium text-gray-800">
+                  {edu.educationPlace || `Education ${index + 1}`}
+                </span>
+              </div>
+              <button
+                onClick={() => dispatch({ type: "remove_Item", section: "education", index })}
+                className="text-red-400 hover:text-red-500 transition-colors p-2 rounded-lg hover:bg-red-100"
+              >
+                <Trash2 size={16} />
+              </button>
+            </div>
 
-          <label htmlFor="end">
-            <h4>End Date</h4>
-          </label>
-          <input
-            name="end"
-            type="month"
-            value={edu.educationEnd}
-            onChange={(e) =>
-              dispatch({
-                type: "update_Array_Item",
-                section: "education",
-                index,
-                field: "educationEnd",
-                value: e.target.value,
-              })
-            }
-          ></input>
+            {/* Fields */}
+            <div className="flex flex-col gap-3">
 
-          <button
-            className="rem-exp"
-            onClick={() =>
-              dispatch({
-                type: "remove_Item",
-                section: "education",
-                index,
-              })
-            }
-          >
-            Remove Education
-          </button>
+              {/* Institution */}
+              <div className="flex flex-col gap-1">
+                <label className="text-[13px] font-medium text-gray-800">Institution Name</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Delhi University"
+                  value={edu.educationPlace}
+                  onChange={handleChange(index, "educationPlace")}
+                  className={inputClass}
+                />
+              </div>
 
-          <button
-            className="add-exp"
-            onClick={() =>
-              dispatch({
-                type: "add_Item",
-                section: "education",
-                newItem: {
-                  educationPlace: "",
-                  educationTitle: "",
-                  educationStart: "",
-                  educationEnd: "",
-                },
-              })
-            }
-          >
-            Add New Education
-          </button>
-        </div>
-      ))}
-    </>
+              {/* Degree */}
+              <div className="flex flex-col gap-1">
+                <label className="text-[13px] font-medium text-gray-800">Degree / Qualification</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Bachelor of Computer Applications"
+                  value={edu.educationTitle}
+                  onChange={handleChange(index, "educationTitle")}
+                  className={inputClass}
+                />
+              </div>
+
+              {/* Start & End Date */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="flex flex-col gap-1">
+                  <label className="text-[13px] font-medium text-gray-800">Start Date</label>
+                  <input
+                    type="month"
+                    value={edu.educationStart}
+                    onChange={handleChange(index, "educationStart")}
+                    className={inputClass}
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="text-[13px] font-medium text-gray-800">End Date</label>
+                  <input
+                    type="month"
+                    value={edu.educationEnd}
+                    onChange={handleChange(index, "educationEnd")}
+                    className={inputClass}
+                  />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Add Button */}
+      <button
+        onClick={() =>
+          dispatch({
+            type: "add_Item",
+            section: "education",
+            newItem: {
+              educationPlace: "",
+              educationTitle: "",
+              educationStart: "",
+              educationEnd: "",
+            },
+          })
+        }
+        className="mt-4 w-full flex items-center justify-center gap-2 border border-dashed border-gray-300 rounded-xl py-3 text-sm text-gray-500 hover:border-blue-400 hover:text-blue-500 hover:bg-blue-50 transition-all"
+      >
+        <Plus size={16} />
+        Add Education
+      </button>
+
+    </div>
   );
 }
 

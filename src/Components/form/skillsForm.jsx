@@ -1,52 +1,99 @@
 import { useResume } from "../../context/ResumeContext";
-import "./experience.css";
+import { Award, Trash2, Plus, X } from "lucide-react";
+
 function SkillsForm() {
   const { resume, dispatch } = useResume();
 
+  const inputClass = "border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
+
   return (
-    <>
-      <h2>Skills </h2>
+    <div className="bg-white rounded-xl p-6 m-4 shadow-sm border border-gray-100">
 
-      {resume.skills.map((skl, index) => (
-        <div key={index} className="skills-div">
-          <label htmlFor="skill">
-            <h4>Skill Category Name</h4>
-          </label>
-          <input
-            placeholder="Front Technologies"
-            value={skl.skillType}
-            onChange={(e) =>
-              dispatch({
-                type: "update_Array_Item",
-                section: "skills",
-                index,
-                field: "skillType",
-                value: e.target.value,
-              })
-            }
-          />
+      {/* Header */}
+      <div className="mb-6">
+        <h2 className="text-lg font-semibold text-gray-900">Skills</h2>
+        <p className="text-sm text-gray-500 mt-0.5">Add your technical and soft skills by category</p>
+      </div>
 
-          {skl.skillsList.map((point, indexPoint) => (
-            <div className="bullet" key={indexPoint}>
-              <label htmlFor="skills">
-                <h4>Skills</h4>
-              </label>
+      <div className="flex flex-col gap-4">
+        {resume.skills.map((skl, index) => (
+          <div key={index} className="border border-gray-200 rounded-xl p-4 flex flex-col gap-4">
+
+            {/* Card Header */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Award size={16} className="text-gray-400" />
+                <span className="text-sm font-medium text-gray-700">
+                  {skl.skillType || `Category ${index + 1}`}
+                </span>
+              </div>
+              <button
+                disabled={resume.skills.length === 1}
+                onClick={() => dispatch({ type: "remove_Item", section: "skills", index })}
+                className="text-gray-400 hover:text-red-500 transition-colors p-1 rounded-lg hover:bg-red-50 disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <Trash2 size={15} />
+              </button>
+            </div>
+
+            {/* Category Name */}
+            <div className="flex flex-col gap-1">
+              <label className="text-[13px] font-medium text-gray-800">Category Name</label>
               <input
-                name="skills"
-                key={indexPoint}
-                placeholder="HTML5, CSS3, JavaScript (ES6+), React.js, Responsive Design, Flexbox, CSS Grid"
-                value={point}
+                type="text"
+                placeholder="e.g. Frontend, Backend, Tools"
+                value={skl.skillType}
                 onChange={(e) =>
                   dispatch({
-                    type: "update_Nested_Array",
+                    type: "update_Array_Item",
                     section: "skills",
-                    field: "skillsList",
                     index,
-                    subIndex: indexPoint,
+                    field: "skillType",
                     value: e.target.value,
                   })
                 }
+                className={inputClass}
               />
+            </div>
+
+            {/* Skills List */}
+            <div className="flex flex-col gap-2">
+              <label className="text-[13px] font-medium text-gray-800">Skills</label>
+              {skl.skillsList.map((point, indexPoint) => (
+                <div key={indexPoint} className="flex items-center gap-2">
+                  <input
+                    placeholder="e.g. React.js, Tailwind CSS"
+                    value={point}
+                    onChange={(e) =>
+                      dispatch({
+                        type: "update_Nested_Array",
+                        section: "skills",
+                        field: "skillsList",
+                        index,
+                        subIndex: indexPoint,
+                        value: e.target.value,
+                      })
+                    }
+                    className={`${inputClass} flex-1`}
+                  />
+                  <button
+                    onClick={() =>
+                      dispatch({
+                        type: "remove_Bullet",
+                        section: "skills",
+                        index,
+                        subIndex: indexPoint,
+                        field: "skillsList",
+                      })
+                    }
+                    className="text-gray-400 hover:text-red-500 transition-colors p-1 rounded-lg hover:bg-red-50"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+              ))}
+
+              {/* Add skill bullet */}
               <button
                 onClick={() =>
                   dispatch({
@@ -56,59 +103,33 @@ function SkillsForm() {
                     field: "skillsList",
                   })
                 }
+                className="flex items-center gap-1.5 text-xs text-blue-500 hover:text-blue-600 mt-1 w-fit"
               >
-                {" "}
-                Add Bullet Points
-              </button>
-
-              <button
-                onClick={() =>
-                  dispatch({
-                    type: "remove_Bullet",
-                    section: "skills",
-                    index,
-                    subIndex: indexPoint,
-                    field: "skillsList",
-                  })
-                }
-              >
-                Remove Bullet
+                <Plus size={13} />
+                Add skill
               </button>
             </div>
-          ))}
 
-          <button
-            className="rem-exp"
-            disabled={resume.skills.length === 1}
-            onClick={() =>
-              dispatch({
-                type: "remove_Item",
-                section: "skills",
-                index,
-              })
-            }
-          >
-            Remove Skill
-          </button>
+          </div>
+        ))}
+      </div>
 
-          <button
-            className="add-exp"
-            onClick={() =>
-              dispatch({
-                type: "add_Item",
-                section: "skills",
-                newItem: {
-                  skillType: "",
-                  skillsList: [""],
-                },
-              })
-            }
-          >
-            Add more skill
-          </button>
-        </div>
-      ))}
-    </>
+      {/* Add Category Button */}
+      <button
+        onClick={() =>
+          dispatch({
+            type: "add_Item",
+            section: "skills",
+            newItem: { skillType: "", skillsList: [""] },
+          })
+        }
+        className="mt-4 w-full flex items-center justify-center gap-2 border border-dashed border-gray-300 rounded-xl py-3 text-sm text-gray-500 hover:border-blue-400 hover:text-blue-500 hover:bg-blue-50 transition-all"
+      >
+        <Plus size={16} />
+        Add Category
+      </button>
+
+    </div>
   );
 }
 
