@@ -2,7 +2,7 @@ import logo from "../../assets/logo.png"
 import {Eye} from "lucide-react"
 import { useNavigate } from "react-router-dom";
 
-export default function FormNav(){
+export default function FormNav({onDownload}){
     const navigate = useNavigate();
     return(
         <>
@@ -17,7 +17,9 @@ export default function FormNav(){
                     <button>Preview</button>
                 </div>
                 
-                <button className="ml-1 text-[0.8rem]  bg-(--color-primary) text-white hover:bg-blue-100 hover:text-blue-900 px-4 hover:border-blue-500 font-inter border inline-flex items-center  p-2 rounded-2xl lg:text-sm">Download</button>
+                <button
+                onClick={onDownload}
+                className="ml-1 text-[0.8rem]  bg-(--color-primary) text-white hover:bg-blue-100 hover:text-blue-900 px-4 hover:border-blue-500 font-inter border inline-flex items-center  p-2 rounded-2xl lg:text-sm">Download</button>
             </div>
         </div>
         </>

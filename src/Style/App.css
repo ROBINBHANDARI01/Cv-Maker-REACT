@@ -63,36 +63,53 @@ section{
 }
 
 
-/*------ Sving resume in pdf ------*/
+/*------ Saving resume in pdf ------*/
 @page {
   size: A4;
-  margin: auto;
+  margin: 0;
+  padding: 0;
 }
 
 @media print {
   body {
     margin: 0;
     padding: 0;
+    background: white;
   }
 
-  /* Hide everything */
+  /* Hide everything by default */
   body * {
     visibility: hidden;
   }
 
-  /* Show only CV preview */
-  .Resume-Section,
-  .Resume-Section *{
-    top: 15px;
+  /* Show only the print ref content and its children */
+  [role="presentation"],
+  [role="presentation"] * {
     visibility: visible;
   }
 
-  .Resume-Section {
+  /* Ensure the template renders full page */
+  [role="presentation"] {
     position: absolute;
-    margin: 0;
-    box-sizing: border-box;
+    left: 0;
+    top: 0;
     width: 210mm;
-    line-height: 1em;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+}
+
+/* Print styles for template content */
+@media print {
+  .bg-white, .text-gray-900 {
+    color: #1a1a1a;
+    background: white;
+  }
+  
+  .bg-\[\#1e3a5f\] {
+    background: #1e3a5f !important;
   }
 }
 

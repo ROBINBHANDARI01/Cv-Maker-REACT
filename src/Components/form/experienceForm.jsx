@@ -39,9 +39,9 @@ function ExperienceForm() {
               </div>
               <button
                 onClick={() => dispatch({ type: "remove_Item", section: "experience", index })}
-                className="text-gray-400 hover:text-red-500 transition-colors p-1 rounded-lg hover:bg-red-50"
+                className="text-red-400 hover:text-red-500 transition-colors p-2 rounded-lg hover:bg-red-100"
               >
-                <Trash2 size={15} />
+                <Trash2 size={16} />
               </button>
             </div>
 

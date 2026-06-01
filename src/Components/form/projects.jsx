@@ -39,9 +39,9 @@ function Projects() {
               <button
                 disabled={resume.projects.length === 1}
                 onClick={() => dispatch({ type: "remove_Item", section: "projects", index })}
-                className="text-gray-400 hover:text-red-500 transition-colors p-1 rounded-lg hover:bg-red-50 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="text-red-400 hover:text-red-500 transition-colors p-2 rounded-lg hover:bg-red-100 disabled:opacity-30 disabled:cursor-not-allowed"
               >
-                <Trash2 size={15} />
+                <Trash2 size={16} />
               </button>
             </div>
 
