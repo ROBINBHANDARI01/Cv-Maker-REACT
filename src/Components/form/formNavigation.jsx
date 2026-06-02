@@ -107,7 +107,7 @@ function Navbar() {
         
             <button
     onClick={() => setShowMore(prev => !prev)}
-    className={`w-full p-2 flex flex-col items-center gap-1 rounded-lg text-gray-600 hover:bg-blue-50 transition-colors border-l-2 border-transparent z-10 ${showMore ? activeClass : ""}`}
+    className={`w-full p-2 flex flex-col items-center gap-1 rounded-lg text-red-600 hover:bg-blue-50 transition-colors border-l-2 border-transparent z-10 ${showMore ? activeClass : ""}`}
   >
     <div className="flex items-center flex-col md:flex-row md:gap-4">
       <span className="text-blue-500 shrink-0 bg-blue-50 p-2 rounded-lg">
@@ -123,7 +123,7 @@ function Navbar() {
        
 
         {showMore && (
-          <div className="absolute top-full right-2 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg z-50 min-w-25  p-1 flex flex-col gap-1">
+          <div className="absolute top-full right-2 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg  z-50 min-w-25  p-1 flex flex-col gap-1">
             {moreLinks.map((link) => (
               <NavLink
                 key={link.to}
