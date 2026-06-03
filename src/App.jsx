@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
+import TemplateGallery from "./Components/Template/templatesGallery";
 import Homepage from "./Components/home/homepage";
 import Register  from "./Components/Auth/register";
 import Dashboard from "./Components/Dashboard/dashboard";
@@ -21,7 +22,7 @@ function App() {
   <Route path="/" element={<Homepage />} />
   <Route path="/login" element={<Login />} />
   <Route path="/register" element={<Register />} />
-  
+  <Route path="/templateGallery" element={<TemplateGallery/>}/>
   <Route path="/dashboard" element={<Dashboard />}>
     <Route path="general" element={<GeneralForm />} />
     <Route path="about" element={<AboutForm />} />

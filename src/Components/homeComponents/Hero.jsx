@@ -101,9 +101,11 @@ export default function Hero() {
                   >
                     Create Resume — It's Free
                   </Link>
-                  <button className=" border-2 text-blue-700 border-blue-500/70  font-semibold   px-6 py-3 rounded-2xl  bg-white/80 hover:border-blue-600">
+                  <Link
+                    to={"/templateGallery"}
+                    className=" border-2 text-blue-700 border-blue-500/70  font-semibold   px-6 py-3 rounded-2xl  bg-white/80 hover:border-blue-600">
                     View Templates
-                  </button>
+                  </Link>
                 </div>
               </div>
 

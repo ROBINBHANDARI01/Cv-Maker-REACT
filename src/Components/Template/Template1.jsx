@@ -110,8 +110,8 @@ function Template1() {
      <div className="flex-1 px-10 py-10 flex flex-col gap-8">
         {/* Summary */}
         {resume.about.aboutYou && (
-          <section>
-            <h2 className="text-[16px] font-bold uppercase tracking-[2px] text-[#1e3a5f] border-b border-[#1e3a5f] pb-1 mb-2">
+          <section className="flex flex-col">
+            <h2 className="text-[16px] font-bold  uppercase tracking-[2px] text-[#1e3a5f] border-b border-[#1e3a5f] pb-1 mb-2">
               Summary
             </h2>
             <p className="text-[13px] text-gray-600 leading-relaxed">
@@ -122,7 +122,7 @@ function Template1() {
 
         {/* Experience */}
         {resume.experience.length > 0 && (
-          <section>
+          <section className="flex flex-col">
             <h2 className="text-[16px] font-bold uppercase tracking-[1.5px] text-[#1e3a5f] border-b border-[#1e3a5f] pb-1 mb-2">
               Experience
             </h2>
@@ -153,7 +153,7 @@ function Template1() {
 
         {/* Projects */}
         {resume.projects.length > 0 && (
-          <section>
+          <section className="flex flex-col">
             <h2 className="text-[16px] font-bold uppercase tracking-[1.5px] text-[#1e3a5f] border-b border-[#1e3a5f] pb-1 mb-2">
               Projects
             </h2>

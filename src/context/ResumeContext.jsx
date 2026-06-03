@@ -5,6 +5,7 @@ const ResumeContext = createContext();
 export function ResumeProvider({ children }) {
 
     const initialState={
+        templateId: 1,
         general: {
             firstName: "Robin Singh",
             lastName:"Bhandari",
@@ -58,6 +59,13 @@ export function ResumeProvider({ children }) {
 
     function resumeReducer(state, action){
         switch(action.type){
+
+
+            case "set_Teplate":
+                return{
+                    ...state,
+                    templateId: action.payload
+                }
 
             //---- Update simple field
 
