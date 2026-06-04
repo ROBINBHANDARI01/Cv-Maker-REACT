@@ -1,5 +1,7 @@
+import { useNavigate, Link } from "react-router-dom";
+import star from "../../assets/slider/star.png"
 import temp1 from "../../assets/slider/temp1.jpg";
-import temp2 from "../../assets/slider/temp2.jpg";
+import temp2 from "../../assets/slider/temp2.png";
 import temp3 from "../../assets/slider/robin.jpg";
 import temp4 from "../../assets/slider/temp3.jpg";
 
@@ -82,6 +84,34 @@ export default function TemplateSlider() {
     </svg>
   </div>
 </div>
+     <div className=" md:py-5 flex flex-col items-center justify-center text-center">
+      {/* Icon */}
+      <div>
+        <img
+          src={star}
+          alt="Star"
+          className="w-9 h-9"
+        />
+      </div>
+
+      {/* Heading */}
+      <h2 className="mt-4 text-2xl font-bold text-gray-900">
+          Not sure which one to choose?
+        </h2>
+
+
+      {/* Description */}
+       <p className="mt-2 text-gray-500">
+          All templates are ATS-friendly and fully customizable.
+        </p>
+
+      {/* Button */}
+        <Link
+                    to={"/templateGallery"}
+      className="mt-6 px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 shadow-sm">
+        View All Templates →
+      </Link>
+    </div>
     </>
   );
 }

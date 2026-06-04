@@ -17,7 +17,7 @@ export default function TemplateGallery(){
             <span>
                  <Link
                     to="/dashboard"
-                    className="bg-(--color-primary) hover:opacity-90 border-2 border-white/70  px-6 py-3 rounded-2xl text-white font-semibold shadow-md"
+               className="mt-6 px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 shadow-sm"
                   >
                     Check it out !!
                   </Link></span>

@@ -323,8 +323,7 @@ export default function Steps() {
             <p
               className="
               text-slate-500
-              leading-6
-            "
+              leading-6"
             >
              Download your resume in PDF format and apply with confidence.
             </p>

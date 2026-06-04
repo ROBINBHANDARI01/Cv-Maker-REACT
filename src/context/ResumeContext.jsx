@@ -61,7 +61,7 @@ export function ResumeProvider({ children }) {
         switch(action.type){
 
 
-            case "set_Teplate":
+            case "set_Template":
                 return{
                     ...state,
                     templateId: action.payload
