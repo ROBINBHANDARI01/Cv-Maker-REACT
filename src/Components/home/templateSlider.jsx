@@ -10,7 +10,7 @@ import RenderTemplate from "../home/renderTemplate";
 export default function TemplateSlider() {
   return (
     <>
-      <div className="relative overflow-hidden py-10 mt-7 bg-linear-to-b z-10 from-white via-blue-50 to-[#eef4ff]">
+      <div className=" relative pb-10 md:pb-15 overflow-hidden py-5 mt-10 bg-linear-to-b z-10 from-white via-blue-50 to-[#eef4ff]">
 
   {/* Background Blobs */}
   <div className="absolute  -left-32 h-87.5 w-87.5 rounded-full bg-blue-300/30 blur-3xl"></div>
@@ -29,7 +29,7 @@ export default function TemplateSlider() {
     ))}
   </div>
 
-  <div className="absolute right-10 top-60 grid grid-cols-5 gap-2 opacity-20">
+  <div className="absolute  right-10 top-60 grid grid-cols-5 gap-2 opacity-20">
     {[...Array(15)].map((_, i) => (
       <span
         key={i}
@@ -39,7 +39,7 @@ export default function TemplateSlider() {
   </div>
 
   {/* Main Content */}
-  <div className="relative z-10 max-w-7xl mx-auto px-3">
+  <div className="relative  z-10 max-w-7xl mx-auto px-3">
 
     {/* Badge */}
     <div className="text-xs md:text-sm w-fit mx-auto bg-blue-100 text-blue-600 px-4 py-2 rounded-full font-semibold mb-6 shadow-sm">
@@ -64,7 +64,7 @@ export default function TemplateSlider() {
     </p>
 
     {/* Template Section */}
-    <div className="mt-6 overflow-x-auto pb-6">
+    <div className="mt-6 custom-scrollbar overflow-x-auto pb-2">
       <RenderTemplate />
     </div>
   </div>
@@ -84,7 +84,7 @@ export default function TemplateSlider() {
     </svg>
   </div>
 </div>
-     <div className=" md:py-5 flex flex-col items-center justify-center text-center">
+     <div className="mb-15 md:mb-8 md:py-5 flex flex-col items-center justify-center text-center">
       {/* Icon */}
       <div>
         <img
@@ -95,7 +95,7 @@ export default function TemplateSlider() {
       </div>
 
       {/* Heading */}
-      <h2 className="mt-4 text-2xl font-bold text-gray-900">
+      <h2 className="mt-4  text-2xl font-bold text-gray-900">
           Not sure which one to choose?
         </h2>
 

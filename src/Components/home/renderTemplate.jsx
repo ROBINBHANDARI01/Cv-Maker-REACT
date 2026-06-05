@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Heart, Eye } from "lucide-react";
+import Template1 from "../Template/Template1";
 
 import robin from "../../assets/slider/robin.jpg";
 import brenda from "../../assets/slider/temp1.jpg";
 import millie from "../../assets/slider/temp2.png";
 import walo from "../../assets/slider/temp3.jpg";
+
+
 
 const templates = [
   {
@@ -32,14 +35,15 @@ const templates = [
     image: walo,
   },
 ];
+///////////////////////////////////////////////////
 
-function ResumeCard({ name, category, image }) {
+function ResumeCard({ id, name, category, image, onPreview }) {
   return (
     <div
       className="
       min-w-85
-md:min-w-72.5
-lg:min-w-85
+      md:min-w-72.5
+      lg:min-w-85
       bg-white
       rounded-3xl
       shadow-md
@@ -53,8 +57,8 @@ lg:min-w-85
       border-gray-100
       "
     >
-      {/* Preview Image */}
-      <div className="relative flex justify-center m-4 shadow-md overflow-hidden">
+      {/* Preview Image Container */}
+      <div className="relative flex justify-center m-4 shadow-md overflow-hidden rounded-2xl">
         <img
           src={image}
           alt={name}
@@ -67,7 +71,7 @@ lg:min-w-85
           "
         />
 
-        {/* Hover Overlay */}
+        {/* 1. HOVER OVERLAY (Only interactive on Cursor screens) */}
         <div
           className="
           absolute inset-0
@@ -77,17 +81,27 @@ lg:min-w-85
           transition-all
           duration-300
           flex
+          flex-col
+          gap-3
           items-center
           justify-center
+          px-4
+          
+          /* Hide completely on touch devices, show on cursor devices */
+          pointer-events-none pointer-coarse:hidden
+          pointer-fine:group-hover:pointer-events-auto
           "
         >
           <button
+            onClick={onPreview}
             className="
+            w-full
+            max-w-45
             flex
             items-center
+            justify-center
             gap-2
             bg-white
-            px-5
             py-3
             rounded-xl
             font-medium
@@ -99,18 +113,35 @@ lg:min-w-85
             <Eye size={18} />
             Preview
           </button>
+
+          <button
+            className="
+            w-full
+            max-w-45
+            flex
+            items-center
+            justify-center
+            bg-blue-600
+            text-white
+            py-3
+            rounded-xl
+            font-semibold
+            shadow-lg
+            hover:scale-105
+            transition
+            "
+          >
+            Use Template
+          </button>
         </div>
       </div>
 
       {/* Content */}
-      <div className="px-5 py-2">
+      <div className="px-5 pb-5 pt-2">
         {/* Header */}
         <div className="flex items-start justify-between">
           <div>
-            <h3 className="font-bold text-lg text-gray-900">
-              {name}
-            </h3>
-
+            <h3 className="font-bold text-lg text-gray-900">{name}</h3>
             <p className="capitalize text-gray-500 text-sm">
               {category} Resume
             </p>
@@ -136,10 +167,20 @@ lg:min-w-85
           </button>
         </div>
 
-
-        {/* Actions */}
-        <div className="flex gap-3 mt-3 md:mt-5">
+        {/* 2. BOTTOM ACTIONS (Only visible on Touch screens) */}
+        <div 
+          className="
+          flex 
+          gap-3 
+          mt-4 
+          
+          /* Hide on cursor screens, show on touch screens */
+          pointer-fine:hidden 
+          pointer-coarse:flex
+          "
+        >
           <button
+            onClick={onPreview}
             className="
             flex-1
             py-3
@@ -175,8 +216,29 @@ lg:min-w-85
   );
 }
 
+
+////////
+
+function PreviewModal({ children, onClose }) {
+  return (
+    <div className="fixed inset-0 z-50 bg-black/70">
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-white text-2xl"
+      >
+        ✕
+      </button>
+
+      <div className="h-full overflow-auto flex justify-center p-8">
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function RenderTemplate() {
   const [filter, setFilter] = useState("all");
+  const [previewTemplate , setPreviewTemplate] = useState(null);
 
   const categories = [
     "all",
@@ -211,6 +273,7 @@ export default function RenderTemplate() {
             key={cat}
             onClick={() => setFilter(cat)}
             className={`
+              
               px-5 py-2
               rounded-full
               whitespace-nowrap
@@ -243,15 +306,15 @@ export default function RenderTemplate() {
           pb-6
           px-2
           [scrollbar-width:none]
+          
           [&::-webkit-scrollbar]:hidden
           "
         >
           {filtered.map((template) => (
             <ResumeCard
               key={template.id}
-              name={template.name}
-              category={template.category}
-              image={template.image}
+              {...template}
+  onPreview={() => setPreviewTemplate(template.id)}
             />
           ))}
         </div>
@@ -279,6 +342,42 @@ export default function RenderTemplate() {
           View All Templates →
         </button>
       </div>
+
+          
+
+          {/* I WILL ADD THE CODE TO RENDER THE ACTAL TEMPLATES WHEN I ADD MORE TEMPLATES:
+          
+          -----------------------------------------------------
+                     {previewTemplate && (
+                     <PreviewModal
+                        onClose={() => setPreviewTemplate(null)}
+                      >
+                        {previewTemplate === 1 && <Template1 />}
+                        {previewTemplate === 2 && <Template2 />}
+                        {previewTemplate === 3 && <Template3 />}
+                        {previewTemplate === 4 && <Template4 />}
+                      </PreviewModal>
+                    )}
+          -----------------------------------------------------
+          
+          */}
+
+      {previewTemplate && (
+      <PreviewModal
+        onClose={() => setPreviewTemplate(null)}
+      >
+        <img
+          src={
+            templates.find(
+              (t) => t.id === previewTemplate
+            )?.image
+          }
+          alt="Template Preview"
+          className="max-w-fit h-auto scale-69 md:scale-95"
+        />
+      </PreviewModal>
+    )}
+
     </section>
   );
 }
