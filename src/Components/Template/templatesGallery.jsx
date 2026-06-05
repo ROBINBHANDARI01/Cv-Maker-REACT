@@ -7,7 +7,7 @@ export default function TemplateGallery(){
     return(
         <>
         <HomeNav/>
-        <div className="flex flex-col items-center mt-30 px-20 text-center justify-center">
+        <div className="flex flex-col items-center mt-30 px-10 md:px-100 text-center justify-center">
             <img
             src={comming}
             className="h-50"

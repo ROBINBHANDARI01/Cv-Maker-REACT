@@ -116,7 +116,7 @@ export default function Steps() {
            w-15
 
             rounded-3xl
-            bg-white/70
+            bg-white/80
             backdrop-blur-xl
             border border-white/40
             shadow-lg
@@ -154,7 +154,7 @@ export default function Steps() {
            h-15
            w-15
             rounded-3xl
-            bg-white/70
+            bg-white/80
             backdrop-blur-xl
             border border-white/40
             shadow-lg
@@ -192,7 +192,7 @@ export default function Steps() {
            h-15
            w-15
             rounded-3xl
-            bg-white/70
+            bg-white/80
             backdrop-blur-xl
             border border-white/40
             shadow-lg
@@ -220,10 +220,11 @@ export default function Steps() {
             {/* Card 1 */}
             <div className="
     w-full          
-    bg-white/70
+    bg-white/10
     backdrop-blur-sm
-    hover:bg-white/90
-    border border-white/40
+    hover:bg-white
+    border-2
+     border-white/60
     rounded-3xl
     p-4
     shadow-lg
@@ -247,7 +248,7 @@ export default function Steps() {
           
             <p
               className="
-              text-slate-500
+              text-slate-700
               leading-6
             "
             >
@@ -258,10 +259,11 @@ export default function Steps() {
             {/* Card 2 */}
             <div className="
     w-full          
-    bg-white/80
+    bg-white/10
     backdrop-blur-sm
     hover:bg-white/90
-    border border-white/40
+    border-2
+     border-white/70
     rounded-3xl
     p-4
     shadow-lg
@@ -285,20 +287,22 @@ export default function Steps() {
           
             <p
               className="
-              text-slate-500
+              text-slate-700
               leading-6
             "
             >
-            Add your information quickly and easily using our simple and intuitive interface.
+            Add your information quickly and easily using our intuitive interface.
             </p>
               </div>
             {/* Card 3 */}
              <div className="
     w-full          
-    bg-white/75
+    bg-white/10
     backdrop-blur-sm
     hover:bg-white/90
-    border border-white/40
+    border-2
+    border-white
+     md:border-white/70
     rounded-3xl
     p-4
     shadow-lg
@@ -322,7 +326,7 @@ export default function Steps() {
           
             <p
               className="
-              text-slate-500
+              text-slate-600
               leading-6"
             >
              Download your resume in PDF format and apply with confidence.

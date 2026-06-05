@@ -30,7 +30,7 @@ function Navbar() {
   }, []);
 
   const navClass =
-  "p-2 flex-1 md:flex-none justify-center sm:justify-start min-w-0 flex flex-row items-center gap-3 rounded-lg text-gray-600 hover:bg-blue-50 transition-colors border-l-2 border-transparent"
+  "p-2 flex-1 md:flex-none justify-center sm:justify-start min-w-0 flex flex-row items-center gap-3 rounded-lg text-gray-600 hover:bg-blue-50 transition-colors border-l-2  border-transparent"
   const activeClass =
     "bg-blue-100 text-blue-900 font-medium border-l-2   group border-blue-500 ";
 
@@ -77,7 +77,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="flex md:flex-col  py-1 w-full md:p-4 gap-1">
+    <div className="flex md:flex-col py-1 w-full md:p-4 gap-1">
       {mainLinks.map((link) => (
         <NavLink
           key={link.to}

@@ -9,7 +9,7 @@ function Template1() {
       className="
     bg-white
     text-gray-900
-    w-198.5
+    w-198
     h-280.75
     mx-auto
     flex
