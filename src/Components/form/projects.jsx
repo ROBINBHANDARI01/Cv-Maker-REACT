@@ -16,11 +16,12 @@ function Projects() {
   const inputClass = "border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
 
   return (
-    <div className="bg-white rounded-xl p-6 m-4 shadow-sm border border-gray-100">
+
+    <div className="bg-white rounded-xl  m-4  max-h-[80vh] overflow-y-auto relative">
 
       {/* Header */}
-      <div className="mb-6">
-        <h2 className="text-lg font-semibold text-gray-900">Projects</h2>
+      <div className="sticky top-0 z-10 bg-white pb-4 mb-2">
+        <h2 className="text-lg font-semibold text-gray-900 ">Projects</h2>
         <p className="text-sm text-gray-500 mt-0.5">Showcase your best work</p>
       </div>
 
@@ -38,6 +39,7 @@ function Projects() {
               </div>
               <button
                 disabled={resume.projects.length === 1}
+                type="button"
                 onClick={() => dispatch({ type: "remove_Item", section: "projects", index })}
                 className="text-red-400 hover:text-red-500 transition-colors p-2 rounded-lg hover:bg-red-100 disabled:opacity-30 disabled:cursor-not-allowed"
               >
@@ -53,7 +55,7 @@ function Projects() {
                 <input
                   type="text"
                   placeholder="e.g. Portfolio Website"
-                  value={proj.projectName}
+                  value={proj.projectName || ""}
                   onChange={handleChange(index, "projectName")}
                   className={inputClass}
                 />
@@ -65,7 +67,7 @@ function Projects() {
                 <textarea
                   rows={3}
                   placeholder="e.g. A personal portfolio built with Next.js and Tailwind CSS..."
-                  value={proj.projectDescription}
+                  value={proj.projectDescription || ""}
                   onChange={handleChange(index, "projectDescription")}
                   className={`${inputClass} resize-none`}
                 />
@@ -74,11 +76,11 @@ function Projects() {
               {/* Tech Stack / Additional Details */}
               <div className="flex flex-col gap-2">
                 <label className="text-[13px] font-medium text-gray-800">Technologies Used</label>
-                {proj.additionalDetails.map((details, dindex) => (
+                {proj.additionalDetails?.map((details, dindex) => (
                   <div key={dindex} className="flex items-center gap-2">
                     <input
                       placeholder="e.g. React, Node.js, MongoDB"
-                      value={details}
+                      value={details || ""}
                       onChange={(e) =>
                         dispatch({
                           type: "update_Nested_Array",
@@ -92,6 +94,7 @@ function Projects() {
                       className={`${inputClass} flex-1`}
                     />
                     <button
+                      type="button"
                       onClick={() =>
                         dispatch({
                           type: "remove_Bullet",
@@ -110,6 +113,7 @@ function Projects() {
 
                 {/* Add bullet */}
                 <button
+                  type="button"
                   onClick={() =>
                     dispatch({
                       type: "add_Bullet",
@@ -125,6 +129,30 @@ function Projects() {
                 </button>
               </div>
 
+              {/* Live URL */}
+              <div className="flex flex-col gap-1">
+                <label className="text-[13px] font-medium text-gray-800">Live URL</label>
+                <input
+                  type="url"
+                  placeholder="https://your-project.vercel.app"
+                  value={proj.liveUrl || ""}
+                  onChange={handleChange(index, "liveUrl")}
+                  className={inputClass}
+                />
+              </div>
+
+              {/* Github URL */}
+              <div className="flex flex-col gap-1">
+                <label className="text-[13px] font-medium text-gray-800">Github URL</label>
+                <input
+                  type="url"
+                  placeholder="https://github.com/username/repo"
+                  value={proj.githubUrl || ""}
+                  onChange={handleChange(index, "githubUrl")}
+                  className={inputClass}
+                />
+              </div>
+
             </div>
           </div>
         ))}
@@ -132,6 +160,7 @@ function Projects() {
 
       {/* Add Project Button */}
       <button
+        type="button"
         onClick={() =>
           dispatch({
             type: "add_Item",
@@ -140,6 +169,8 @@ function Projects() {
               projectName: "",
               projectDescription: "",
               additionalDetails: [""],
+              liveUrl: "",
+              githubUrl: "",
             },
           })
         }

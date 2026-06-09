@@ -94,15 +94,28 @@ function GeneralForm() {
         </div>
 
         {/* Contact / Links */}
-        <div className="flex flex-col gap-1">
-          <label className="text-sm font-medium text-gray-700">Contact Info</label>
+        <div className="flex justify-between gap-5 ">
+        <div className="flex flex-col w-full gap-1">
+          <label className="text-sm font-medium text-gray-700">Github</label>
           <textarea
-            placeholder="LinkedIn, GitHub, portfolio links..."
-            value={resume.general.contact}
-            onChange={handleChange("contact")}
-            rows={3}
+            placeholder="GitHub"
+            value={resume.general.github}
+            onChange={handleChange("github")}
+            rows={1}
+            className="border  border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+          />
+        </div>
+
+         <div className="flex flex-col w-full gap-1">
+          <label className="text-sm font-medium text-gray-700">LinkedIn</label>
+          <textarea
+            placeholder="LinkedIn"
+            value={resume.general.linkedIn}
+            onChange={handleChange("linkedIn")}
+            rows={1}
             className="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
           />
+        </div>
         </div>
 
       </div>

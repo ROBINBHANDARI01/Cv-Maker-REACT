@@ -7,16 +7,18 @@ function SkillsForm() {
   const inputClass = "border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent";
 
   return (
-    <div className="bg-white rounded-xl p-6 m-4 shadow-sm border border-gray-100">
+   
+    <div className="bg-white rounded-xl m-4 max-h-[80vh] overflow-y-auto relative">
 
       {/* Header */}
-      <div className="mb-6">
+     
+      <div className="sticky top-0 z-10 bg-white pb-4 mb-2">
         <h2 className="text-lg font-semibold text-gray-900">Skills</h2>
         <p className="text-sm text-gray-500 mt-0.5">Add your technical and soft skills by category</p>
       </div>
 
       <div className="flex flex-col gap-4">
-        {resume.skills.map((skl, index) => (
+        {resume?.skills?.map((skl, index) => (
           <div key={index} className="border border-gray-200 rounded-xl p-4 flex flex-col gap-4">
 
             {/* Card Header */}
@@ -28,6 +30,7 @@ function SkillsForm() {
                 </span>
               </div>
               <button
+                type="button"
                 disabled={resume.skills.length === 1}
                 onClick={() => dispatch({ type: "remove_Item", section: "skills", index })}
                 className="text-red-400 hover:text-red-500 transition-colors p-2 rounded-lg hover:bg-red-100 disabled:opacity-30 disabled:cursor-not-allowed"
@@ -42,7 +45,8 @@ function SkillsForm() {
               <input
                 type="text"
                 placeholder="e.g. Frontend, Backend, Tools"
-                value={skl.skillType}
+                /* BUG FIX 1: Added fallback empty string to prevent uncontrolled input warning */
+                value={skl.skillType || ""}
                 onChange={(e) =>
                   dispatch({
                     type: "update_Array_Item",
@@ -59,11 +63,12 @@ function SkillsForm() {
             {/* Skills List */}
             <div className="flex flex-col gap-2">
               <label className="text-[13px] font-medium text-gray-800">Skills</label>
-              {skl.skillsList.map((point, indexPoint) => (
+              {skl.skillsList?.map((point, indexPoint) => (
                 <div key={indexPoint} className="flex items-center gap-2">
                   <input
                     placeholder="e.g. React.js, Tailwind CSS"
-                    value={point}
+                    /* BUG FIX 1: Added fallback empty string */
+                    value={point || ""}
                     onChange={(e) =>
                       dispatch({
                         type: "update_Nested_Array",
@@ -77,6 +82,7 @@ function SkillsForm() {
                     className={`${inputClass} flex-1`}
                   />
                   <button
+                    type="button"
                     onClick={() =>
                       dispatch({
                         type: "remove_Bullet",
@@ -95,6 +101,7 @@ function SkillsForm() {
 
               {/* Add skill bullet */}
               <button
+                type="button"
                 onClick={() =>
                   dispatch({
                     type: "add_Bullet",
@@ -116,6 +123,7 @@ function SkillsForm() {
 
       {/* Add Category Button */}
       <button
+        type="button"
         onClick={() =>
           dispatch({
             type: "add_Item",

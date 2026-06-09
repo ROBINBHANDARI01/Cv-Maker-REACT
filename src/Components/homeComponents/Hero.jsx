@@ -10,7 +10,7 @@ export default function Hero() {
   
   return (
     <>
-<div className="relative overflow-hidden min-h-[95vh] bg-[url('/resMobile.svg')] md:bg-none bg-cover">
+<div className="relative overflow-hidden min-h-fit pb-10 bg-[url('/resMobile.svg')] md:bg-none bg-cover">
 
   {/* Static overlay SVG - CSS bg is fine here */}
   <div className="absolute inset-0 md:bg-[url('/res.svg')] bg-cover opacity-50" />
@@ -72,7 +72,7 @@ export default function Hero() {
           </svg>
         </div>
 
-        <div className="gap-5 h-auto lg:h-[86vh] flex flex-col md:flex-row items-center lg:overflow-hidden justify-between px-5  lg:px-45 py-6">
+        <div className="gap-5 h-auto lg:h-[86vh] flex flex-col md:flex-row items-center lg:overflow-hidden justify-between px-5 md:px-10  lg:px-40 py-6">
           {/* MAIN CONTENT CONTAINER */}
           <div className="flex z-10 flex-col items-center lg:items-start self-start lg:pt-10 text-center lg:text-left max-w-xl w-full">
             <div className="text-[.7rem] md:text-[.80rem]  bg-white text-(--color-primary-dark) px-3 py-1.5 rounded-full font-semibold shadow-sm mb-6 flex items-center gap-2">
@@ -94,7 +94,7 @@ export default function Hero() {
 
             {/* MOBILE/TABLET IMAGE SECTION (Hidden on lg screens) */}
            
-                <div className="flex flex-col md:flex-row gap-4 mt-6">
+                <div className="flex mb-10 flex-col md:flex-row gap-4 mt-6">
                   <Link
                     to="/dashboard"
                     className="bg-(--color-primary) hover:opacity-90 border-2 border-white/70  px-6 py-3 rounded-2xl text-white font-semibold shadow-md"
@@ -127,7 +127,7 @@ export default function Hero() {
                   <img
                   alt="Resume3"
                     src={temp18}
-                    className="absolute bottom-0 md:-rotate-3 rounded-xl left-1/2 bg-white/30 -translate-x-1/2 h-[130%] z-10  backdrop-blur-xs border-2 md:shadow-blue-300 shadow-2xl border-white/70 p-6"
+                    className="absolute bottom-0 md:-rotate-3 rounded-xl left-1/2 bg-white/30 -translate-x-1/2  md:h-[130%] z-10  backdrop-blur-xs border-2 md:shadow-blue-300 shadow-2xl border-white/70 p-6"
                   />
                 </div>
               </div>
