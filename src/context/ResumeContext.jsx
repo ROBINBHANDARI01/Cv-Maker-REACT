@@ -2,6 +2,15 @@ import { act, createContext, useContext, useReducer } from "react";
 
 
 const ResumeContext = createContext();
+
+function getSaveState(initialState){
+    try{
+        const saved = localStorage.getItem('resume_draft');
+        return saved ? JSON.parse(saved) : initialState;
+    }catch{
+        return initialState;
+    }
+}
 export function ResumeProvider({ children }) {
 
     const initialState={
@@ -13,7 +22,8 @@ export function ResumeProvider({ children }) {
             address: "Sarai Faridabad , Haryana , India",
             mobile: "+91 7417629458",
             email: "robinbhandari202@gmail.com",
-            contact: "LinkedIn: linkedin.com/in/robin-bhandari-02120428a    |   GitHub: github.com/ROBINBHANDARI01",
+            github: "github.com/ROBINBHANDARI01",
+            linkedIn:"linkedin.com/in/robin-bhandari-02120428a"
         },
 
         about: {
@@ -22,11 +32,11 @@ export function ResumeProvider({ children }) {
 
         experience: [
             {
-                companyName: "xyz Company",
-                role: "Xyz",
-                start: "",
+                companyName: "Isro",
+                role: "Satellite Data Processing",
+                start: "2020/02",
                 end: "",
-                description: "The description about your job."
+                description: " Developing algorithms and software to decode, analyze, and manage the vast amounts of telemetry data and imagery beamed back from space. Just kidding this is juts a dummy placeholder i wish though."
             },
         ],
 
@@ -40,18 +50,20 @@ export function ResumeProvider({ children }) {
 
         projects: [
             {
-                projectName: "Weather Forecast Webpage",
+                projectName: "CV Maker Web Application",
                 projectDescription: "This is the first project in which i have used a restAPI",
-                additionalDetails: ["Html ,css, js ,restAPI"]
+                additionalDetails: ["React, Vite, Context API, React Router"],
+                liveUrl: "cv-maker-react-vert.vercel.app",
+                githubUrl: "https://github.com/ROBINBHANDARI01/Cv-Maker-REACT",
             }
         ],
 
         education:[
             {
-                educationPlace:"",
-                educationTitle:"",
-                educationStart:"",
-                educationEnd:""
+                educationPlace:"Graphic Era Hill University",
+                educationTitle:"Bachlor's in Computer Application",
+                educationStart:"2022/04",
+                educationEnd:"2025/04"
             }
         ],
 
@@ -60,7 +72,7 @@ export function ResumeProvider({ children }) {
     function resumeReducer(state, action){
         switch(action.type){
 
-
+            //----- Template 
             case "set_Template":
                 return{
                     ...state,
@@ -158,7 +170,7 @@ export function ResumeProvider({ children }) {
         }
     }
 
-    const [resume, dispatch] = useReducer(resumeReducer,initialState);
+    const [resume, dispatch] = useReducer(resumeReducer,getSaveState(initialState));
 
     
 

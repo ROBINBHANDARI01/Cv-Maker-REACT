@@ -7,7 +7,8 @@ import brenda from "../../assets/slider/temp1.jpg";
 import millie from "../../assets/slider/temp2.png";
 import walo from "../../assets/slider/temp3.jpg";
 
-
+import { useResume } from "../../context/ResumeContext";
+import { useNavigate } from "react-router-dom";
 
 const templates = [
   {
@@ -37,7 +38,7 @@ const templates = [
 ];
 ///////////////////////////////////////////////////
 
-function ResumeCard({ id, name, category, image, onPreview }) {
+function ResumeCard({ id, name, category, image, onPreview , onUseTemplate }) {
   return (
     <div
       className="
@@ -115,6 +116,7 @@ function ResumeCard({ id, name, category, image, onPreview }) {
           </button>
 
           <button
+            onClick={onUseTemplate}
             className="
             w-full
             max-w-45
@@ -168,7 +170,7 @@ function ResumeCard({ id, name, category, image, onPreview }) {
         </div>
 
         {/* 2. BOTTOM ACTIONS (Only visible on Touch screens) */}
-        <div 
+        <div
           className="
           flex 
           gap-3 
@@ -196,6 +198,7 @@ function ResumeCard({ id, name, category, image, onPreview }) {
           </button>
 
           <button
+            onClick={onUseTemplate}
             className="
             flex-1
             py-3
@@ -215,7 +218,6 @@ function ResumeCard({ id, name, category, image, onPreview }) {
     </div>
   );
 }
-
 
 ////////
 
@@ -238,22 +240,22 @@ function PreviewModal({ children, onClose }) {
 
 export default function RenderTemplate() {
   const [filter, setFilter] = useState("all");
-  const [previewTemplate , setPreviewTemplate] = useState(null);
+  const [previewTemplate, setPreviewTemplate] = useState(null);
 
-  const categories = [
-    "all",
-    "creative",
-    "professional",
-    "modern",
-    "simple",
-  ];
+  const { dispatch } = useResume();
+  const navigate = useNavigate();
+
+  const handleUseTemplate = (id) => {
+    dispatch({ type: "set_Template", payload: id });
+    navigate("/dashboard");
+  };
+
+  const categories = ["all", "creative", "professional", "modern", "simple"];
 
   const filtered =
     filter === "all"
       ? templates
-      : templates.filter(
-          (template) => template.category === filter
-        );
+      : templates.filter((template) => template.category === filter);
 
   return (
     <section className="w-full">
@@ -294,7 +296,6 @@ export default function RenderTemplate() {
 
       {/* Templates */}
       <div className="relative">
-
         <div
           className="
           flex
@@ -314,7 +315,8 @@ export default function RenderTemplate() {
             <ResumeCard
               key={template.id}
               {...template}
-  onPreview={() => setPreviewTemplate(template.id)}
+              onPreview={() => setPreviewTemplate(template.id)}
+              onUseTemplate={() => handleUseTemplate(template.id)} // ← add this
             />
           ))}
         </div>
@@ -322,7 +324,6 @@ export default function RenderTemplate() {
 
       {/* Bottom CTA */}
       <div className="md:mt-50 text-center">
-    
         <button
           className="
           hidden
@@ -343,9 +344,7 @@ export default function RenderTemplate() {
         </button>
       </div>
 
-          
-
-          {/* I WILL ADD THE CODE TO RENDER THE ACTAL TEMPLATES WHEN I ADD MORE TEMPLATES:
+      {/* I WILL ADD THE CODE TO RENDER THE ACTAL TEMPLATES WHEN I ADD MORE TEMPLATES:
           
           -----------------------------------------------------
                      {previewTemplate && (
@@ -363,21 +362,14 @@ export default function RenderTemplate() {
           */}
 
       {previewTemplate && (
-      <PreviewModal
-        onClose={() => setPreviewTemplate(null)}
-      >
-        <img
-          src={
-            templates.find(
-              (t) => t.id === previewTemplate
-            )?.image
-          }
-          alt="Template Preview"
-          className="max-w-fit h-auto scale-69 md:scale-95"
-        />
-      </PreviewModal>
-    )}
-
+        <PreviewModal onClose={() => setPreviewTemplate(null)}>
+          <img
+            src={templates.find((t) => t.id === previewTemplate)?.image}
+            alt="Template Preview"
+            className="max-w-fit h-auto scale-69 md:scale-95"
+          />
+        </PreviewModal>
+      )}
     </section>
   );
 }

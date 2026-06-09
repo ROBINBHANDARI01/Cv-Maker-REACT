@@ -1,14 +1,28 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../form/formNavigation";
-import Template1 from "../Template/Template1";
-import FormNav from "../form/formNav";
 import { useReactToPrint } from "react-to-print";
-import { useRef, useState } from "react";
+import { useRef, useState, Suspense } from "react";
+
+import { useResumeStorage  } from "../Hooks/useResumeStorage";
+
+import { templateMap } from "../Template";
+import { templates } from "../Data/template";
+import { useResume } from "../../context/ResumeContext";
+import Template1 from "../Template/Template1";
+import Navbar from "../form/formNavigation";
+import FormNav from "../form/formNav";
+
 import "../../Style/App.css";
 import { Scale } from "lucide-react";
 
 export default function Dashboard() {
+  
+  const [saveStatus, setSaveStatus] = useState("idle");
   const printRef = useRef(null);
+  const { resume } = useResume();
+  const {saveResume} = useResumeStorage();
+  const ActiveTemplate = templateMap[resume.templateId];
+  const currentTheme =
+    templates.find((t) => t.id === resume.templateId)?.themeId || "blue";
 
   {
     /* STATE TO SHOW THE POP UP BAR FOR DOWNLAODING A4 pdf */
@@ -65,25 +79,45 @@ export default function Dashboard() {
     }
   };
 
+  {/* Saving resume data handler */}
+
+  const handleSave = async () => {
+    setSaveStatus("saving");
+
+    const result = saveResume(resume);
+
+    if(result.success){
+      setSaveStatus("saved");
+      setTimeout(()=> setSaveStatus("idle"), 3000);
+    } else{
+      setSaveStatus("error");
+      setTimeout(() => setSaveStatus("idle"), 3000)
+    }
+  };
+
   return (
     <>
       <div className="border-gray-200 border-b-2">
-        <FormNav onDownload={handleDownload} />
+        <FormNav 
+        onDownload={handleDownload}
+        handleSave={handleSave}
+        saveStatus={saveStatus}
+        />
       </div>
 
-      <div className="grid md:grid-cols-[250px_1.5fr_1fr] h-[calc(100vh-)] overflow-hidden">
+      <div className="grid md:grid-cols-[240px_1.5fr_1fr] ">
         {/* Sidebar */}
         <aside className="border-r-2 border-gray-200  bg-gray-50">
           <Navbar />
         </aside>
 
         {/* Form */}
-        <main className="overflow-y-auto border-r-2 border-gray-200">
+        <main className="h-fit border-r-2 border-gray-200">
           <Outlet />
         </main>
 
         {/* Preview Panel */}
-        <section className=" overflow-x-auto bg-gray-100 flex flex-col">
+        <section className=" overflow-x-auto  bg-gray-100 flex flex-col">
           {/* Preview toolbar */}
           <div className="flex items-center justify-between px-4 py-2 bg-white border-b border-gray-200 sticky top-0 z-10">
             <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
@@ -92,9 +126,9 @@ export default function Dashboard() {
           </div>
 
           {/* Resume preview — scaled to fit */}
-          <div className=" w-99.25 h-145 px-2 md:mb-5 py-2">
+          <div className=" w-99.25 h-full px-2 mx-auto md:mx-0 mb-50 md:mb-60 py-2">
             <div
-              className="transform scale-[0.52] md:scale-[0.52]  w-49.5 h-[280.75px] bg-white shadow-md 
+              className="transform scale-[0.52] md:scale-[0.52]  w-49.5 h-[345.75px] bg-white shadow-md 
                          print:transform-none print:scale-100! print:w-198.5!  print:h-280.75!"
               ref={printRef}
               role="presentation"
@@ -102,7 +136,10 @@ export default function Dashboard() {
                 transformOrigin: "top left",
               }}
             >
-              <Template1 />
+              <Suspense fallback={<div>Loading...</div>}>
+                <ActiveTemplate themeId={currentTheme} />
+              </Suspense>
+              
             </div>
           </div>
         </section>
@@ -118,12 +155,11 @@ export default function Dashboard() {
             </p>
 
             <div className="flex mb-4 gap-1 ">
-               <img className="h-60" src={guideImg.img1} alt="Step 1" />
-            <img className="h-60 w-45" src={guideImg.img2} alt="Step 2" />
+              <img className="h-60" src={guideImg.img1} alt="Step 1" />
+              <img className="h-60 w-45" src={guideImg.img2} alt="Step 2" />
             </div>
 
             <div className="flex mx-2 gap-2">
-             
               <button
                 onClick={() => setShowPrintNotice(false)}
                 className="flex-1 border rounded-lg py-2"
