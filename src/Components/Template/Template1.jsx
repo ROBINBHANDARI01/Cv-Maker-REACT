@@ -1,9 +1,6 @@
 // src/Templates/Template1/index.jsx
 import { useResume } from "../../context/ResumeContext";
-import github from "../../assets/github.svg";
-import linkedIn from "../../assets/linkedIn.svg";
-import phone from "../../assets/phone.svg";
-import mail from "../../assets/mail.svg";
+
 
 import { themes } from "./theme";
 
