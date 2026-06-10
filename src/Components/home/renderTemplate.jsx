@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Heart, Eye } from "lucide-react";
 import Template1 from "../Template/Template1";
+import Template2 from "../Template/Template2";
 
 import robin from "../../assets/slider/robin.jpg";
 import brenda from "../../assets/slider/temp1.jpg";
@@ -344,9 +345,7 @@ export default function RenderTemplate() {
         </button>
       </div>
 
-      {/* I WILL ADD THE CODE TO RENDER THE ACTAL TEMPLATES WHEN I ADD MORE TEMPLATES:
-          
-          -----------------------------------------------------
+       
                      {previewTemplate && (
                      <PreviewModal
                         onClose={() => setPreviewTemplate(null)}
@@ -357,11 +356,10 @@ export default function RenderTemplate() {
                         {previewTemplate === 4 && <Template4 />}
                       </PreviewModal>
                     )}
-          -----------------------------------------------------
+         
           
-          */}
 
-      {previewTemplate && (
+{/*{previewTemplate && (
         <PreviewModal onClose={() => setPreviewTemplate(null)}>
           <img
             src={templates.find((t) => t.id === previewTemplate)?.image}
@@ -369,7 +367,8 @@ export default function RenderTemplate() {
             className="max-w-fit h-auto scale-69 md:scale-95"
           />
         </PreviewModal>
-      )}
+      )} */}
+      
     </section>
   );
 }
