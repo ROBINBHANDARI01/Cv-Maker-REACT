@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-
+import ProtectedRoute from "./Components/Auth/protectedRoute";
 import TemplateGallery from "./Components/Template/templatesGallery";
 import Homepage from "./Components/home/homepage";
 import Register  from "./Components/Auth/register";
@@ -23,7 +23,13 @@ function App() {
   <Route path="/login" element={<Login />} />
   <Route path="/register" element={<Register />} />
   <Route path="/templateGallery" element={<TemplateGallery/>}/>
-  <Route path="/dashboard" element={<Dashboard />}>
+  <Route path="/dashboard" element={
+    
+    <ProtectedRoute>
+    <Dashboard/>
+    </ProtectedRoute>
+
+    }>
     <Route path="general" element={<GeneralForm />} />
     <Route path="about" element={<AboutForm />} />
     <Route path="experience" element={<ExperienceForm />} />

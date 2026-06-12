@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import { useRef, useState, Suspense } from "react";
 
-import { useResumeStorage  } from "../Hooks/useResumeStorage";
+import { useResumeStorage  } from "../Hooks/useResumeStorage.js";
 
 import { templateMap } from "../Template";
 import { templates } from "../Data/template";
@@ -19,7 +19,7 @@ export default function Dashboard() {
   const [saveStatus, setSaveStatus] = useState("idle");
   const printRef = useRef(null);
   const { resume } = useResume();
-  const {saveResume} = useResumeStorage();
+  const { save } = useResumeStorage();
   const ActiveTemplate = templateMap[resume.templateId];
   const currentTheme =
     templates.find((t) => t.id === resume.templateId)?.themeId || "blue";
@@ -84,7 +84,7 @@ export default function Dashboard() {
   const handleSave = async () => {
     setSaveStatus("saving");
 
-    const result = saveResume(resume);
+    const result = await save(resume);
 
     if(result.success){
       setSaveStatus("saved");

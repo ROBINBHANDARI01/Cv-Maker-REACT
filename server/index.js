@@ -22,7 +22,7 @@ app.use('/api/resume', resumeRoutes);
 //Test route 
 app.get('/', (req, res) => res.send('API running...'));
 
-//Connecting to db 
+//Database Connection
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {

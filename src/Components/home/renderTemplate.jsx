@@ -3,7 +3,7 @@ import { Heart, Eye } from "lucide-react";
 import Template1 from "../Template/Template1";
 import Template2 from "../Template/Template2";
 
-import robin from "../../assets/slider/robin.jpg";
+import robin from "../../assets/slider/robin.jpg"
 import brenda from "../../assets/slider/temp1.jpg";
 import millie from "../../assets/slider/temp2.png";
 import walo from "../../assets/slider/temp3.jpg";

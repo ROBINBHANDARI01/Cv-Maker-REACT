@@ -1,6 +1,7 @@
 import logo from "../../assets/logo.png";
 import { Save } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../../context/AuthContext.jsx'
 
 export default function FormNav({ onDownload , handleSave , saveStatus = "idle" }) {
   const navigate = useNavigate();

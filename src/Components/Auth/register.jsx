@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import logo from "../../assets/logo.png";
 import { LogIn, Eye, EyeOff, CircleUser } from "lucide-react";
 
 export default function Register() {
+  const {register} = useAuth();
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [form, setForm] = useState({
@@ -16,18 +18,22 @@ export default function Register() {
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-    try {
-      // await authService.login(form.email, form.password)
+  e.preventDefault();
+  setError("");
+  setLoading(true);
+  try {
+    const result = await register(form.name, form.email, form.password);
+    if (result.success) {
       navigate("/dashboard");
-    } catch (err) {
-      setError(err.response?.data?.message || "Invalid email or password");
-    } finally {
-      setLoading(false);
+    } else {
+      setError(result.message || "Registration failed");
     }
-  };
+  } catch (err) {
+    setError("Something went wrong");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <>
@@ -106,9 +112,8 @@ export default function Register() {
                     required
                     placeholder="✎    Username"
                 
-                    value={form.email}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, email: e.target.value }))
+                    value={form.name}
+                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))
                     }
                     className="w-full placeholder:text-[1rem] pl-10 pr-4 py-2.5 text-xs border text-white border-slate-200 rounded-xl bg-white/10
                     focus:outline-none  focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20
@@ -125,8 +130,7 @@ export default function Register() {
                     required
                     placeholder="✉     Email address"
                     value={form.email}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, email: e.target.value }))
+                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))
                     }
                     className="w-full placeholder:text-[1rem] pl-10 pr-4 py-2.5 text-xs border text-white border-slate-200 rounded-xl bg-white/10
                     focus:outline-none  focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20
@@ -143,8 +147,7 @@ export default function Register() {
                     required
                     placeholder="🔒︎     Password"
                     value={form.password}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, password: e.target.value }))
+                    onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))
                     }
                     className="w-full pl-10 placeholder:text-[1rem]  text-xs pr-10 py-2.5 text-white border border-slate-200 rounded-xl bg-white/10
                     focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20
@@ -171,8 +174,7 @@ export default function Register() {
                   <input
                     type="checkbox"
                     checked={form.remember}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, remember: e.target.checked }))
+                    onChange={(e) =>  setForm((f) => ({ ...f, remember: e.target.checked }))
                     }
                     className="accent-blue-600 w-3.5 h-3.5 cursor-pointer"
                   />
