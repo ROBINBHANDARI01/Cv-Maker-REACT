@@ -34,11 +34,11 @@ function Template2({ themeId = "blue" }) {
    <div className="bg-white text-gray-900 w-198.5 min-h-280.75 mx-auto">
   {/* HEADER */}
   <div
-    className="px-8 pt-8 pb-6"
+    className="px-8 pt-8 pb-5"
     style={{ borderBottom: `2px solid ${t.accent}` }}
   >
-    <div className="flex justify-between">
-      <div className="flex-1">
+    <div className="flex">
+      <div className="">
         <h1
           className="text-[32px] font-black uppercase leading-none"
           style={{
@@ -62,10 +62,23 @@ function Template2({ themeId = "blue" }) {
         >
           {resume.general.role}
         </p>
-      </div>
+      
 
-      <div
-        className=" text-[10px] leading-5 text-gray-500"
+    
+    <div className="inline-block">
+    {resume.about.aboutYou && (
+      <p
+        className="max-w-[90%] text-[11px] leading-5.5 italic text-gray-600 mt-5"
+        style={{ fontFamily: "Georgia, serif" }}
+      >
+        {resume.about.aboutYou}
+      </p>
+    )}
+    </div>
+    </div>
+
+     <div
+        className=" text-[10px] leading-5 inline-block text-gray-500"
         style={{ fontFamily: "sans-serif" }}
       >
         {resume.general.email && <p>{resume.general.email}</p>}
@@ -75,16 +88,7 @@ function Template2({ themeId = "blue" }) {
         {resume.general.linkedIn && <p>{resume.general.linkedIn}</p>}
         
       </div>
-    </div>
-
-    {resume.about.aboutYou && (
-      <p
-        className="mt-5 max-w-[75%] text-[11px] leading-6 italic text-gray-600"
-        style={{ fontFamily: "Georgia, serif" }}
-      >
-        {resume.about.aboutYou}
-      </p>
-    )}
+  </div>
   </div>
 
   {/* MAIN CONTENT */}
@@ -94,52 +98,7 @@ function Template2({ themeId = "blue" }) {
     <div className="space-y-8">
 
       {/* EXPERIENCE */}
-      <SectionHeading title="Experience" color={t.accent} />
-      <section>
-
-        <div className="mt-4 space-y-6">
-          {resume.experience.map((exp, i) => (
-            <div key={i}>
-              <div className="flex justify-between items-start">
-                <h3
-                  className="text-[15px] font-bold"
-                  style={{
-                    color: t.heading,
-                    fontFamily: "Georgia, serif",
-                  }}
-                >
-                  {exp.role}
-                </h3>
-
-                <span
-                  className="text-[9px] uppercase font-semibold"
-                  style={{
-                    color: t.accent,
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  {exp.start} - {exp.end || "Present"}
-                </span>
-              </div>
-
-              <p
-                className="text-[10px] uppercase font-semibold mt-1"
-                style={{
-                  color: t.accent,
-                  fontFamily: "sans-serif",
-                }}
-              >
-                {exp.companyName}
-              </p>
-
-              <p className="text-[11px] text-gray-600 mt-2 leading-6">
-                {exp.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
+      
       {/* PROJECTS */}
       <SectionHeading title="Projects" color={t.accent} />
         
@@ -181,6 +140,12 @@ function Template2({ themeId = "blue" }) {
               {project.liveUrl && (
                 <p className="text-[10px] mt-2 text-gray-400">
                   ↗ {project.liveUrl}
+                </p>
+              )}
+
+               {project.liveUrl && (
+                <p className="text-[10px] mt-2 text-gray-400">
+                  ↗ {project. githubUrl}
                 </p>
               )}
             </div>

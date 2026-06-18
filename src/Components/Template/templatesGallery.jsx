@@ -10,7 +10,7 @@ const CATEGORIES = ["All", ...new Set(templates.map((t) => t.category))];
 function TemplateCard({ template, onPreview, onUse }) {
   return (
     <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group">
-      {/* Thumbnail */}
+     
       <div className="relative overflow-hidden bg-gray-50">
         <img
           src={template.thumbnail}
@@ -19,7 +19,6 @@ function TemplateCard({ template, onPreview, onUse }) {
           className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
 
-        {/* Hover overlay — desktop only */}
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-coarse:hidden flex flex-col gap-3 items-center justify-center pointer-events-none group-hover:pointer-events-auto">
           <button
             onClick={onPreview}
@@ -71,7 +70,7 @@ function PreviewModal({ template, onClose, onUse }) {
   return (
     <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl overflow-hidden max-w-sm w-full shadow-2xl">
-        {/* Modal header */}
+      
         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
           <div>
             <p className="font-bold text-gray-900">{template.name}</p>
@@ -93,8 +92,7 @@ function PreviewModal({ template, onClose, onUse }) {
             className="max-w-full h-auto rounded-lg shadow"
           />
         </div>
-
-        {/* Modal footer */}
+        
         <div className="px-5 py-4 flex gap-3">
           <button
             onClick={onClose}
@@ -134,7 +132,7 @@ export default function TemplateGallery() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Page header */}
+      
       <div className="bg-white border-b border-gray-100 px-6 py-10 text-center">
         <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">
           Template Gallery
@@ -148,7 +146,7 @@ export default function TemplateGallery() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-10">
-        {/* Category filter */}
+     
         <div className="flex gap-2 flex-wrap justify-center mb-10">
           {CATEGORIES.map((cat) => (
             <button
@@ -165,7 +163,6 @@ export default function TemplateGallery() {
           ))}
         </div>
 
-        {/* Count */}
         <p className="text-xs text-gray-400 mb-6 text-center">
           {filtered.length} template{filtered.length !== 1 ? "s" : ""}
           {activeCategory !== "All" ? ` in ${activeCategory}` : ""}
@@ -183,7 +180,6 @@ export default function TemplateGallery() {
           ))}
         </div>
 
-        {/* Empty state */}
         {filtered.length === 0 && (
           <div className="text-center py-20 text-gray-400">
             <p className="text-lg font-semibold">No templates in this category yet</p>
@@ -192,7 +188,6 @@ export default function TemplateGallery() {
         )}
       </div>
 
-      {/* Preview Modal */}
       <PreviewModal
         template={previewTemplate}
         onClose={() => setPreviewTemplate(null)}

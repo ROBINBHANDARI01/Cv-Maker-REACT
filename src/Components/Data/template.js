@@ -1,6 +1,6 @@
 import { Component } from "lucide-react";
 import robin from "../../assets/slider/robin.jpg";
-import brenda from "../../assets/slider/temp1.jpg"
+import aman from "../../assets/template-thumbnails/amanGreen.jpg"
 import millie from "../../assets/slider/temp2.png";
 import waldo from "../../assets/slider/temp3.jpg";
 
@@ -14,9 +14,9 @@ export const templates=[
     },
     {
         id:2,
-        name:"Brenda Davis",
+        name:"Robin",
         category:"Creative",
-        thumbnail: brenda,
+        thumbnail: robin,
         themeId: "green"
     },
     {

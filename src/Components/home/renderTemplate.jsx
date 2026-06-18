@@ -4,7 +4,7 @@ import Template1 from "../Template/Template1";
 import Template2 from "../Template/Template2";
 
 import robin from "../../assets/slider/robin.jpg"
-import brenda from "../../assets/slider/temp1.jpg";
+import aman from "../../assets/template-thumbnails/amanGreen.jpg";
 import millie from "../../assets/slider/temp2.png";
 import walo from "../../assets/slider/temp3.jpg";
 
@@ -14,15 +14,15 @@ import { useNavigate } from "react-router-dom";
 const templates = [
   {
     id: 1,
-    name: "Robin Bhandari",
-    category: "professional",
+    name: "Brenda Davis",
+    category: "modern",
     image: robin,
   },
   {
     id: 2,
-    name: "Brenda Davis",
+    name: "Robin Bhandari",
     category: "creative",
-    image: brenda,
+    image: aman,
   },
   {
     id: 3,
@@ -351,7 +351,7 @@ export default function RenderTemplate() {
                         onClose={() => setPreviewTemplate(null)}
                       >
                         {previewTemplate === 1 && <Template1 />}
-                        {previewTemplate === 2 && <Template2 />}
+                        {previewTemplate === 2 && <img className="h-fit" src={aman}></img>}
                         {previewTemplate === 3 && <Template3 />}
                         {previewTemplate === 4 && <Template4 />}
                       </PreviewModal>
