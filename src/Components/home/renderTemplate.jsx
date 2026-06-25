@@ -2,11 +2,15 @@ import { useState } from "react";
 import { Heart, Eye } from "lucide-react";
 import Template1 from "../Template/Template1";
 import Template2 from "../Template/Template2";
+import Template3 from "../Template/Template3";
+import Template4 from "../Template/Template4";
 
-import robin from "../../assets/slider/robin.jpg"
-import aman from "../../assets/template-thumbnails/amanGreen.jpg";
-import millie from "../../assets/slider/temp2.png";
-import walo from "../../assets/slider/temp3.jpg";
+import { robinBhandari, milliSmith, waldo, BrendaDavis } from "../Template/demo.Resume";
+
+import brenda from "../../assets/slider/brenda.webp"
+import robin from "../../assets/template-thumbnails/amanGreen.jpg";
+import millie from "../../assets/slider/millieImage.webp";
+import walo from "../../assets/slider/waldoImage.webp";
 
 import { useResume } from "../../context/ResumeContext";
 import { useNavigate } from "react-router-dom";
@@ -16,13 +20,13 @@ const templates = [
     id: 1,
     name: "Brenda Davis",
     category: "modern",
-    image: robin,
+    image: brenda,
   },
   {
     id: 2,
     name: "Robin Bhandari",
     category: "creative",
-    image: aman,
+    image: robin,
   },
   {
     id: 3,
@@ -60,7 +64,7 @@ function ResumeCard({ id, name, category, image, onPreview , onUseTemplate }) {
       "
     >
       {/* Preview Image Container */}
-      <div className="relative flex justify-center m-4 shadow-md overflow-hidden rounded-2xl">
+      <div className="relative flex justify-center m-4 shadow-[0_0_15px_1px_rgba(0,0,0,0.1)] overflow-hidden rounded-2xl">
         <img
           src={image}
           alt={name}
@@ -350,10 +354,10 @@ export default function RenderTemplate() {
                      <PreviewModal
                         onClose={() => setPreviewTemplate(null)}
                       >
-                        {previewTemplate === 1 && <Template1 />}
-                        {previewTemplate === 2 && <img className="h-fit" src={aman}></img>}
-                        {previewTemplate === 3 && <Template3 />}
-                        {previewTemplate === 4 && <Template4 />}
+                        {previewTemplate === 1 && <Template1 themeId="blue" data={BrendaDavis} />}
+                        {previewTemplate === 2 && <Template2 themeId="green" data={robinBhandari} />}
+                        {previewTemplate === 3 && <Template3 themeId="gray" data={milliSmith} />}
+                        {previewTemplate === 4 && <Template4 themeId="blue" data={waldo} />}
                       </PreviewModal>
                     )}
          

@@ -1,4 +1,5 @@
 
+import { data } from "react-router-dom";
 import { useResume } from "../../context/ResumeContext";
 
 export const themes = {
@@ -26,9 +27,10 @@ function SectionHeading({ title, color }) {
   );
 }
 
-function Template2({ themeId = "blue" }) {
-  const { resume } = useResume();
+function Template2({ themeId = "green", data}) {
+  const { resume: contextResume } = useResume();
   const t = themes[themeId];
+  const resume = data ?? contextResume;
 
   return (
    <div className="bg-white text-gray-900 w-198.5 min-h-280.75 mx-auto">

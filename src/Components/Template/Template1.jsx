@@ -4,9 +4,10 @@ import { useResume } from "../../context/ResumeContext";
 
 import { themes } from "./theme";
 
-function Template1({ themeId = "blue" }) {
-  const { resume } = useResume();
+function Template1({themeId, data}) {
+  const { resume: contextResume } = useResume();
   const t = themes[themeId]; // ← t.sidebar, t.accent etc
+  const resume = data ?? contextResume;
 
   return (
     <div className="bg-white text-gray-900 w-198 h-280.75 mx-auto flex overflow-hidden">
@@ -94,7 +95,7 @@ function Template1({ themeId = "blue" }) {
       </div>
 
       {/* Main Content — uses theme heading color */}
-      <div className="flex-1 px-10 py-10 flex flex-col gap-8">
+      <div className="flex-1 px-5 py-10 flex flex-col gap-6">
         {resume.about.aboutYou && (
           <section className="flex flex-col">
             <h2 className="text-[16px] font-bold uppercase tracking-[2px] pb-1 mb-2 border-b"

@@ -1,15 +1,15 @@
 import { Component } from "lucide-react";
-import robin from "../../assets/slider/robin.jpg";
-import aman from "../../assets/template-thumbnails/amanGreen.jpg"
-import millie from "../../assets/slider/temp2.png";
-import waldo from "../../assets/slider/temp3.jpg";
+import brenda from "../../assets/slider/brenda.webp";
+import robin from "../../assets/template-thumbnails/amanGreen.jpg"
+import millie from "../../assets/slider/millieImage.webp";
+import waldo from "../../assets/slider/waldoImage.webp";
 
 export const templates=[
     {
         id:1,
-        name:"Robin Blue",
+        name:"Brenda",
         category: "Professional",
-        thumbnail: robin,
+        thumbnail: brenda,
         themeId: "blue"
     },
     {
@@ -31,6 +31,6 @@ export const templates=[
         name:"Waldo Smith",
         category:"Simple",
         thumbnail: waldo,
-        themeId: "dark" 
+        themeId: "blue" 
     }
 ]

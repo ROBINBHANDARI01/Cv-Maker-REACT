@@ -1,9 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import star from "../../assets/slider/star.png"
-import temp1 from "../../assets/slider/temp1.jpg";
-import temp2 from "../../assets/slider/temp2.png";
-import temp3 from "../../assets/slider/robin.jpg";
-import temp4 from "../../assets/slider/temp3.jpg";
+
 
 import RenderTemplate from "../home/renderTemplate";
 
