@@ -1,4 +1,4 @@
-const BASE_URL = 'https://cv-maker-react.onrender.com';
+const BASE_URL = `https://cv-maker-react.onrender.com`;
 
 const getToken = () => localStorage.getItem('token');
 
@@ -10,7 +10,7 @@ const headers = () =>({
 //-- Auth --
 
 export const registerUser = async (name, email, password) => {
-  const res = await fetch(`${BASE_URL}/auth/register`, {
+  const res = await fetch(`${BASE_URL}/api/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, email, password }),
@@ -19,7 +19,7 @@ export const registerUser = async (name, email, password) => {
 };
 
 export const loginUser = async (email, password) => {
-  const res = await fetch(`${BASE_URL}/auth/login`, {
+  const res = await fetch(`${BASE_URL}/api/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
@@ -29,7 +29,7 @@ export const loginUser = async (email, password) => {
 
 // ── Resume ──
 export const saveResume = async (resumePayload) => {
-  const res = await fetch(`${BASE_URL}/resume/save`, {
+  const res = await fetch(`${BASE_URL}/api/resume/save`, {
     method: 'POST',
     headers: headers(),
     body: JSON.stringify(resumePayload),
@@ -38,7 +38,7 @@ export const saveResume = async (resumePayload) => {
 };
 
 export const loadResume = async () => {
-  const res = await fetch(`${BASE_URL}/resume`, {
+  const res = await fetch(`${BASE_URL}/api/resume`, {
     headers: headers(),
   });
   return res.json();
