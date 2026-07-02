@@ -4,25 +4,38 @@ import protect from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-
 router.post('/save', protect, async (req, res) => {
   try {
-    const { title, templateId, themeId, data } = req.body;
+    const { title, templateId, themeId, data } = req.body; 
 
-  
-    let resume = await Resume.findOne({ userId: req.user.id });
+    // FIX: Extracts whichever property exists on your JWT payload string
+    const currentUserId = req.user._id || req.user.id;
 
-    if (resume) {
-      resume.title = title || resume.title;
-      resume.templateId = templateId;
-      resume.themeId = themeId;
-      resume.data = data;
-      await resume.save();
-    } else {
-      resume = await Resume.create({ userId: req.user.id, title, templateId, themeId, data });
+    if (!currentUserId) {
+      return res.status(400).json({ message: 'User ID could not be found in token payload' });
     }
 
-    res.json({ message: 'Saved', resume });
+    let resume = await Resume.findOne({ userId: currentUserId });
+
+    if (resume) {
+      // Update existing record safely
+      resume.title = title || resume.title;
+      resume.templateId = templateId || resume.templateId;
+      resume.themeId = themeId || resume.themeId; // Keeping themeId!
+      resume.data = data || resume.data;
+      await resume.save();
+    } else {
+      // Create a brand new record
+      resume = await Resume.create({ 
+        userId: currentUserId, 
+        title, 
+        templateId, 
+        themeId, // Keeping themeId!
+        data 
+      });
+    }
+
+    res.json({ message: 'Saved successfully', resume });
   } catch (err) {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
@@ -30,8 +43,11 @@ router.post('/save', protect, async (req, res) => {
 
 router.get('/', protect, async (req, res) => {
   try {
-    const resume = await Resume.findOne({ userId: req.user.id });
+    const currentUserId = req.user._id || req.user.id;
+    
+    const resume = await Resume.findOne({ userId: currentUserId });
     if (!resume) return res.status(404).json({ message: 'No resume found' });
+    
     res.json(resume);
   } catch (err) {
     res.status(500).json({ message: 'Server error', error: err.message });

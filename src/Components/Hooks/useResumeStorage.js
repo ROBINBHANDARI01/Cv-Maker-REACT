@@ -11,10 +11,12 @@ export function useResumeStorage(){
 
     if (isLoggedIn()) {
       try {
+        const {title, templateId, themeId, ...dataContent} = resumeData;
         await saveResume({
-          templateId: resumeData.templateId,
-          themeId: resumeData.themeId,
-          data: resumeData,
+          title: title || "My Resume",
+          templateId: templateId || "1",
+          themeId: themeId || "blue",
+          data: dataContent,
         });
       } catch (err) {
         console.error('Backend save failed:', err);
@@ -28,9 +30,17 @@ export function useResumeStorage(){
 
     if (isLoggedIn()) {
       try {
-        const data = await loadResume();
-        if (data?.data) return data.data;
-      } catch {
+        const dbResponse = await loadResume();
+        if(dbResponse){
+          return{
+            title: dbResponse.title,
+            templateId: dbResponse.templateId,
+            themeId: dbResponse.themeId,
+            ...dbResponse.data
+          };
+        }
+      } catch(err) {
+        console.log('Backend load failed, falling back to local storage: ', err)
       }
     }
 
